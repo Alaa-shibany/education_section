@@ -1,4 +1,5 @@
 import 'package:courses/features/login/presentation/login_screen.dart';
+import 'package:courses/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'unknown_page.dart';
@@ -27,7 +28,7 @@ class AppRouter {
       GoRoute(
         name: 'login',
         path: AppRoutes.login,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => MainLayout(body: LoginScreen()),
       ),
     ],
     errorPageBuilder: (context, state) =>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart'; // ١. قم باستيراد الحزمة
 import 'app_colors.dart';
 
 class AppThemes {
@@ -6,35 +7,36 @@ class AppThemes {
     brightness: Brightness.light,
     primaryColor: AppColors.primaryLight,
     scaffoldBackgroundColor: AppColors.backgroundLight,
+    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.light().textTheme).apply(
+      bodyColor: AppColors.onTextLight,
+      displayColor: AppColors.onTextLight,
+    ),
     colorScheme: const ColorScheme.light(
       primary: AppColors.primaryLight,
       secondary: AppColors.primaryLight,
       background: AppColors.backgroundLight,
       surface: AppColors.surfaceLight,
-      onPrimary: AppColors.onTextLight,
-      onSecondary: AppColors.onTextLight,
+      onPrimary: Colors.white,
+      onSecondary: Colors.white,
       onBackground: AppColors.onTextLight,
       onSurface: AppColors.onTextLight,
     ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.primaryLight,
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.backgroundLight.withOpacity(0.8),
       elevation: 0,
-      titleTextStyle: TextStyle(
-        color: Colors.white,
+      titleTextStyle: GoogleFonts.poppins(
+        color: AppColors.primaryLight,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
-      iconTheme: IconThemeData(color: Colors.white),
+      iconTheme: IconThemeData(color: AppColors.primaryLight),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryLight,
         foregroundColor: Colors.white,
+        textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600),
       ),
-    ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: AppColors.onTextLight),
-      bodyMedium: TextStyle(color: AppColors.onTextLight),
     ),
   );
 
@@ -42,6 +44,10 @@ class AppThemes {
     brightness: Brightness.dark,
     primaryColor: AppColors.primaryDark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
+    textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme).apply(
+      bodyColor: AppColors.onTextDark,
+      displayColor: AppColors.onTextDark,
+    ),
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primaryDark,
       secondary: AppColors.primaryDark,
@@ -53,24 +59,21 @@ class AppThemes {
       onSurface: AppColors.onTextDark,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.backgroundDark.withValues(alpha: 0.5),
-      elevation: 1,
-      titleTextStyle: TextStyle(
+      backgroundColor: AppColors.backgroundDark.withOpacity(0.8),
+      elevation: 0,
+      titleTextStyle: GoogleFonts.poppins(
         color: AppColors.onTextDark,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
-      iconTheme: IconThemeData(color: AppColors.surfaceLight),
+      iconTheme: IconThemeData(color: AppColors.primaryDark),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryDark,
         foregroundColor: AppColors.onTextDark,
+        textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600),
       ),
-    ),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: AppColors.onTextDark),
-      bodyMedium: TextStyle(color: AppColors.onTextDark),
     ),
   );
 }

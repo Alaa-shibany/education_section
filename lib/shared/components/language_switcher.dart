@@ -12,11 +12,16 @@ class LanguageSwitcher extends StatelessWidget {
       builder: (context, currentLocale) {
         return DropdownButton<Locale>(
           value: currentLocale,
-          icon: Icon(
-            Icons.language,
-            color: Theme.of(context).appBarTheme.iconTheme?.color,
+          icon: Padding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 5),
+            child: Icon(
+              Icons.language,
+              color: Theme.of(context).appBarTheme.iconTheme?.color,
+            ),
           ),
+
           underline: const SizedBox(),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           items: AppLocalizations.supportedLocales.map((locale) {
             return DropdownMenuItem(
               value: locale,
