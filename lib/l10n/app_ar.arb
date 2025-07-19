@@ -1,6 +1,11 @@
 {
   "@@locale": "ar",
-  "appName": "تطبيقي الرائع",
-  "home": "الرئيسية",
-  "welcomeMessage": "أهلاً بك، {userName}!"
+  "welcome": "مرحباً",
+  "signin_to_continue": "سجّل الدخول للمتابعة إلى حسابك",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "remember_me": "تذكرني",
+  "login": "تسجيل الدخول",
+    "please_enter_password":"رجاء ادخل كلمة السر",
+  "please_enter_email":"رجاء ادخل البريد الالكتروني"
 }

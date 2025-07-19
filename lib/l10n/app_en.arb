@@ -1,18 +1,12 @@
 {
   "@@locale": "en",
-  "appName": "My Awesome App",
-  "@appName": {
-    "description": "The name of the application"
-  },
-  "home": "Home",
-  "welcomeMessage": "Welcome, {userName}!",
-  "@welcomeMessage": {
-    "description": "A welcome message with a placeholder for the user's name",
-    "placeholders": {
-      "userName": {
-        "type": "String",
-        "example": "Ali"
-      }
-    }
-  }
+  "welcome":"Welcome",
+  "signin_to_continue":"Sign in to continue to your account",
+  "email":"Email",
+  "password":"Password",
+  "remember_me":"Remember me",
+  "login":"Login",
+  "please_enter_password":"Please enter your password",
+  "please_enter_email":"Please enter your email"
+
 }

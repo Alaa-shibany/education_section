@@ -8,7 +8,7 @@ class AppColors {
   static const Color onTextLight = Color(0xFF000000);
 
   // Dark Colors
-  static const Color primaryDark = Color.fromARGB(255, 14, 2, 81);
+  static const Color primaryDark = Color.fromARGB(255, 104, 80, 241);
   static const Color backgroundDark = Color(0xFF121212);
   static const Color surfaceDark = Color(0xFF1E1E1E);
   static const Color onTextDark = Color(0xFFFFFFFF);

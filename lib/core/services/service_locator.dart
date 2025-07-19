@@ -1,3 +1,6 @@
+import 'package:courses/features/login/repo/login_repository.dart';
+import 'package:courses/features/login/cubit/login_cubit.dart';
+
 import 'package:courses/core/services/cache_service.dart';
 import 'package:courses/core/services/end_points.dart';
 import 'package:courses/core/services/interceptors/auth_interceptor.dart';
@@ -48,4 +51,7 @@ Future<void> setupServiceLocator() async {
   });
 
   sl.registerLazySingleton<ApiService>(() => ApiService(dio: sl()));
+
+  sl.registerLazySingleton(() => LoginRepository(sl()));
+  sl.registerFactory(() => LoginCubit(sl()));
 }

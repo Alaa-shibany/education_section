@@ -95,23 +95,53 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
-  /// The name of the application
+  /// No description provided for @welcome.
   ///
   /// In en, this message translates to:
-  /// **'My Awesome App'**
-  String get appName;
+  /// **'Welcome'**
+  String get welcome;
 
-  /// No description provided for @home.
+  /// No description provided for @signin_to_continue.
   ///
   /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
+  /// **'Sign in to continue to your account'**
+  String get signin_to_continue;
 
-  /// A welcome message with a placeholder for the user's name
+  /// No description provided for @email.
   ///
   /// In en, this message translates to:
-  /// **'Welcome, {userName}!'**
-  String welcomeMessage(String userName);
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @remember_me.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember me'**
+  String get remember_me;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @please_enter_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password'**
+  String get please_enter_password;
+
+  /// No description provided for @please_enter_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email'**
+  String get please_enter_email;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

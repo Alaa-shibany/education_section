@@ -66,7 +66,7 @@ class AppThemes {
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
-      iconTheme: IconThemeData(color: AppColors.primaryDark),
+      iconTheme: IconThemeData(color: AppColors.surfaceLight),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

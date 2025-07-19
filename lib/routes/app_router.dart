@@ -1,6 +1,10 @@
+import 'package:courses/core/services/service_locator.dart';
+import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
+import 'package:courses/features/navigator/presentation/navigate_screen.dart';
 import 'package:courses/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'unknown_page.dart';
 import 'navigator_observer.dart';
@@ -28,7 +32,18 @@ class AppRouter {
       GoRoute(
         name: 'login',
         path: AppRoutes.login,
-        builder: (context, state) => MainLayout(body: LoginScreen()),
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl<LoginCubit>(),
+          child: MainLayout(body: LoginScreen()),
+        ),
+      ),
+      GoRoute(
+        name: 'navigate_screen',
+        path: AppRoutes.navigate,
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl<LoginCubit>(),
+          child: MainLayout(body: NavigateScreen()),
+        ),
       ),
     ],
     errorPageBuilder: (context, state) =>

@@ -9,13 +9,26 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-  String get appName => 'تطبيقي الرائع';
+  String get welcome => 'مرحباً';
 
   @override
-  String get home => 'الرئيسية';
+  String get signin_to_continue => 'سجّل الدخول للمتابعة إلى حسابك';
 
   @override
-  String welcomeMessage(String userName) {
-    return 'Welcome, $userName!';
-  }
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get remember_me => 'تذكرني';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get please_enter_password => 'رجاء ادخل كلمة السر';
+
+  @override
+  String get please_enter_email => 'رجاء ادخل البريد الالكتروني';
 }

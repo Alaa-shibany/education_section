@@ -1,0 +1,16 @@
+{
+  "feature_name": "Login",
+  "endpoint": "login",
+  "request_type": "GET",
+  "pagination": false,
+  "body":{
+    "email":"String",
+    "password":"String"
+  },
+  "response_model":  {
+      "name": "LoginModel",
+      "fields": [
+        { "name": "token", "type": "String" }
+      ]
+    }
+}

@@ -9,13 +9,26 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appName => 'My Awesome App';
+  String get welcome => 'Welcome';
 
   @override
-  String get home => 'Home';
+  String get signin_to_continue => 'Sign in to continue to your account';
 
   @override
-  String welcomeMessage(String userName) {
-    return 'Welcome, $userName!';
-  }
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get remember_me => 'Remember me';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get please_enter_password => 'Please enter your password';
+
+  @override
+  String get please_enter_email => 'Please enter your email';
 }
