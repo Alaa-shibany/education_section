@@ -1,5 +1,5 @@
 import 'package:courses/config/localization/localization_cubit.dart';
-import 'package:courses/generated/l10n.dart';
+import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:courses/config/theme/app_theme.dart';
 import 'package:courses/config/theme/theme_cubit.dart';
@@ -37,19 +37,19 @@ class MyApp extends StatelessWidget {
           return BlocBuilder<LocalizationCubit, Locale>(
             builder: (context, locale) {
               return MaterialApp.router(
-                title: 'Inventory',
+                title: 'Courses',
                 debugShowCheckedModeBanner: false,
                 theme: AppThemes.lightTheme,
                 darkTheme: AppThemes.darkTheme,
                 themeMode: themeMode,
                 routerConfig: AppRouter.router,
                 localizationsDelegates: const [
-                  S.delegate,
+                  AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                supportedLocales: S.delegate.supportedLocales,
+                supportedLocales: AppLocalizations.supportedLocales,
                 locale: locale,
               );
             },

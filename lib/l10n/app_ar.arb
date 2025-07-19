@@ -1,0 +1,6 @@
+{
+  "@@locale": "ar",
+  "appName": "تطبيقي الرائع",
+  "home": "الرئيسية",
+  "welcomeMessage": "أهلاً بك، {userName}!"
+}

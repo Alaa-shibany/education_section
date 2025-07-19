@@ -1,0 +1,18 @@
+{
+  "@@locale": "en",
+  "appName": "My Awesome App",
+  "@appName": {
+    "description": "The name of the application"
+  },
+  "home": "Home",
+  "welcomeMessage": "Welcome, {userName}!",
+  "@welcomeMessage": {
+    "description": "A welcome message with a placeholder for the user's name",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Ali"
+      }
+    }
+  }
+}
