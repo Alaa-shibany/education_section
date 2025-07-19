@@ -121,7 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                         onPressed: state is GenericLoading
                             ? null
                             : () {
-                                context.pushReplacement(AppRoutes.navigate);
+                                context.go(AppRoutes.home);
                                 // if (_formKey.currentState!.validate()) {
                                 //   context.read<LoginCubit>().fetchData(
                                 //     body: LoginRequestBodyModel(

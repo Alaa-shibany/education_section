@@ -1,4 +1,5 @@
 import 'package:courses/core/services/service_locator.dart';
+import 'package:courses/features/home/presentation/home_screen.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
 import 'package:courses/features/navigator/presentation/navigate_screen.dart';
@@ -13,6 +14,7 @@ import 'app_routes.dart';
 // You can use a key for the navigator if needed, e.g., for showing dialogs.
 // final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 class AppRouter {
   AppRouter._();
@@ -37,13 +39,21 @@ class AppRouter {
           child: MainLayout(body: LoginScreen()),
         ),
       ),
-      GoRoute(
-        name: 'navigate_screen',
-        path: AppRoutes.navigate,
-        builder: (context, state) => BlocProvider(
-          create: (context) => sl<LoginCubit>(),
-          child: MainLayout(body: NavigateScreen()),
-        ),
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) {
+          return NavigateScreen(child: child);
+        },
+        routes: [
+          GoRoute(
+            name: 'home_screen',
+            path: AppRoutes.home,
+            builder: (context, state) => BlocProvider(
+              create: (context) => sl<LoginCubit>(),
+              child: HomeScreen(),
+            ),
+          ),
+        ],
       ),
     ],
     errorPageBuilder: (context, state) =>
