@@ -29,7 +29,7 @@ class CircularProgressCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
             child: Column(
               children: [
                 Text(
