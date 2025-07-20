@@ -14,7 +14,6 @@ class NavigateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveLayout(
       mobileBody: Scaffold(
-        extendBodyBehindAppBar: true,
         appBar: AppBar(
           actions: [ThemeSwitcher(), LanguageSwitcher()],
           leading: Builder(

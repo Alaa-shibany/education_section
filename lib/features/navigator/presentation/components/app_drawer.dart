@@ -79,7 +79,6 @@ class AppDrawer extends StatelessWidget {
         ),
         height: 20,
         width: 20,
-        // color: Theme.ohf(context).primaryColor,
       ),
       selected: isSelected,
       title: Text(title),
