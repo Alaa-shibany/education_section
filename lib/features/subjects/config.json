@@ -1,0 +1,25 @@
+{
+  "feature_name": "Subjects",
+  "endpoint": "subjects",
+  "request_type": "GET",
+  "pagination": true,
+  "query_parameters":[
+    {
+      "type":"int",
+      "name":"page"
+    },
+     {
+      "type":"String",
+      "name":"search"
+     }
+  ],
+  "response_model":  {
+      "name": "SubjectModel",
+      "fields": [
+        { "name": "id", "type": "int" },
+        { "name": "name", "type": "String" },
+        { "name": "created_at", "type": "String" },
+        { "name": "updated_at", "type": "String" }
+      ]
+    }
+}

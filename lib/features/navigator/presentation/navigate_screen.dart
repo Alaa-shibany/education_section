@@ -33,7 +33,7 @@ class NavigateScreen extends StatelessWidget {
           children: [
             AppDrawer(),
             // const VerticalDivider(thickness: 1, width: 1),
-            Expanded(child: MainLayout(body: child)),
+            Expanded(child: MainLayout(body: child, extendBody: false)),
           ],
         ),
       ),

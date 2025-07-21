@@ -1,4 +1,6 @@
 import 'package:courses/config/constants/application_images.dart';
+import 'package:courses/l10n/app_localizations.dart';
+import 'package:courses/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -28,15 +30,27 @@ class AppDrawer extends StatelessWidget {
             ],
           ),
           drawerItem(
-            title: 'Home',
-            isSelected: currentLocation == '/home',
+            title: AppLocalizations.of(context)!.home,
+            isSelected: currentLocation == AppRoutes.home,
             onTap: () {
-              context.go('/home');
+              context.go(AppRoutes.home);
               if (Scaffold.of(context).isDrawerOpen) {
                 Navigator.of(context).pop();
               }
             },
             svgIcon: ApplicationImages.homeSVG,
+            context: context,
+          ),
+          drawerItem(
+            title: AppLocalizations.of(context)!.subjects,
+            isSelected: currentLocation == AppRoutes.subjects,
+            onTap: () {
+              context.go(AppRoutes.subjects);
+              if (Scaffold.of(context).isDrawerOpen) {
+                Navigator.of(context).pop();
+              }
+            },
+            svgIcon: ApplicationImages.booksSVG,
             context: context,
           ),
           Container(
@@ -48,7 +62,7 @@ class AppDrawer extends StatelessWidget {
             ),
           ),
           drawerItem(
-            title: 'logout',
+            title: AppLocalizations.of(context)!.logout,
             isSelected: false,
             onTap: () {
               context.go('/login');

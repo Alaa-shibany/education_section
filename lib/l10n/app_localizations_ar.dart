@@ -12,7 +12,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcome => 'مرحباً';
 
   @override
-  String get signin_to_continue => 'سجّل الدخول للمتابعة إلى حسابك';
+  String get signin_to_continue => 'سجل الدخول للمتابعة إلى حسابك';
 
   @override
   String get email => 'البريد الإلكتروني';
@@ -27,8 +27,65 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
-  String get please_enter_password => 'رجاء ادخل كلمة السر';
+  String get please_enter_password => 'الرجاء إدخال كلمة المرور';
 
   @override
-  String get please_enter_email => 'رجاء ادخل البريد الالكتروني';
+  String get please_enter_email => 'الرجاء إدخال بريدك الإلكتروني';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get subjects => 'المواد';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get search => 'بحث';
+
+  @override
+  String get last_update => 'آخر تحديث';
+
+  @override
+  String get add_new => 'إضافة جديد';
+
+  @override
+  String get create => 'إنشاء';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get manage_subject => 'Manage Subject';
+
+  @override
+  String get edit_subject => 'Edit subject';
+
+  @override
+  String get add_new_subject => 'Add new subject';
+
+  @override
+  String get subject_name => 'Subject name';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get confirm_deletion => 'Confirm Deletion';
+
+  @override
+  String get are_you_sure_delete => 'Are you sure you want to delete';
+
+  @override
+  String get cannot_be_undo => 'This action cannot be undone';
 }

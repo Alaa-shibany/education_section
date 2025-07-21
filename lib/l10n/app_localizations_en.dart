@@ -31,4 +31,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get please_enter_email => 'Please enter your email';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get subjects => 'Subjects';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get last_update => 'Last update';
+
+  @override
+  String get add_new => 'Add New';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get manage_subject => 'Manage Subject';
+
+  @override
+  String get edit_subject => 'Edit subject';
+
+  @override
+  String get add_new_subject => 'Add new subject';
+
+  @override
+  String get subject_name => 'Subject name';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get confirm_deletion => 'Confirm Deletion';
+
+  @override
+  String get are_you_sure_delete => 'Are you sure you want to delete';
+
+  @override
+  String get cannot_be_undo => 'This action cannot be undone';
 }

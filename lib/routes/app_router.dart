@@ -3,6 +3,8 @@ import 'package:courses/features/home/presentation/home_screen.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
 import 'package:courses/features/navigator/presentation/navigate_screen.dart';
+import 'package:courses/features/subjects/cubit/subjects_cubit.dart';
+import 'package:courses/features/subjects/presentation/subjects_screen.dart';
 import 'package:courses/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,6 +53,16 @@ class AppRouter {
             builder: (context, state) => BlocProvider(
               create: (context) => sl<LoginCubit>(),
               child: HomeScreen(),
+            ),
+          ),
+          GoRoute(
+            name: 'subjects_screen',
+            path: AppRoutes.subjects,
+            builder: (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => sl<SubjectsCubit>()),
+              ],
+              child: SubjectsScreen(),
             ),
           ),
         ],

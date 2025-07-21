@@ -7,6 +7,24 @@
   "remember_me":"Remember me",
   "login":"Login",
   "please_enter_password":"Please enter your password",
-  "please_enter_email":"Please enter your email"
-
+  "please_enter_email":"Please enter your email",
+  "home":"Home",
+  "subjects":"Subjects",
+  "edit":"Edit",
+  "delete":"Delete",
+  "search":"Search",
+  "last_update":"Last update",
+  "add_new":"Add New",
+  "create":"Create",
+  "confirm":"Confirm",
+  "cancel":"Cancel",
+  "logout":"Logout",
+  "manage_subject":"Manage Subject",
+  "edit_subject":"Edit subject",
+  "add_new_subject":"Add new subject",
+  "subject_name":"Subject name",
+  "save":"Save",
+  "confirm_deletion":"Confirm Deletion",
+  "are_you_sure_delete":"Are you sure you want to delete",
+  "cannot_be_undo":"This action cannot be undone"
 }

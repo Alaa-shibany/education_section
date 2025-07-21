@@ -2,13 +2,15 @@ import 'package:courses/shared/components/language_switcher.dart';
 import 'package:courses/shared/components/theme_switcher.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class MainLayout extends StatelessWidget {
-  const MainLayout({super.key, required this.body});
+  MainLayout({super.key, required this.body, this.extendBody = true});
   final Widget body;
+  bool extendBody;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: extendBody,
       appBar: AppBar(actions: [ThemeSwitcher(), LanguageSwitcher()]),
       body: body,
     );

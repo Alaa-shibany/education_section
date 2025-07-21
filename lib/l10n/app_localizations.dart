@@ -142,6 +142,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter your email'**
   String get please_enter_email;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @subjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Subjects'**
+  String get subjects;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @last_update.
+  ///
+  /// In en, this message translates to:
+  /// **'Last update'**
+  String get last_update;
+
+  /// No description provided for @add_new.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New'**
+  String get add_new;
+
+  /// No description provided for @create.
+  ///
+  /// In en, this message translates to:
+  /// **'Create'**
+  String get create;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @manage_subject.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Subject'**
+  String get manage_subject;
+
+  /// No description provided for @edit_subject.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit subject'**
+  String get edit_subject;
+
+  /// No description provided for @add_new_subject.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new subject'**
+  String get add_new_subject;
+
+  /// No description provided for @subject_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject name'**
+  String get subject_name;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @confirm_deletion.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Deletion'**
+  String get confirm_deletion;
+
+  /// No description provided for @are_you_sure_delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete'**
+  String get are_you_sure_delete;
+
+  /// No description provided for @cannot_be_undo.
+  ///
+  /// In en, this message translates to:
+  /// **'This action cannot be undone'**
+  String get cannot_be_undo;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
