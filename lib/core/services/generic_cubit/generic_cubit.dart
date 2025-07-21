@@ -16,4 +16,8 @@ class BaseCubit<T> extends Cubit<GenericState<T>> {
       (data) => emit(GenericSuccess<T>(data)),
     );
   }
+
+  Future<void> refresh() async {
+    emit(GenericInitial<T>());
+  }
 }

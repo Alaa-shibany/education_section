@@ -26,5 +26,6 @@
   "save":"Save",
   "confirm_deletion":"Confirm Deletion",
   "are_you_sure_delete":"Are you sure you want to delete",
-  "cannot_be_undo":"This action cannot be undone"
+  "cannot_be_undo":"This action cannot be undone",
+  "teachers":"Teachers"
 }

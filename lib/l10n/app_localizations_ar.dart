@@ -88,4 +88,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get cannot_be_undo => 'This action cannot be undone';
+
+  @override
+  String get teachers => 'Teachers';
 }

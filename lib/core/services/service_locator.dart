@@ -1,3 +1,6 @@
+import 'package:courses/features/teachers/repo/teachers_repository.dart';
+import 'package:courses/features/teachers/cubit/teachers_cubit.dart';
+
 import 'package:courses/features/subjects/repo/subjects_repository.dart';
 import 'package:courses/features/subjects/cubit/subjects_cubit.dart';
 
@@ -54,11 +57,10 @@ Future<void> setupServiceLocator() async {
   });
 
   sl.registerLazySingleton<ApiService>(() => ApiService(dio: sl()));
-
   sl.registerLazySingleton(() => LoginRepository(sl()));
   sl.registerFactory(() => LoginCubit(sl()));
-
   sl.registerLazySingleton(() => SubjectsRepository(sl()));
-
   sl.registerFactory(() => SubjectsCubit(sl()));
+  sl.registerLazySingleton(() => TeachersRepository(sl()));
+  sl.registerFactory(() => TeachersCubit(sl()));
 }

@@ -6,4 +6,5 @@ class EndPoints {
   static const String createSubject = 'create';
   static const String editSubject = 'edit';
   static const String deleteSubject = 'delete';
+  static const String teachers = 'teachers';
 }

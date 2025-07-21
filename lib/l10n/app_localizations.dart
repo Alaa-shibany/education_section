@@ -256,6 +256,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This action cannot be undone'**
   String get cannot_be_undo;
+
+  /// No description provided for @teachers.
+  ///
+  /// In en, this message translates to:
+  /// **'Teachers'**
+  String get teachers;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
