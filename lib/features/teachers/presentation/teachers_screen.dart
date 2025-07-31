@@ -1,5 +1,6 @@
-import 'package:courses/features/teachers/cubit/teachers_cubit.dart';
+import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
 import 'package:courses/features/teachers/models/teacher_model.dart';
+import 'package:courses/features/teachers/presentation/components/manage_teacher_dialog.dart';
 import 'package:courses/features/teachers/presentation/components/teacher_list_item.dart';
 import 'package:courses/features/teachers/presentation/components/teachers_filter_panel.dart';
 import 'package:courses/l10n/app_localizations.dart';
@@ -53,6 +54,25 @@ class _TeachersScreenState extends State<TeachersScreen> {
                   ),
                 ),
                 const SizedBox(width: 12),
+                FilledButton.icon(
+                  onPressed: () {
+                    showManageTeacherDialog(context);
+                  },
+                  icon: const Icon(Icons.add),
+                  label: Text(translator.add_new),
+                  style: FilledButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 16,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 8),
+
                 BlocBuilder<TeachersCubit, TeachersState>(
                   builder: (context, state) {
                     print('rebuild');

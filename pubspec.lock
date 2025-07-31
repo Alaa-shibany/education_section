@@ -966,10 +966,10 @@ packages:
     dependency: "direct main"
     description:
       name: w_builder
-      sha256: "5355e61b44bf3d20caffbc93f69e0e327aa4041aac2eb411273fd925a3ba6523"
+      sha256: "658a8afc7abd899d4f9759cc5e57ef40f91e9f268e65be1f745c004b2981ea3c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.2"
+    version: "2.0.0"
   watcher:
     dependency: transitive
     description:

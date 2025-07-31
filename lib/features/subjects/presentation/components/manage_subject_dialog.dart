@@ -48,20 +48,6 @@ void showManageSubjectDialog(BuildContext context, {SubjectModel? subject}) {
                 ),
               ),
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(translator.cancel),
-              ),
-              FilledButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: Text(translator.save),
-              ),
-            ],
           ),
         ),
       );

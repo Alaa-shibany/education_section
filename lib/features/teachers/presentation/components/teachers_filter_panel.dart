@@ -1,4 +1,4 @@
-import 'package:courses/features/teachers/cubit/teachers_cubit.dart';
+import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,13 +49,27 @@ class TeacherFilterPanel extends StatelessWidget {
                 border: OutlineInputBorder(),
               ),
             ),
+            const SizedBox(height: 16),
+
+            TextField(
+              controller: teachersCubit.subjectController,
+              enableSuggestions: true,
+
+              decoration: InputDecoration(
+                labelText: 'Subject name',
+
+                border: OutlineInputBorder(),
+              ),
+            ),
             const Spacer(),
 
             Row(
               children: [
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      teachersCubit.clean();
+                    },
                     child: const Text('Clear'),
                   ),
                 ),

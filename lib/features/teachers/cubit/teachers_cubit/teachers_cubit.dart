@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/features/subjects/models/subject_model.dart';
 import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:courses/features/teachers/repo/teachers_repository.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,29 @@ class TeachersCubit extends Cubit<TeachersState> {
   TextEditingController searchController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController subjectController = TextEditingController();
+
   late final List<TextEditingController> controllers;
   int badgeCount = 0;
 
   Future<void> initState() async {
-    controllers = [searchController, phoneController, emailController];
+    controllers = [
+      searchController,
+      phoneController,
+      emailController,
+      subjectController,
+    ];
     for (final controller in controllers) {
       controller.addListener(_updateBadgeCount);
     }
+  }
+
+  void clean() {
+    searchController.clear();
+    phoneController.clear();
+    emailController.clear();
+    subjectController.clear();
+    emit(TeachersInitial());
   }
 
   void _updateBadgeCount() {
@@ -56,20 +72,14 @@ class TeachersCubit extends Cubit<TeachersState> {
         email: 'ex@gmail.com',
         created_at: '2025-7-21',
         updated_at: '2025-7-21',
-      ),
-      teacherModel(
-        id: 1,
-        name: 'Teacher name',
-        email: 'ex@gmail.com',
-        created_at: '2025-7-21',
-        updated_at: '2025-7-21',
-      ),
-      teacherModel(
-        id: 1,
-        name: 'Teacher name',
-        email: 'ex@gmail.com',
-        created_at: '2025-7-21',
-        updated_at: '2025-7-21',
+        subjects: [
+          SubjectModel(
+            id: 1,
+            name: 'subject',
+            created_at: '2025-7-21',
+            updated_at: '2025-7-21',
+          ),
+        ],
       ),
     ];
   }

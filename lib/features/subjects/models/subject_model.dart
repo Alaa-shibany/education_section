@@ -12,5 +12,6 @@ abstract class SubjectModel with _$SubjectModel {
     required String updated_at,
   }) = _SubjectModel;
 
-  factory SubjectModel.fromJson(Map<String, dynamic> json) => _$SubjectModelFromJson(json);
+  factory SubjectModel.fromJson(Map<String, dynamic> json) =>
+      _$SubjectModelFromJson(json);
 }

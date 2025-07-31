@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$teacherModel {
 
- int get id; String get name; String get email; String get created_at; String get updated_at;
+ int get id; String get name; String get email; List<SubjectModel> get subjects; String get created_at; String get updated_at;
 /// Create a copy of teacherModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $teacherModelCopyWith<teacherModel> get copyWith => _$teacherModelCopyWithImpl<t
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is teacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is teacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other.subjects, subjects)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,email,created_at,updated_at);
+int get hashCode => Object.hash(runtimeType,id,name,email,const DeepCollectionEquality().hash(subjects),created_at,updated_at);
 
 @override
 String toString() {
-  return 'teacherModel(id: $id, name: $name, email: $email, created_at: $created_at, updated_at: $updated_at)';
+  return 'teacherModel(id: $id, name: $name, email: $email, subjects: $subjects, created_at: $created_at, updated_at: $updated_at)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $teacherModelCopyWith<$Res>  {
   factory $teacherModelCopyWith(teacherModel value, $Res Function(teacherModel) _then) = _$teacherModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String email, String created_at, String updated_at
+ int id, String name, String email, List<SubjectModel> subjects, String created_at, String updated_at
 });
 
 
@@ -65,12 +65,13 @@ class _$teacherModelCopyWithImpl<$Res>
 
 /// Create a copy of teacherModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? created_at = null,Object? updated_at = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? subjects = null,Object? created_at = null,Object? updated_at = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
+as String,subjects: null == subjects ? _self.subjects : subjects // ignore: cast_nullable_to_non_nullable
+as List<SubjectModel>,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
 as String,updated_at: null == updated_at ? _self.updated_at : updated_at // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -157,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String email,  String created_at,  String updated_at)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String email,  List<SubjectModel> subjects,  String created_at,  String updated_at)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _teacherModel() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.created_at,_that.updated_at);case _:
+return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,_that.updated_at);case _:
   return orElse();
 
 }
@@ -178,10 +179,10 @@ return $default(_that.id,_that.name,_that.email,_that.created_at,_that.updated_a
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String email,  String created_at,  String updated_at)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String email,  List<SubjectModel> subjects,  String created_at,  String updated_at)  $default,) {final _that = this;
 switch (_that) {
 case _teacherModel():
-return $default(_that.id,_that.name,_that.email,_that.created_at,_that.updated_at);case _:
+return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,_that.updated_at);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +199,10 @@ return $default(_that.id,_that.name,_that.email,_that.created_at,_that.updated_a
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String email,  String created_at,  String updated_at)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String email,  List<SubjectModel> subjects,  String created_at,  String updated_at)?  $default,) {final _that = this;
 switch (_that) {
 case _teacherModel() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.created_at,_that.updated_at);case _:
+return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,_that.updated_at);case _:
   return null;
 
 }
@@ -213,12 +214,19 @@ return $default(_that.id,_that.name,_that.email,_that.created_at,_that.updated_a
 @JsonSerializable()
 
 class _teacherModel implements teacherModel {
-  const _teacherModel({required this.id, required this.name, required this.email, required this.created_at, required this.updated_at});
+  const _teacherModel({required this.id, required this.name, required this.email, required final  List<SubjectModel> subjects, required this.created_at, required this.updated_at}): _subjects = subjects;
   factory _teacherModel.fromJson(Map<String, dynamic> json) => _$teacherModelFromJson(json);
 
 @override final  int id;
 @override final  String name;
 @override final  String email;
+ final  List<SubjectModel> _subjects;
+@override List<SubjectModel> get subjects {
+  if (_subjects is EqualUnmodifiableListView) return _subjects;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_subjects);
+}
+
 @override final  String created_at;
 @override final  String updated_at;
 
@@ -235,16 +243,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _teacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _teacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other._subjects, _subjects)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,email,created_at,updated_at);
+int get hashCode => Object.hash(runtimeType,id,name,email,const DeepCollectionEquality().hash(_subjects),created_at,updated_at);
 
 @override
 String toString() {
-  return 'teacherModel(id: $id, name: $name, email: $email, created_at: $created_at, updated_at: $updated_at)';
+  return 'teacherModel(id: $id, name: $name, email: $email, subjects: $subjects, created_at: $created_at, updated_at: $updated_at)';
 }
 
 
@@ -255,7 +263,7 @@ abstract mixin class _$teacherModelCopyWith<$Res> implements $teacherModelCopyWi
   factory _$teacherModelCopyWith(_teacherModel value, $Res Function(_teacherModel) _then) = __$teacherModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String email, String created_at, String updated_at
+ int id, String name, String email, List<SubjectModel> subjects, String created_at, String updated_at
 });
 
 
@@ -272,12 +280,13 @@ class __$teacherModelCopyWithImpl<$Res>
 
 /// Create a copy of teacherModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? created_at = null,Object? updated_at = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? subjects = null,Object? created_at = null,Object? updated_at = null,}) {
   return _then(_teacherModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
+as String,subjects: null == subjects ? _self._subjects : subjects // ignore: cast_nullable_to_non_nullable
+as List<SubjectModel>,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
 as String,updated_at: null == updated_at ? _self.updated_at : updated_at // ignore: cast_nullable_to_non_nullable
 as String,
   ));

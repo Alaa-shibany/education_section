@@ -5,7 +5,7 @@ import 'package:courses/features/login/presentation/login_screen.dart';
 import 'package:courses/features/navigator/presentation/navigate_screen.dart';
 import 'package:courses/features/subjects/cubit/subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
-import 'package:courses/features/teachers/cubit/teachers_cubit.dart';
+import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
 import 'package:courses/features/teachers/presentation/teachers_screen.dart';
 import 'package:courses/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +28,7 @@ class AppRouter {
     navigatorKey: rootNavigatorKey,
     observers: [MyNavigatorObserver()],
     debugLogDiagnostics: true,
+
     routes: [
       GoRoute(
         name: 'splash',
