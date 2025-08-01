@@ -1,7 +1,7 @@
 import 'package:courses/core/services/service_locator.dart';
+import 'package:courses/features/subjects/models/subject_model.dart';
 import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teacher_cubit.dart';
 import 'package:courses/features/teachers/cubit/update_teacher_cubit/update_teacher_cubit.dart';
-import 'package:courses/features/teachers/models/create_teacher_request_body_model.dart';
 import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +17,35 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
     text: isEditing ? teacher.email : '',
   );
 
-  final _subjectController = TextEditingController();
+  final _subjectController = SearchController();
   final _formKey = GlobalKey<FormState>();
   final translator = AppLocalizations.of(context)!;
+  List<SubjectModel> subjects = [
+    SubjectModel(
+      id: 1,
+      name: 'subject 1',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+    ),
+    SubjectModel(
+      id: 2,
+      name: 'subject 2',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+    ),
+    SubjectModel(
+      id: 3,
+      name: 'subject 3',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+    ),
+    SubjectModel(
+      id: 4,
+      name: 'subject 4',
+      created_at: 'created_at',
+      updated_at: 'updated_at',
+    ),
+  ];
   showGeneralDialog(
     context: context,
     barrierDismissible: true,
@@ -49,7 +75,8 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                 listener: (context, state) {},
                 builder: (context, state) {
                   final createTeacherCubit = context.read<CreateTeacherCubit>();
-                  return Center(
+                  return SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 700),
                       child: SingleChildScrollView(
@@ -60,13 +87,6 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Teacher Information',
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.headlineSmall,
-                                ),
-                                const SizedBox(height: 24),
                                 TextFormField(
                                   controller: _nameController,
                                   decoration: const InputDecoration(
@@ -101,29 +121,35 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                   ).textTheme.headlineSmall,
                                 ),
                                 const SizedBox(height: 16),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: TextFormField(
-                                        controller: _subjectController,
-                                        decoration: const InputDecoration(
-                                          labelText: 'Add a subject',
-                                          border: OutlineInputBorder(),
-                                        ),
-                                        onFieldSubmitted: (value) {},
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: IconButton.filled(
-                                        icon: const Icon(Icons.add),
-                                        onPressed: () {},
-                                        tooltip: 'Add Subject',
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                     SearchAnchor.bar(
+                                      barHintText: 'Select subject',
+                                       searchController: _subjectController,
+                                       suggestionsBuilder:
+                                           (context, controller) {
+                                             final String input =
+                                                 controller.value.text;
+                                             return subjects
+                                                 .where(
+                                                   (element) => element.name
+                                                       .toLowerCase()
+                                                       .contains(
+                                                         input.toLowerCase(),
+                                                       ),
+                                                 )
+                                                 .map(
+                                                   (e) => ListTile(
+                                                     title: Text(e.name),
+                                                     onTap: () {
+                                                       createTeacherCubit
+                                                           .addBook(e);
+                                                       _subjectController
+                                                           .closeView('');
+                                                     },
+                                                   ),
+                                                 );
+                                           },
+                                     ),
+                               
                                 const SizedBox(height: 16),
 
                                 // BlocBuilder rebuilds the widget inside it whenever the state changes.
@@ -132,7 +158,7 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                   CreateTeacherState
                                 >(
                                   builder: (context, state) {
-                                    if (createTeacherCubit
+                                    if (state
                                         .selectedBooks
                                         .isEmpty) {
                                       return const Text(
@@ -142,7 +168,7 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                     return Wrap(
                                       spacing: 8.0,
                                       runSpacing: 8.0,
-                                      children: createTeacherCubit.selectedBooks
+                                      children: state.selectedBooks
                                           .map((subject) {
                                             return Chip(
                                               label: Text(subject.name),
@@ -159,58 +185,7 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                     );
                                   },
                                 ),
-
                                 const SizedBox(height: 40),
-
-                                SizedBox(
-                                  width: double.infinity,
-                                  child:
-                                      BlocBuilder<
-                                        CreateTeacherCubit,
-                                        CreateTeacherState
-                                      >(
-                                        builder: (context, state) {
-                                          return ElevatedButton(
-                                            onPressed: () {
-                                              if (_formKey.currentState!
-                                                  .validate()) {
-                                                context
-                                                    .read<CreateTeacherCubit>()
-                                                    .createTeacher(
-                                                      body: CreateTeacherRequestBodyModel(
-                                                        name: _nameController
-                                                            .text,
-                                                        email: _emailController
-                                                            .text,
-                                                        subjects:
-                                                            createTeacherCubit
-                                                                .selectedBooks
-                                                                .map(
-                                                                  (e) => e.id,
-                                                                )
-                                                                .toList(),
-                                                      ),
-                                                    );
-                                              }
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                    vertical: 16,
-                                                  ),
-                                              textStyle: const TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              backgroundColor:
-                                                  Colors.blueGrey[800],
-                                              foregroundColor: Colors.white,
-                                            ),
-                                            child: const Text('Create Teacher'),
-                                          );
-                                        },
-                                      ),
-                                ),
                               ],
                             ),
                           ),

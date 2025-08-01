@@ -104,7 +104,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
                         itemBuilder: (context, item, index) => TeacherListItem(
                           subjectItem: item,
                           onEdit: () {
-                            // showManageSubjectDialog(context, subject: item);
+                            showManageTeacherDialog(context, teacher: item);
                           },
                           onDelete: () {
                             showDeleteConfirmationDialog(

@@ -38,6 +38,29 @@ class AppThemes {
         textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600),
       ),
     ),
+    searchBarTheme: SearchBarThemeData(
+      backgroundColor: WidgetStateProperty.all(const Color.fromARGB(255, 225, 223, 223)),
+      elevation: WidgetStateProperty.all(1.0),
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+          side: BorderSide(color: AppColors.backgroundDark)
+        ),
+      ),
+      textStyle: WidgetStateProperty.all(
+        GoogleFonts.poppins(
+          color: AppColors.onTextLight,
+          fontSize: 16,
+        ),
+      ),
+      hintStyle: WidgetStateProperty.all(
+        GoogleFonts.poppins(
+          color: AppColors.onTextLight.withOpacity(0.5),
+          fontSize: 16,
+        ),
+      ),
+    ),
+  
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -59,7 +82,7 @@ class AppThemes {
       onSurface: AppColors.onTextDark,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.backgroundDark.withOpacity(0.8),
+      backgroundColor: const Color.fromARGB(255, 45, 45, 45).withOpacity(0.8),
       elevation: 0,
       titleTextStyle: GoogleFonts.poppins(
         color: AppColors.onTextDark,
@@ -75,5 +98,29 @@ class AppThemes {
         textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600),
       ),
     ),
+       searchBarTheme: SearchBarThemeData(
+      backgroundColor: WidgetStateProperty.all(AppColors.surfaceDark),
+      elevation: WidgetStateProperty.all(1.0),
+      
+      shape: WidgetStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+          side: BorderSide(color: AppColors.onTextDark)
+        ),
+      ),
+      textStyle: WidgetStateProperty.all(
+        GoogleFonts.poppins(
+          color: AppColors.onTextDark,
+          fontSize: 16,
+        ),
+      ),
+      hintStyle: WidgetStateProperty.all(
+        GoogleFonts.poppins(
+          color: AppColors.onTextDark.withOpacity(0.5),
+          fontSize: 16,
+        ),
+      ),
+    ),
+  
   );
 }
