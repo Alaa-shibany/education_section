@@ -1,0 +1,40 @@
+{
+  "feature_name": "TeacherProfile",
+  "apis": [
+    {
+      "name": "getPayments",
+      "endpoint": "dashboard/teacher-payouts/all",
+      "request_type": "GET",
+      "pagination": false,
+      "query_parameters": [
+        { "type": "String", "name": "teacher_id" }
+      ],
+      "list_response_model": [
+        { "name": "TeacherPayments", "fields": [
+          { "name": "payments", "type": "List<PaymentDetail>" }
+          ] },
+          { "name": "PaymentDetail", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "amount", "type": "int" },
+          { "name": "isPaid", "type": "bool" , "json_key":"is_paid" },
+          { "name": "courseSession", "type": "CourseSession" }          ] },
+          { "name": "courseSession", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "sessionDate", "type": "String", "json_key":"session_date" }
+        ] }
+      ]
+    },
+    {
+      "name": "updatePayment",
+      "endpoint": "dashboard/payouts/update",
+      "request_type": "PUT",
+      "query_parameters": [
+        { "type": "String", "name": "teacher_id" }
+      ],
+      "response_model": {
+        "name": "UpdateTeacherPaymentResponse",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    }
+  ]
+}

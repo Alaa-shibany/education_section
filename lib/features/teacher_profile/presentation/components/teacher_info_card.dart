@@ -58,6 +58,18 @@ class TeacherInfoCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.phone_outlined, color: Colors.grey, size: 20),
+                      SizedBox(width: 8),
+                      Text(
+                        teacher.phone,
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

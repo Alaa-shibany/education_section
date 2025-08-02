@@ -36,13 +36,10 @@ class GetTeachersCubit extends Cubit<GetTeachersState> {
   }
 
   void clean() {
-    emit(
-      state.copyWith(
-        emailNameController: TextEditingController(),
-        phoneNameController: TextEditingController(),
-        searchNameController: TextEditingController(),
-      ),
-    );
+    state.searchNameController!.clear();
+    state.emailNameController!.clear();
+    state.phoneNameController!.clear();
+    _updateBadgeCount();
   }
 
   void _updateBadgeCount() {

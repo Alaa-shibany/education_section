@@ -9,8 +9,10 @@ import 'package:courses/features/register_requests/cubits/get_requests_cubit/get
 import 'package:courses/features/register_requests/presentation/register_requests_screen.dart';
 import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
+import 'package:courses/features/teacher_profile/cubits/get_payments_cubit/get_payments_cubit.dart';
 import 'package:courses/features/teacher_profile/presentation/teacher_profile_screen.dart';
 import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
+import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:courses/features/teachers/presentation/teachers_screen.dart';
 import 'package:courses/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
@@ -54,10 +56,12 @@ class AppRouter {
         ),
       ),
       GoRoute(
-        name: 'Teacher profile',
+        name: 'teacher_profile',
         path: AppRoutes.teacherProfile,
         builder: (context, state) => BlocProvider(
-          create: (context) => sl<LoginCubit>(),
+          create: (context) =>
+              sl<GetPaymentsCubit>()
+                ..initState(teacher: state.extra as TeacherModel),
           child: MainLayout(body: TeacherProfileScreen()),
         ),
       ),

@@ -19,4 +19,7 @@ class EndPoints {
   static const String dashboard_teachers_index = 'dashboard/teachers/index';
   static const String dashboard_teachers_create = 'dashboard/teachers/create';
   static const String dashboard_teachers_update = 'dashboard/teachers/update';
+  static const String dashboard_teacher_payouts_all =
+      'dashboard/teacher-payouts/all';
+  static const String dashboard_payouts_update = 'dashboard/payouts/update';
 }

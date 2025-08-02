@@ -1,3 +1,7 @@
+import 'package:courses/features/teacher_profile/repo/teacher_profile_repository.dart';
+import 'package:courses/features/teacher_profile/cubits/update_payment_cubit/update_payment_cubit.dart';
+import 'package:courses/features/teacher_profile/cubits/get_payments_cubit/get_payments_cubit.dart';
+
 import 'package:courses/features/teachers/repo/teachers_repository.dart';
 import 'package:courses/features/teachers/cubits/update_teacher_cubit/update_teacher_cubit.dart';
 import 'package:courses/features/teachers/cubits/create_teacher_cubit/create_teacher_cubit.dart';
@@ -88,4 +92,7 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => CreateTeacherCubit(sl()));
   sl.registerFactory(() => UpdateTeacherCubit(sl()));
   sl.registerLazySingleton(() => TeachersRepository(sl()));
+  sl.registerFactory(() => GetPaymentsCubit(sl()));
+  sl.registerFactory(() => UpdatePaymentCubit(sl()));
+  sl.registerLazySingleton(() => TeacherProfileRepository(sl()));
 }

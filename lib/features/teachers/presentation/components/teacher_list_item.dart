@@ -40,7 +40,8 @@ class _TeacherListItemState extends State<TeacherListItem> {
             ? (Matrix4.identity()..translate(0, -4, 0))
             : Matrix4.identity(),
         child: InkWell(
-          onTap: () => context.push(AppRoutes.teacherProfile),
+          onTap: () =>
+              context.push(AppRoutes.teacherProfile, extra: widget.subjectItem),
           child: Card(
             elevation: 2,
             margin: const EdgeInsets.symmetric(vertical: 5),
