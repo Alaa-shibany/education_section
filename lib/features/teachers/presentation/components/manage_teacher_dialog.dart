@@ -21,30 +21,10 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
   final translator = AppLocalizations.of(context)!;
 
   List<SubjectModel> subjects = [
-    SubjectModel(
-      id: 1,
-      name: 'subject 1',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-    SubjectModel(
-      id: 2,
-      name: 'subject 2',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-    SubjectModel(
-      id: 3,
-      name: 'subject 3',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-    SubjectModel(
-      id: 4,
-      name: 'subject 4',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
+    SubjectModel(id: 1, name: 'subject 1'),
+    SubjectModel(id: 2, name: 'subject 2'),
+    SubjectModel(id: 3, name: 'subject 3'),
+    SubjectModel(id: 4, name: 'subject 4'),
   ];
   showGeneralDialog(
     context: context,

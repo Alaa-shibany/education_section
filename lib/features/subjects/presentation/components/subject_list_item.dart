@@ -65,7 +65,7 @@ class SubjectListItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${translator.last_update}: ${subjectItem.updated_at}',
+                    '${translator.last_update}: 2-8-2025',
                     style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                   ),
                 ],

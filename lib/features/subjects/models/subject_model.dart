@@ -8,10 +8,7 @@ abstract class SubjectModel with _$SubjectModel {
   const factory SubjectModel({
     required int id,
     required String name,
-    required String created_at,
-    required String updated_at,
   }) = _SubjectModel;
 
-  factory SubjectModel.fromJson(Map<String, dynamic> json) =>
-      _$SubjectModelFromJson(json);
+  factory SubjectModel.fromJson(Map<String, dynamic> json) => _$SubjectModelFromJson(json);
 }

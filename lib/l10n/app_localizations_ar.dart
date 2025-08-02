@@ -136,4 +136,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get please_enter_name => 'رجاء ادخل اسم المستخدم';
+
+  @override
+  String get error => 'حدث خطأ';
+
+  @override
+  String get ok => 'حسنا';
 }

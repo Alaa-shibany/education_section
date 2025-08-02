@@ -4,7 +4,7 @@ import 'package:courses/features/teachers/presentation/components/manage_teacher
 import 'package:courses/features/teachers/presentation/components/teacher_list_item.dart';
 import 'package:courses/features/teachers/presentation/components/teachers_filter_panel.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/shared/dialogs/dailogs.dart';
+import 'package:courses/shared/dialogs/delete_dailogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

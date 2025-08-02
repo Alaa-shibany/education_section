@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SubjectModel {
 
- int get id; String get name; String get created_at; String get updated_at;
+ int get id; String get name;
 /// Create a copy of SubjectModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $SubjectModelCopyWith<SubjectModel> get copyWith => _$SubjectModelCopyWithImpl<S
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubjectModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SubjectModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,created_at,updated_at);
+int get hashCode => Object.hash(runtimeType,id,name);
 
 @override
 String toString() {
-  return 'SubjectModel(id: $id, name: $name, created_at: $created_at, updated_at: $updated_at)';
+  return 'SubjectModel(id: $id, name: $name)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $SubjectModelCopyWith<$Res>  {
   factory $SubjectModelCopyWith(SubjectModel value, $Res Function(SubjectModel) _then) = _$SubjectModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String created_at, String updated_at
+ int id, String name
 });
 
 
@@ -65,12 +65,10 @@ class _$SubjectModelCopyWithImpl<$Res>
 
 /// Create a copy of SubjectModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? created_at = null,Object? updated_at = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
-as String,updated_at: null == updated_at ? _self.updated_at : updated_at // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -156,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String created_at,  String updated_at)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SubjectModel() when $default != null:
-return $default(_that.id,_that.name,_that.created_at,_that.updated_at);case _:
+return $default(_that.id,_that.name);case _:
   return orElse();
 
 }
@@ -177,10 +175,10 @@ return $default(_that.id,_that.name,_that.created_at,_that.updated_at);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String created_at,  String updated_at)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name)  $default,) {final _that = this;
 switch (_that) {
 case _SubjectModel():
-return $default(_that.id,_that.name,_that.created_at,_that.updated_at);case _:
+return $default(_that.id,_that.name);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +195,10 @@ return $default(_that.id,_that.name,_that.created_at,_that.updated_at);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String created_at,  String updated_at)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name)?  $default,) {final _that = this;
 switch (_that) {
 case _SubjectModel() when $default != null:
-return $default(_that.id,_that.name,_that.created_at,_that.updated_at);case _:
+return $default(_that.id,_that.name);case _:
   return null;
 
 }
@@ -212,13 +210,11 @@ return $default(_that.id,_that.name,_that.created_at,_that.updated_at);case _:
 @JsonSerializable()
 
 class _SubjectModel implements SubjectModel {
-  const _SubjectModel({required this.id, required this.name, required this.created_at, required this.updated_at});
+  const _SubjectModel({required this.id, required this.name});
   factory _SubjectModel.fromJson(Map<String, dynamic> json) => _$SubjectModelFromJson(json);
 
 @override final  int id;
 @override final  String name;
-@override final  String created_at;
-@override final  String updated_at;
 
 /// Create a copy of SubjectModel
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +229,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SubjectModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SubjectModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,created_at,updated_at);
+int get hashCode => Object.hash(runtimeType,id,name);
 
 @override
 String toString() {
-  return 'SubjectModel(id: $id, name: $name, created_at: $created_at, updated_at: $updated_at)';
+  return 'SubjectModel(id: $id, name: $name)';
 }
 
 
@@ -253,7 +249,7 @@ abstract mixin class _$SubjectModelCopyWith<$Res> implements $SubjectModelCopyWi
   factory _$SubjectModelCopyWith(_SubjectModel value, $Res Function(_SubjectModel) _then) = __$SubjectModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String created_at, String updated_at
+ int id, String name
 });
 
 
@@ -270,12 +266,10 @@ class __$SubjectModelCopyWithImpl<$Res>
 
 /// Create a copy of SubjectModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? created_at = null,Object? updated_at = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
   return _then(_SubjectModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
-as String,updated_at: null == updated_at ? _self.updated_at : updated_at // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

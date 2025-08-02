@@ -42,6 +42,8 @@
   "permission":"Permission",
   "no_permission_yet":"No permission added yet",
   "username":"Username",
-    "please_enter_name":"Please enter username"
+    "please_enter_name":"Please enter username",
+    "error":"Error",
+    "ok":"Ok"
 
 }

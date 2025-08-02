@@ -33,6 +33,8 @@
   "permission":"صلاحيات",
   "no_permission_yet":"لم يتم اختيار صلاحية بعد",
   "username":"اسم المستخدم",
-  "please_enter_name":"رجاء ادخل اسم المستخدم"
+  "please_enter_name":"رجاء ادخل اسم المستخدم",
+   "error":"حدث خطأ",
+    "ok":"حسنا"
 
 }

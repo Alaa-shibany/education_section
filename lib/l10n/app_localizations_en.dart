@@ -136,4 +136,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get please_enter_name => 'Please enter username';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get ok => 'Ok';
 }

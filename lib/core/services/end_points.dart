@@ -14,4 +14,7 @@ class EndPoints {
   static const String admins = 'admins';
   static const String createAdmin = 'createAdmin';
   static const String dashboard_admins_helper = 'dashboard/admins/helper';
+  static const String dashboard_subjects_all = 'dashboard/subjects/all';
+  static const String dashboard_subjects_create = 'dashboard/subjects/create';
+  static const String dashboard_subjects_update = 'dashboard/subjects/update';
 }

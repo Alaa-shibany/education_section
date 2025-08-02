@@ -7,7 +7,7 @@ import 'package:courses/features/navigator/presentation/navigate_screen.dart';
 import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
 import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
 import 'package:courses/features/register_requests/presentation/register_requests_screen.dart';
-import 'package:courses/features/subjects/cubit/subjects_cubit.dart';
+import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
 import 'package:courses/features/teacher_profile/presentation/teacher_profile_screen.dart';
 import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
@@ -80,7 +80,9 @@ class AppRouter {
             path: AppRoutes.subjects,
             builder: (context, state) => MultiBlocProvider(
               providers: [
-                BlocProvider(create: (context) => sl<SubjectsCubit>()),
+                BlocProvider(
+                  create: (context) => sl<GetSubjectsCubit>()..getSubjects(),
+                ),
               ],
               child: SubjectsScreen(),
             ),

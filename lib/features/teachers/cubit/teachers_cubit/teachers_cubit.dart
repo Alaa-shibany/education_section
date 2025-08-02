@@ -72,14 +72,7 @@ class TeachersCubit extends Cubit<TeachersState> {
         email: 'ex@gmail.com',
         created_at: '2025-7-21',
         updated_at: '2025-7-21',
-        subjects: [
-          SubjectModel(
-            id: 1,
-            name: 'subject',
-            created_at: '2025-7-21',
-            updated_at: '2025-7-21',
-          ),
-        ],
+        subjects: [SubjectModel(id: 1, name: 'subject')],
       ),
     ];
   }

@@ -15,18 +15,8 @@ class TeacherProfileScreen extends StatelessWidget {
       name: 'Alaa shibany',
       email: 'alaa@gmail.com',
       subjects: [
-        SubjectModel(
-          id: 1,
-          name: 'subject1',
-          created_at: '1-8-2025',
-          updated_at: '1-8-2025',
-        ),
-        SubjectModel(
-          id: 2,
-          name: 'subject2',
-          created_at: '1-8-2025',
-          updated_at: '1-8-2025',
-        ),
+        SubjectModel(id: 1, name: 'subject1'),
+        SubjectModel(id: 2, name: 'subject2'),
       ],
       created_at: '1-8-2025',
       updated_at: '1-8-2025',

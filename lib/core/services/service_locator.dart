@@ -1,3 +1,7 @@
+import 'package:courses/features/subjects/repo/subjects_repository.dart';
+import 'package:courses/features/subjects/cubits/update_subject_cubit/update_subject_cubit.dart';
+import 'package:courses/features/subjects/cubits/create_subject_cubit/create_subject_cubit.dart';
+import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/admins/repo/admins_repository.dart';
 import 'package:courses/features/admins/cubits/helper_cubit/helper_cubit.dart';
 import 'package:courses/features/admins/cubits/create_admin_cubit/create_admin_cubit.dart';
@@ -12,9 +16,6 @@ import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teac
 
 import 'package:courses/features/teachers/repo/teachers_repository.dart';
 import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
-
-import 'package:courses/features/subjects/repo/subjects_repository.dart';
-import 'package:courses/features/subjects/cubit/subjects_cubit.dart';
 
 import 'package:courses/features/login/repo/login_repository.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
@@ -71,8 +72,7 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton<ApiService>(() => ApiService(dio: sl()));
   sl.registerLazySingleton(() => LoginRepository(sl()));
   sl.registerFactory(() => LoginCubit(sl()));
-  sl.registerLazySingleton(() => SubjectsRepository(sl()));
-  sl.registerFactory(() => SubjectsCubit(sl()));
+
   sl.registerLazySingleton(() => TeachersRepository(sl()));
   sl.registerFactory(() => TeachersCubit(sl()));
   sl.registerFactory(() => CreateTeacherCubit(sl()));
@@ -84,4 +84,9 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => CreateAdminCubit(sl()));
   sl.registerFactory(() => HelperCubit(sl()));
   sl.registerLazySingleton(() => AdminsRepository(sl()));
+
+  sl.registerFactory(() => GetSubjectsCubit(sl()));
+  sl.registerFactory(() => CreateSubjectCubit(sl()));
+  sl.registerFactory(() => UpdateSubjectCubit(sl()));
+  sl.registerLazySingleton(() => SubjectsRepository(sl()));
 }
