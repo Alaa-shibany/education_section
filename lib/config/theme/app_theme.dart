@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // ١. قم باستيراد الحزمة
+import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppThemes {
@@ -39,19 +39,18 @@ class AppThemes {
       ),
     ),
     searchBarTheme: SearchBarThemeData(
-      backgroundColor: WidgetStateProperty.all(const Color.fromARGB(255, 225, 223, 223)),
+      backgroundColor: WidgetStateProperty.all(
+        const Color.fromARGB(255, 225, 223, 223),
+      ),
       elevation: WidgetStateProperty.all(1.0),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
-          side: BorderSide(color: AppColors.backgroundDark)
+          side: BorderSide(color: AppColors.backgroundDark),
         ),
       ),
       textStyle: WidgetStateProperty.all(
-        GoogleFonts.poppins(
-          color: AppColors.onTextLight,
-          fontSize: 16,
-        ),
+        GoogleFonts.poppins(color: AppColors.onTextLight, fontSize: 16),
       ),
       hintStyle: WidgetStateProperty.all(
         GoogleFonts.poppins(
@@ -60,7 +59,6 @@ class AppThemes {
         ),
       ),
     ),
-  
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -98,21 +96,18 @@ class AppThemes {
         textStyle: GoogleFonts.poppins(fontWeight: FontWeight.w600),
       ),
     ),
-       searchBarTheme: SearchBarThemeData(
+    searchBarTheme: SearchBarThemeData(
       backgroundColor: WidgetStateProperty.all(AppColors.surfaceDark),
       elevation: WidgetStateProperty.all(1.0),
-      
+
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
-          side: BorderSide(color: AppColors.onTextDark)
+          side: BorderSide(color: AppColors.onTextDark),
         ),
       ),
       textStyle: WidgetStateProperty.all(
-        GoogleFonts.poppins(
-          color: AppColors.onTextDark,
-          fontSize: 16,
-        ),
+        GoogleFonts.poppins(color: AppColors.onTextDark, fontSize: 16),
       ),
       hintStyle: WidgetStateProperty.all(
         GoogleFonts.poppins(
@@ -121,6 +116,5 @@ class AppThemes {
         ),
       ),
     ),
-  
   );
 }

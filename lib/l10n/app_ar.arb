@@ -23,5 +23,14 @@
   "student":"الطالب",
   "course":"الدورة",
   "register_requests":"طلبات التسجيل",
-  "down_payment":"الدفعة الأولى"
+  "down_payment":"الدفعة الأولى",
+  "admins":"المشرفين",
+  "admin":"مشرف",
+  "add_new_admin":"إضافة مشرف جديد",
+  "edit_admin":"تعديل المشرف",
+  "add_new_teacher":"إضافة مدرس جديد",
+  "edit_teacher":"تعديل المدرس",
+  "permission":"صلاحيات",
+  "no_permission_yet":"لم يتم اختيار صلاحية بعد"
+
 }

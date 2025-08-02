@@ -1,6 +1,11 @@
-import 'package:courses/features/register_requests/repo/register_requests_repository.dart';
+import 'package:courses/features/admins/repo/admins_repository.dart';
+import 'package:courses/features/admins/cubits/helper_cubit/helper_cubit.dart';
+import 'package:courses/features/admins/cubits/create_admin_cubit/create_admin_cubit.dart';
+import 'package:courses/features/admins/cubits/admins_cubit/admins_cubit.dart';
+
 import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
 import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
+import 'package:courses/features/register_requests/repo/register_requests_repository.dart';
 import 'package:courses/features/teachers/cubit/update_teacher_cubit/update_teacher_cubit.dart';
 
 import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teacher_cubit.dart';
@@ -75,4 +80,8 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => GetRequestsCubit(sl()));
   sl.registerFactory(() => AcceptRequestCubit(sl()));
   sl.registerLazySingleton(() => RegisterRequestsRepository(sl()));
+  sl.registerFactory(() => AdminsCubit(sl()));
+  sl.registerFactory(() => CreateAdminCubit(sl()));
+  sl.registerFactory(() => HelperCubit(sl()));
+  sl.registerLazySingleton(() => AdminsRepository(sl()));
 }

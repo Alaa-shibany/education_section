@@ -292,6 +292,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Down payment'**
   String get down_payment;
+
+  /// No description provided for @admins.
+  ///
+  /// In en, this message translates to:
+  /// **'Admins'**
+  String get admins;
+
+  /// No description provided for @admin.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin'**
+  String get admin;
+
+  /// No description provided for @add_new_admin.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new admin'**
+  String get add_new_admin;
+
+  /// No description provided for @edit_admin.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit admin'**
+  String get edit_admin;
+
+  /// No description provided for @add_new_teacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new teacher'**
+  String get add_new_teacher;
+
+  /// No description provided for @edit_teacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit teacher'**
+  String get edit_teacher;
+
+  /// No description provided for @permission.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission'**
+  String get permission;
+
+  /// No description provided for @no_permission_yet.
+  ///
+  /// In en, this message translates to:
+  /// **'No permission added yet'**
+  String get no_permission_yet;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

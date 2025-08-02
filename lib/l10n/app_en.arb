@@ -32,5 +32,13 @@
   "student":"Student",
   "course":"Course",
   "register_requests":"Register requests",
-  "down_payment":"Down payment"
+  "down_payment":"Down payment",
+  "admins":"Admins",
+  "admin":"Admin",
+  "add_new_admin":"Add new admin",
+  "edit_admin":"Edit admin",
+  "add_new_teacher":"Add new teacher",
+  "edit_teacher":"Edit teacher",
+  "permission":"Permission",
+  "no_permission_yet":"No permission added yet"
 }

@@ -1,0 +1,47 @@
+{
+  "feature_name": "RegisterRequests",
+  "apis": [
+    {
+      "name": "admins",
+      "endpoint": "admins",
+      "request_type": "GET",
+      "pagination": true,
+      "query_parameters": [
+        { "type": "int", "name": "page" }
+      ],
+      "list_response_model": [
+        { "name": "AdminModel", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "name", "type": "String" },
+          { "name": "createdAt", "type": "String" , "json_key":"created_at" }
+          
+          ] }
+      ]
+    },
+    {
+      "name": "createAdmin",
+      "endpoint": "createAdmin",
+      "request_type": "POST",
+      "body": {
+        "username": "String",
+        "password": "String",
+        "role":"id"
+      },
+      "response_model": {
+        "name": "createAdminResponse",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    },
+    {
+      "name": "helper",
+      "endpoint": "dashboard/admins/helper",
+      "request_type": "GET",
+      "response_model": {
+        "name": "Permission",
+        "fields": [{ "name": "id", "type": "int" },
+      { "name": "name", "type": "String" }
+      ]
+      } 
+    }
+  ]
+}

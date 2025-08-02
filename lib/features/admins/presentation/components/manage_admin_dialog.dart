@@ -1,51 +1,23 @@
 import 'package:courses/core/services/service_locator.dart';
-import 'package:courses/features/subjects/models/subject_model.dart';
-import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teacher_cubit.dart';
-import 'package:courses/features/teachers/cubit/update_teacher_cubit/update_teacher_cubit.dart';
-import 'package:courses/features/teachers/models/teacher_model.dart';
+import 'package:courses/features/admins/cubits/create_admin_cubit/create_admin_cubit.dart';
+import 'package:courses/features/admins/cubits/helper_cubit/helper_cubit.dart';
+import 'package:courses/features/admins/models/admin_model.dart';
+
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
-  final isEditing = teacher != null;
+void showManageAdminDialog(BuildContext context, {AdminModel? admin}) {
+  final isEditing = admin != null;
   final _nameController = TextEditingController(
-    text: isEditing ? teacher.name : '',
+    text: isEditing ? admin.name : '',
   );
-  final _emailController = TextEditingController(
-    text: isEditing ? teacher.email : '',
-  );
+  final _passwordController = TextEditingController();
   final _subjectController = SearchController();
   final _formKey = GlobalKey<FormState>();
   final translator = AppLocalizations.of(context)!;
 
-  List<SubjectModel> subjects = [
-    SubjectModel(
-      id: 1,
-      name: 'subject 1',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-    SubjectModel(
-      id: 2,
-      name: 'subject 2',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-    SubjectModel(
-      id: 3,
-      name: 'subject 3',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-    SubjectModel(
-      id: 4,
-      name: 'subject 4',
-      created_at: 'created_at',
-      updated_at: 'updated_at',
-    ),
-  ];
   showGeneralDialog(
     context: context,
     barrierDismissible: true,
@@ -62,18 +34,18 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
               borderRadius: BorderRadius.circular(16),
             ),
             title: Text(
-              isEditing ? translator.edit_teacher : translator.add_new_teacher,
+              isEditing ? translator.edit_admin : translator.add_new_admin,
               style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
             ),
             content: MultiBlocProvider(
               providers: [
-                BlocProvider(create: (context) => sl<CreateTeacherCubit>()),
-                BlocProvider(create: (context) => sl<UpdateTeacherCubit>()),
+                BlocProvider(create: (context) => sl<HelperCubit>()..helper()),
+                BlocProvider(create: (context) => sl<CreateAdminCubit>()),
               ],
-              child: BlocConsumer<CreateTeacherCubit, CreateTeacherState>(
+              child: BlocConsumer<CreateAdminCubit, CreateAdminState>(
                 listener: (context, state) {},
                 builder: (context, state) {
-                  final createTeacherCubit = context.read<CreateTeacherCubit>();
+                  final createAdminCubit = context.read<CreateAdminCubit>();
                   return SizedBox(
                     width: MediaQuery.of(context).size.width / 2,
                     child: ConstrainedBox(
@@ -100,77 +72,79 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                 ),
                                 const SizedBox(height: 16),
                                 TextFormField(
-                                  controller: _emailController,
+                                  controller: _passwordController,
                                   decoration: const InputDecoration(
-                                    labelText: 'Email Address',
+                                    labelText: 'Password',
                                     border: OutlineInputBorder(),
                                     prefixIcon: Icon(Icons.email_outlined),
                                   ),
-                                  validator: (v) =>
-                                      (v == null ||
-                                          !RegExp(r'\S+@\S+\.\S+').hasMatch(v))
+                                  validator: (v) => (v == null)
                                       ? 'Please enter a valid email'
                                       : null,
                                 ),
                                 const SizedBox(height: 32),
                                 Text(
-                                  'Subjects Taught',
+                                  translator.permission,
                                   style: Theme.of(
                                     context,
                                   ).textTheme.headlineSmall,
                                 ),
                                 const SizedBox(height: 16),
-                                SearchAnchor.bar(
-                                  barHintText: 'Select subject',
-                                  searchController: _subjectController,
-                                  suggestionsBuilder: (context, controller) {
-                                    final String input = controller.value.text;
-                                    return subjects
-                                        .where(
-                                          (element) => element.name
-                                              .toLowerCase()
-                                              .contains(input.toLowerCase()),
-                                        )
-                                        .map(
-                                          (e) => ListTile(
-                                            title: Text(e.name),
-                                            onTap: () {
-                                              createTeacherCubit.addBook(e);
-                                              _subjectController.closeView('');
-                                            },
-                                          ),
-                                        );
+                                BlocBuilder<HelperCubit, HelperState>(
+                                  builder: (context, state) {
+                                    return SearchAnchor.bar(
+                                      barHintText: 'Select role',
+                                      searchController: _subjectController,
+                                      suggestionsBuilder:
+                                          (context, controller) {
+                                            final String input =
+                                                controller.value.text;
+                                            return state.data!
+                                                .where(
+                                                  (element) => element.name
+                                                      .toLowerCase()
+                                                      .contains(
+                                                        input.toLowerCase(),
+                                                      ),
+                                                )
+                                                .map(
+                                                  (e) => ListTile(
+                                                    title: Text(e.name),
+                                                    onTap: () {
+                                                      createAdminCubit
+                                                          .selectPermission(e);
+                                                      _subjectController
+                                                          .closeView('');
+                                                    },
+                                                  ),
+                                                );
+                                          },
+                                    );
                                   },
                                 ),
 
                                 const SizedBox(height: 16),
-                                BlocBuilder<
-                                  CreateTeacherCubit,
-                                  CreateTeacherState
-                                >(
+                                BlocBuilder<CreateAdminCubit, CreateAdminState>(
                                   builder: (context, state) {
-                                    if (state.selectedBooks.isEmpty) {
-                                      return const Text(
-                                        'No subjects added yet.',
-                                      );
+                                    if (state.selectedPermission == null) {
+                                      return Text(translator.no_permission_yet);
                                     }
                                     return Wrap(
                                       spacing: 8.0,
                                       runSpacing: 8.0,
-                                      children: state.selectedBooks.map((
-                                        subject,
-                                      ) {
-                                        return Chip(
-                                          label: Text(subject.name),
-                                          onDeleted: () => context
-                                              .read<CreateTeacherCubit>()
-                                              .removeBook(subject),
+                                      children: [
+                                        Chip(
+                                          label: Text(
+                                            state.selectedPermission!.name,
+                                          ),
+                                          onDeleted: () => createAdminCubit
+                                              .deletePermission(),
                                           deleteIcon: const Icon(
                                             Icons.close,
                                             size: 18,
                                           ),
-                                        );
-                                      }).toList(),
+                                        ),
+                                      ],
                                     );
                                   },
                                 ),

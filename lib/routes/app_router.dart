@@ -1,4 +1,5 @@
 import 'package:courses/core/services/service_locator.dart';
+import 'package:courses/features/admins/cubits/admins_cubit/admins_cubit.dart';
 import 'package:courses/features/home/presentation/home_screen.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
@@ -17,6 +18,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'unknown_page.dart';
 import 'navigator_observer.dart';
+import 'package:courses/features/admins/presentation/admins_screen.dart';
+
 import 'app_routes.dart';
 
 // You can use a key for the navigator if needed, e.g., for showing dialogs.
@@ -40,6 +43,8 @@ class AppRouter {
         builder: (context, state) =>
             const Scaffold(body: Center(child: Text("Splash Screen"))),
       ),
+
+      //<-- DONT_REMOVE_THIS_LINE_GOROUTES -->
       GoRoute(
         name: 'login',
         path: AppRoutes.login,
@@ -101,6 +106,14 @@ class AppRouter {
                 BlocProvider(create: (context) => sl<AcceptRequestCubit>()),
               ],
               child: RegisterRequestsScreen(),
+            ),
+          ),
+          GoRoute(
+            name: 'admins',
+            path: AppRoutes.admins,
+            builder: (context, state) => BlocProvider(
+              create: (context) => sl<AdminsCubit>(),
+              child: const AdminsScreen(),
             ),
           ),
         ],

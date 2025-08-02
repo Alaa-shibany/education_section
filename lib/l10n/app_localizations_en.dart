@@ -106,4 +106,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get down_payment => 'Down payment';
+
+  @override
+  String get admins => 'Admins';
+
+  @override
+  String get admin => 'Admin';
+
+  @override
+  String get add_new_admin => 'Add new admin';
+
+  @override
+  String get edit_admin => 'Edit admin';
+
+  @override
+  String get add_new_teacher => 'Add new teacher';
+
+  @override
+  String get edit_teacher => 'Edit teacher';
+
+  @override
+  String get permission => 'Permission';
+
+  @override
+  String get no_permission_yet => 'No permission added yet';
 }

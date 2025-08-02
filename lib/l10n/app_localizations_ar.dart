@@ -106,4 +106,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get down_payment => 'الدفعة الأولى';
+
+  @override
+  String get admins => 'المشرفين';
+
+  @override
+  String get admin => 'مشرف';
+
+  @override
+  String get add_new_admin => 'إضافة مشرف جديد';
+
+  @override
+  String get edit_admin => 'تعديل المشرف';
+
+  @override
+  String get add_new_teacher => 'إضافة مدرس جديد';
+
+  @override
+  String get edit_teacher => 'تعديل المدرس';
+
+  @override
+  String get permission => 'صلاحيات';
+
+  @override
+  String get no_permission_yet => 'لم يتم اختيار صلاحية بعد';
 }

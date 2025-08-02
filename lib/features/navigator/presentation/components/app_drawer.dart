@@ -77,6 +77,18 @@ class AppDrawer extends StatelessWidget {
             svgIcon: ApplicationImages.requestSVG,
             context: context,
           ),
+          drawerItem(
+            title: AppLocalizations.of(context)!.admins,
+            isSelected: currentLocation == AppRoutes.admins,
+            onTap: () {
+              context.go(AppRoutes.admins);
+              if (Scaffold.of(context).isDrawerOpen) {
+                Navigator.of(context).pop();
+              }
+            },
+            svgIcon: ApplicationImages.adminSVG,
+            context: context,
+          ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Divider(
