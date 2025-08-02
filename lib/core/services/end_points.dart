@@ -1,7 +1,7 @@
 class EndPoints {
-  static const String baseUrl = 'https://nawader.webmyidea.com/api/';
+  static const String baseUrl = 'http://127.0.0.1:8000/api/';
   static const String home = 'home';
-  static const String login = 'login';
+  static const String login = 'auth/dashboard/login';
   static const String subjects = 'subjects';
   static const String createSubject = 'create';
   static const String editSubject = 'edit';

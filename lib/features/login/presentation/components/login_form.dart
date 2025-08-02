@@ -2,9 +2,10 @@ import 'package:courses/config/responsive/ui_halper.dart';
 import 'package:courses/core/services/generic_cubit/generic_state.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/models/login_model.dart';
+import 'package:courses/features/login/models/login_request_body_model.dart';
 // import 'package:courses/features/login/models/login_request_body_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/routes/app_routes.dart';
+// import 'package:courses/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -79,12 +80,12 @@ class _LoginFormState extends State<LoginForm> {
                   TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!.email,
+                      labelText: AppLocalizations.of(context)!.username,
 
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) => value!.isEmpty
-                        ? AppLocalizations.of(context)!.please_enter_email
+                        ? AppLocalizations.of(context)!.please_enter_name
                         : null,
                   ),
                   const SizedBox(height: 16),
@@ -121,15 +122,15 @@ class _LoginFormState extends State<LoginForm> {
                         onPressed: state is GenericLoading
                             ? null
                             : () {
-                                context.go(AppRoutes.home);
-                                // if (_formKey.currentState!.validate()) {
-                                //   context.read<LoginCubit>().fetchData(
-                                //     body: LoginRequestBodyModel(
-                                //       email: _emailController.text,
-                                //       password: _passwordController.text,
-                                //     ),
-                                //   );
-                                // }
+                                // context.go(AppRoutes.home);
+                                if (_formKey.currentState!.validate()) {
+                                  context.read<LoginCubit>().fetchData(
+                                    body: LoginRequestBodyModel(
+                                      username: _emailController.text,
+                                      password: _passwordController.text,
+                                    ),
+                                  );
+                                }
                               },
                         child: state is GenericLoading
                             ? const CircularProgressIndicator()

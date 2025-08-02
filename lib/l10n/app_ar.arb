@@ -31,6 +31,8 @@
   "add_new_teacher":"إضافة مدرس جديد",
   "edit_teacher":"تعديل المدرس",
   "permission":"صلاحيات",
-  "no_permission_yet":"لم يتم اختيار صلاحية بعد"
+  "no_permission_yet":"لم يتم اختيار صلاحية بعد",
+  "username":"اسم المستخدم",
+  "please_enter_name":"رجاء ادخل اسم المستخدم"
 
 }

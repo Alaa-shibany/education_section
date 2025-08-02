@@ -130,4 +130,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get no_permission_yet => 'لم يتم اختيار صلاحية بعد';
+
+  @override
+  String get username => 'اسم المستخدم';
+
+  @override
+  String get please_enter_name => 'رجاء ادخل اسم المستخدم';
 }

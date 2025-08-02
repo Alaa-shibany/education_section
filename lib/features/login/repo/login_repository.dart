@@ -1,3 +1,5 @@
+import 'package:courses/core/services/cache_service.dart';
+import 'package:courses/core/services/service_locator.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:courses/core/services/api_services.dart';
@@ -11,14 +13,21 @@ class LoginRepository {
 
   LoginRepository(this._apiService);
 
-  Future<Either<Failure, LoginModel>> getLoginData({ required LoginRequestBodyModel body,  }) async {
+  Future<Either<Failure, LoginModel>> getLoginData({
+    required LoginRequestBodyModel body,
+  }) async {
     try {
-      final response = await _apiService.get(
-        EndPoints.login, data: body.toJson()
+      final response = await _apiService.post(
+        EndPoints.login,
+        data: body.toJson(),
       );
 
       final data = LoginModel.fromJson(response.data['data']);
-
+      final cashServices = sl<CacheService>();
+      await cashServices.saveData(
+        key: 'token',
+        value: response.data['data']['token'],
+      );
       return Right(data);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioException(e));

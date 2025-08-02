@@ -9,10 +9,13 @@ part of 'login_request_body_model.dart';
 _LoginRequestBodyModel _$LoginRequestBodyModelFromJson(
   Map<String, dynamic> json,
 ) => _LoginRequestBodyModel(
-  email: json['email'] as String,
+  username: json['username'] as String,
   password: json['password'] as String,
 );
 
 Map<String, dynamic> _$LoginRequestBodyModelToJson(
   _LoginRequestBodyModel instance,
-) => <String, dynamic>{'email': instance.email, 'password': instance.password};
+) => <String, dynamic>{
+  'username': instance.username,
+  'password': instance.password,
+};

@@ -40,5 +40,8 @@
   "add_new_teacher":"Add new teacher",
   "edit_teacher":"Edit teacher",
   "permission":"Permission",
-  "no_permission_yet":"No permission added yet"
+  "no_permission_yet":"No permission added yet",
+  "username":"Username",
+    "please_enter_name":"Please enter username"
+
 }

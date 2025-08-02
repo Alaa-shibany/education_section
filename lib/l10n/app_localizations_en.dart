@@ -130,4 +130,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get no_permission_yet => 'No permission added yet';
+
+  @override
+  String get username => 'Username';
+
+  @override
+  String get please_enter_name => 'Please enter username';
 }
