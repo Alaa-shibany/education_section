@@ -1,37 +1,39 @@
-import 'package:courses/features/teachers/models/create_teacher_request_body_model.dart';
-import 'package:courses/features/teachers/models/update_teacher_request_body_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:courses/core/model/pagination_model.dart';
 import 'package:courses/core/services/api_services.dart';
 import 'package:courses/core/services/end_points.dart';
 import 'package:courses/core/services/failure_services.dart';
 import '../models/teacher_model.dart';
+import '../models/created_teacher_response.dart';
+import '../models/create_teacher_request_body_model.dart';
+import '../models/updated_teacher_response.dart';
+import '../models/update_teacher_request_body_model.dart';
+import 'package:courses/core/model/pagination_model.dart';
 
 class TeachersRepository {
   final ApiService _apiService;
 
   TeachersRepository(this._apiService);
 
-  Future<Either<Failure, PaginationModel<teacherModel>>> getTeachersData({
+  Future<Either<Failure, PaginationModel<TeacherModel>>> getTeachers({
+    required String name,
     required int page,
-    required String search,
     required String phone,
     required String email,
   }) async {
     try {
       final response = await _apiService.get(
-        EndPoints.teachers,
+        EndPoints.dashboard_teachers_index,
         queryParams: {
+          'full_name': name,
           'page': page,
-          'search': search,
-          'phone': phone,
+          'phone_number': phone,
           'email': email,
         },
       );
 
       final items = (response.data['data']['data'] as List)
-          .map((i) => teacherModel.fromJson(i))
+          .map((i) => TeacherModel.fromJson(i))
           .toList();
       final pageSize = response.data['data']['per_page'] as int;
       final isReachMax = response.data['data']['next_page_url'] == null;
@@ -49,16 +51,16 @@ class TeachersRepository {
     }
   }
 
-  Future<Either<Failure, teacherModel>> createTeacher({
+  Future<Either<Failure, CreatedTeacherResponse>> createTeacher({
     required CreateTeacherRequestBodyModel body,
   }) async {
     try {
       final response = await _apiService.post(
-        EndPoints.create,
+        EndPoints.dashboard_teachers_create,
         data: body.toJson(),
       );
 
-      final data = teacherModel.fromJson(response.data['data']);
+      final data = CreatedTeacherResponse.fromJson(response.data);
 
       return Right(data);
     } on DioException catch (e) {
@@ -68,16 +70,16 @@ class TeachersRepository {
     }
   }
 
-  Future<Either<Failure, teacherModel>> updateTeacher({
+  Future<Either<Failure, UpdatedTeacherResponse>> updateTeacher({
     required UpdateTeacherRequestBodyModel body,
   }) async {
     try {
       final response = await _apiService.put(
-        EndPoints.update,
+        "${EndPoints.dashboard_teachers_update}/${body.id}",
         data: body.toJson(),
       );
 
-      final data = teacherModel.fromJson(response.data['data']);
+      final data = UpdatedTeacherResponse.fromJson(response.data);
 
       return Right(data);
     } on DioException catch (e) {

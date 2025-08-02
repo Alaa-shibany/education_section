@@ -9,7 +9,8 @@ part of 'create_teacher_request_body_model.dart';
 _CreateTeacherRequestBodyModel _$CreateTeacherRequestBodyModelFromJson(
   Map<String, dynamic> json,
 ) => _CreateTeacherRequestBodyModel(
-  name: json['name'] as String,
+  full_name: json['full_name'] as String,
+  phone_number: json['phone_number'] as String,
   email: json['email'] as String,
   subjects: (json['subjects'] as List<dynamic>)
       .map((e) => (e as num).toInt())
@@ -19,7 +20,8 @@ _CreateTeacherRequestBodyModel _$CreateTeacherRequestBodyModelFromJson(
 Map<String, dynamic> _$CreateTeacherRequestBodyModelToJson(
   _CreateTeacherRequestBodyModel instance,
 ) => <String, dynamic>{
-  'name': instance.name,
+  'full_name': instance.full_name,
+  'phone_number': instance.phone_number,
   'email': instance.email,
   'subjects': instance.subjects,
 };

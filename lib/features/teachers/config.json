@@ -1,34 +1,56 @@
 {
   "feature_name": "Teachers",
-  "endpoint": "teachers",
-  "request_type": "GET",
-  "pagination": true,
-  "query_parameters":[
+  "apis": [
     {
-      "type":"int",
-      "name":"page"
+      "name": "getTeachers",
+      "endpoint": "dashboard/teachers/index",
+      "request_type": "GET",
+      "pagination": true,
+      "query_parameters": [
+        { "type": "String", "name": "name" },
+        { "type": "int", "name": "page" },
+        { "type": "String", "name": "phone" },
+        { "type": "String", "name": "email" }
+      ],
+      "list_response_model": [
+        { "name": "TeacherModel", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "name", "type": "String" , "json_key":"full_name" },
+          { "name": "phone", "type": "String" , "json_key":"phone_number" },
+          {"name":"email" , "type":"String"}
+          ] }
+      ]
+    },
+    {
+      "name": "createTeacher",
+      "endpoint": "dashboard/teachers/create",
+      "request_type": "POST",
+      "body": {
+        "full_name": "String",
+        "phone_number" : "String",
+        "email":"String",
+        "subjects":"List<int>"
+      },
+      "response_model": {
+        "name": "CreatedTeacherResponse",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
     },
      {
-      "type":"String",
-      "name":"search"
-     },
-       {
-      "type":"String",
-      "name":"phone"
-     },
-      {
-      "type":"String",
-      "name":"email"
-     }
-  ],
-  "response_model":  {
-      "name": "teacherModel",
-      "fields": [
-        { "name": "id", "type": "int" },
-        { "name": "name", "type": "String" },
-        { "name": "email", "type": "String" },
-        { "name": "created_at", "type": "String" },
-        { "name": "updated_at", "type": "String" }
-      ]
+      "name": "updateTeacher",
+      "endpoint": "dashboard/teachers/update",
+      "request_type": "PUT",
+      "body": {
+        "id":"int",
+        "full_name": "String",
+        "phone_number" : "String",
+        "email":"String",
+        "subjects":"List<int>"
+      },
+      "response_model": {
+        "name": "UpdatedTeacherResponse",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
     }
+  ]
 }

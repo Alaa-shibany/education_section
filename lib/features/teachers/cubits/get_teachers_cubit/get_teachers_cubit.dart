@@ -1,0 +1,88 @@
+import 'package:flutter/cupertino.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:courses/core/model/pagination_model.dart';
+import 'package:courses/core/services/status.dart';
+
+import '../../repo/teachers_repository.dart';
+import '../../models/teacher_model.dart';
+
+part 'get_teachers_state.dart';
+part 'get_teachers_cubit.freezed.dart';
+
+class GetTeachersCubit extends Cubit<GetTeachersState> {
+  final TeachersRepository _repository;
+
+  GetTeachersCubit(this._repository) : super(const GetTeachersState());
+  late final List<TextEditingController> controllers;
+
+  void initState() {
+    emit(
+      state.copyWith(
+        emailNameController: TextEditingController(),
+        phoneNameController: TextEditingController(),
+        searchNameController: TextEditingController(),
+      ),
+    );
+    controllers = [
+      state.searchNameController!,
+      state.emailNameController!,
+      state.phoneNameController!,
+    ];
+    for (final controller in controllers) {
+      controller.addListener(_updateBadgeCount);
+    }
+  }
+
+  void clean() {
+    emit(
+      state.copyWith(
+        emailNameController: TextEditingController(),
+        phoneNameController: TextEditingController(),
+        searchNameController: TextEditingController(),
+      ),
+    );
+  }
+
+  void _updateBadgeCount() {
+    int count = 0;
+    for (final controller in controllers) {
+      if (controller.text.isNotEmpty) {
+        count++;
+      }
+    }
+    print('We are here');
+    emit(state.copyWith(badgeCount: count));
+  }
+
+  late final pagingController = PagingController<int, TeacherModel>(
+    getNextPageKey: (state) =>
+        state.lastPageIsEmpty ? null : state.nextIntPageKey,
+    fetchPage: (pageKey) => _fetchPage(pageKey),
+  );
+
+  Future<List<TeacherModel>> _fetchPage(int pageKey) async {
+    final result = await _repository.getTeachers(
+      page: pageKey,
+      name: state.searchNameController!.text,
+      phone: state.phoneNameController!.text,
+      email: state.emailNameController!.text,
+    );
+    return result.fold((failure) {
+      emit(
+        state.copyWith(
+          status: SubmissionStatus.error,
+          errorMessage: failure.message,
+        ),
+      );
+      return [];
+    }, (paginationData) => paginationData.items);
+  }
+
+  @override
+  Future<void> close() {
+    pagingController.dispose();
+    return super.close();
+  }
+}

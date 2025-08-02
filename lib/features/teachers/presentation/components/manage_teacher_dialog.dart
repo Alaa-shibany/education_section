@@ -1,14 +1,25 @@
 import 'package:courses/core/services/service_locator.dart';
-import 'package:courses/features/subjects/models/subject_model.dart';
-import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teacher_cubit.dart';
-import 'package:courses/features/teachers/cubit/update_teacher_cubit/update_teacher_cubit.dart';
+import 'package:courses/core/services/status.dart';
+import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
+import 'package:courses/features/teachers/cubits/create_teacher_cubit/create_teacher_cubit.dart';
+import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
+import 'package:courses/features/teachers/cubits/update_teacher_cubit/update_teacher_cubit.dart';
+import 'package:courses/features/teachers/models/create_teacher_request_body_model.dart';
+
 import 'package:courses/features/teachers/models/teacher_model.dart';
+import 'package:courses/features/teachers/models/update_teacher_request_body_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
+import 'package:courses/shared/dialogs/error_dialog.dart';
+import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
+void showManageTeacherDialog(
+  BuildContext context,
+  GetTeachersCubit teachersCubit, {
+  TeacherModel? teacher,
+}) {
   final isEditing = teacher != null;
   final _nameController = TextEditingController(
     text: isEditing ? teacher.name : '',
@@ -16,16 +27,13 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
   final _emailController = TextEditingController(
     text: isEditing ? teacher.email : '',
   );
+  final _phoneController = TextEditingController(
+    text: isEditing ? teacher.phone : '',
+  );
   final _subjectController = SearchController();
   final _formKey = GlobalKey<FormState>();
   final translator = AppLocalizations.of(context)!;
 
-  List<SubjectModel> subjects = [
-    SubjectModel(id: 1, name: 'subject 1'),
-    SubjectModel(id: 2, name: 'subject 2'),
-    SubjectModel(id: 3, name: 'subject 3'),
-    SubjectModel(id: 4, name: 'subject 4'),
-  ];
   showGeneralDialog(
     context: context,
     barrierDismissible: true,
@@ -33,24 +41,30 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
     transitionDuration: const Duration(milliseconds: 300),
     pageBuilder: (context, anim1, anim2) => const SizedBox(),
     transitionBuilder: (context, anim1, anim2, child) {
-      return ScaleTransition(
-        scale: Tween<double>(begin: 0.9, end: 1.0).animate(anim1),
-        child: FadeTransition(
-          opacity: anim1,
-          child: AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            title: Text(
-              isEditing ? translator.edit_teacher : translator.add_new_teacher,
-              style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-            ),
-            content: MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => sl<CreateTeacherCubit>()),
-                BlocProvider(create: (context) => sl<UpdateTeacherCubit>()),
-              ],
-              child: BlocConsumer<CreateTeacherCubit, CreateTeacherState>(
+      return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => sl<CreateTeacherCubit>()),
+          BlocProvider(create: (context) => sl<UpdateTeacherCubit>()),
+          BlocProvider(
+            create: (context) => sl<GetSubjectsCubit>()..getSubjects(),
+          ),
+        ],
+
+        child: ScaleTransition(
+          scale: Tween<double>(begin: 0.9, end: 1.0).animate(anim1),
+          child: FadeTransition(
+            opacity: anim1,
+            child: AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              title: Text(
+                isEditing
+                    ? translator.edit_teacher
+                    : translator.add_new_teacher,
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+              ),
+              content: BlocConsumer<CreateTeacherCubit, CreateTeacherState>(
                 listener: (context, state) {},
                 builder: (context, state) {
                   final createTeacherCubit = context.read<CreateTeacherCubit>();
@@ -92,6 +106,19 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                       ? 'Please enter a valid email'
                                       : null,
                                 ),
+
+                                const SizedBox(height: 16),
+                                TextFormField(
+                                  controller: _phoneController,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Phone number',
+                                    border: OutlineInputBorder(),
+                                    prefixIcon: Icon(Icons.email_outlined),
+                                  ),
+                                  validator: (v) => (v == null)
+                                      ? 'Please enter phone number'
+                                      : null,
+                                ),
                                 const SizedBox(height: 32),
                                 Text(
                                   'Subjects Taught',
@@ -100,26 +127,38 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                   ).textTheme.headlineSmall,
                                 ),
                                 const SizedBox(height: 16),
-                                SearchAnchor.bar(
-                                  barHintText: 'Select subject',
-                                  searchController: _subjectController,
-                                  suggestionsBuilder: (context, controller) {
-                                    final String input = controller.value.text;
-                                    return subjects
-                                        .where(
-                                          (element) => element.name
-                                              .toLowerCase()
-                                              .contains(input.toLowerCase()),
-                                        )
-                                        .map(
-                                          (e) => ListTile(
-                                            title: Text(e.name),
-                                            onTap: () {
-                                              createTeacherCubit.addBook(e);
-                                              _subjectController.closeView('');
-                                            },
-                                          ),
-                                        );
+                                BlocBuilder<GetSubjectsCubit, GetSubjectsState>(
+                                  builder: (context, state) {
+                                    return SearchAnchor.bar(
+                                      barHintText: 'Select subject',
+                                      searchController: _subjectController,
+                                      suggestionsBuilder: (context, controller) {
+                                        final String input =
+                                            controller.value.text;
+                                        return state.status ==
+                                                SubmissionStatus.success
+                                            ? state.data!
+                                                  .where(
+                                                    (element) => element.name
+                                                        .toLowerCase()
+                                                        .contains(
+                                                          input.toLowerCase(),
+                                                        ),
+                                                  )
+                                                  .map(
+                                                    (e) => ListTile(
+                                                      title: Text(e.name),
+                                                      onTap: () {
+                                                        createTeacherCubit
+                                                            .addSubject(e);
+                                                        _subjectController
+                                                            .closeView('');
+                                                      },
+                                                    ),
+                                                  )
+                                            : [];
+                                      },
+                                    );
                                   },
                                 ),
 
@@ -144,7 +183,7 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                           label: Text(subject.name),
                                           onDeleted: () => context
                                               .read<CreateTeacherCubit>()
-                                              .removeBook(subject),
+                                              .removeSubject(subject),
                                           deleteIcon: const Icon(
                                             Icons.close,
                                             size: 18,
@@ -164,21 +203,96 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                   );
                 },
               ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(translator.cancel),
+                ),
+                !isEditing
+                    ? BlocConsumer<CreateTeacherCubit, CreateTeacherState>(
+                        listener: (context, state) {
+                          if (state.status == SubmissionStatus.loading) {
+                            showLoadingDialog(context);
+                          } else if (state.status == SubmissionStatus.error) {
+                            Navigator.pop(context);
+
+                            showErrorDialog(context, state.errorMessage!);
+                          } else if (state.status == SubmissionStatus.success) {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+
+                            teachersCubit.pagingController.refresh();
+                          }
+                        },
+                        builder: (context, state) {
+                          return FilledButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                context
+                                    .read<CreateTeacherCubit>()
+                                    .createTeacher(
+                                      body: CreateTeacherRequestBodyModel(
+                                        email: _emailController.text,
+                                        full_name: _nameController.text,
+                                        phone_number: _phoneController.text,
+                                        subjects: state.selectedBooks
+                                            .map((e) => e.id)
+                                            .toList(),
+                                      ),
+                                    );
+                              }
+                            },
+                            child: Text(translator.save),
+                          );
+                        },
+                      )
+                    : BlocConsumer<UpdateTeacherCubit, UpdateTeacherState>(
+                        listener: (context, state) {
+                          if (state.status == SubmissionStatus.loading) {
+                            showLoadingDialog(context);
+                          } else if (state.status == SubmissionStatus.error) {
+                            Navigator.pop(context);
+
+                            showErrorDialog(context, state.errorMessage!);
+                          } else if (state.status == SubmissionStatus.success) {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+
+                            teachersCubit.pagingController.refresh();
+                          }
+                        },
+                        builder: (context, state) {
+                          return BlocBuilder<
+                            CreateTeacherCubit,
+                            CreateTeacherState
+                          >(
+                            builder: (context, state) {
+                              return FilledButton(
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    context
+                                        .read<UpdateTeacherCubit>()
+                                        .updateTeacher(
+                                          body: UpdateTeacherRequestBodyModel(
+                                            email: _emailController.text,
+                                            id: teacher.id,
+                                            full_name: _nameController.text,
+                                            phone_number: _phoneController.text,
+                                            subjects: state.selectedBooks
+                                                .map((e) => e.id)
+                                                .toList(),
+                                          ),
+                                        );
+                                  }
+                                },
+                                child: Text(translator.save),
+                              );
+                            },
+                          );
+                        },
+                      ),
+              ],
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(),
-                child: Text(translator.cancel),
-              ),
-              FilledButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.of(context).pop();
-                  }
-                },
-                child: Text(translator.save),
-              ),
-            ],
           ),
         ),
       );

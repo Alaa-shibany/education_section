@@ -6,7 +6,9 @@ part 'update_teacher_request_body_model.g.dart';
 @freezed
 abstract class UpdateTeacherRequestBodyModel with _$UpdateTeacherRequestBodyModel {
   const factory UpdateTeacherRequestBodyModel({
-    required String name,
+    required int id,
+    required String full_name,
+    required String phone_number,
     required String email,
     required List<int> subjects,
   }) = _UpdateTeacherRequestBodyModel;

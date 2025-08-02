@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateTeacherRequestBodyModel {
 
- String get name; String get email; List<int> get subjects;
+ String get full_name; String get phone_number; String get email; List<int> get subjects;
 /// Create a copy of CreateTeacherRequestBodyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CreateTeacherRequestBodyModelCopyWith<CreateTeacherRequestBodyModel> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTeacherRequestBodyModel&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other.subjects, subjects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTeacherRequestBodyModel&&(identical(other.full_name, full_name) || other.full_name == full_name)&&(identical(other.phone_number, phone_number) || other.phone_number == phone_number)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other.subjects, subjects));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,email,const DeepCollectionEquality().hash(subjects));
+int get hashCode => Object.hash(runtimeType,full_name,phone_number,email,const DeepCollectionEquality().hash(subjects));
 
 @override
 String toString() {
-  return 'CreateTeacherRequestBodyModel(name: $name, email: $email, subjects: $subjects)';
+  return 'CreateTeacherRequestBodyModel(full_name: $full_name, phone_number: $phone_number, email: $email, subjects: $subjects)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CreateTeacherRequestBodyModelCopyWith<$Res>  {
   factory $CreateTeacherRequestBodyModelCopyWith(CreateTeacherRequestBodyModel value, $Res Function(CreateTeacherRequestBodyModel) _then) = _$CreateTeacherRequestBodyModelCopyWithImpl;
 @useResult
 $Res call({
- String name, String email, List<int> subjects
+ String full_name, String phone_number, String email, List<int> subjects
 });
 
 
@@ -65,9 +65,10 @@ class _$CreateTeacherRequestBodyModelCopyWithImpl<$Res>
 
 /// Create a copy of CreateTeacherRequestBodyModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? email = null,Object? subjects = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? full_name = null,Object? phone_number = null,Object? email = null,Object? subjects = null,}) {
   return _then(_self.copyWith(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+full_name: null == full_name ? _self.full_name : full_name // ignore: cast_nullable_to_non_nullable
+as String,phone_number: null == phone_number ? _self.phone_number : phone_number // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,subjects: null == subjects ? _self.subjects : subjects // ignore: cast_nullable_to_non_nullable
 as List<int>,
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String email,  List<int> subjects)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String full_name,  String phone_number,  String email,  List<int> subjects)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherRequestBodyModel() when $default != null:
-return $default(_that.name,_that.email,_that.subjects);case _:
+return $default(_that.full_name,_that.phone_number,_that.email,_that.subjects);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.name,_that.email,_that.subjects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String email,  List<int> subjects)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String full_name,  String phone_number,  String email,  List<int> subjects)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherRequestBodyModel():
-return $default(_that.name,_that.email,_that.subjects);case _:
+return $default(_that.full_name,_that.phone_number,_that.email,_that.subjects);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.name,_that.email,_that.subjects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String email,  List<int> subjects)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String full_name,  String phone_number,  String email,  List<int> subjects)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherRequestBodyModel() when $default != null:
-return $default(_that.name,_that.email,_that.subjects);case _:
+return $default(_that.full_name,_that.phone_number,_that.email,_that.subjects);case _:
   return null;
 
 }
@@ -211,10 +212,11 @@ return $default(_that.name,_that.email,_that.subjects);case _:
 @JsonSerializable()
 
 class _CreateTeacherRequestBodyModel implements CreateTeacherRequestBodyModel {
-  const _CreateTeacherRequestBodyModel({required this.name, required this.email, required final  List<int> subjects}): _subjects = subjects;
+  const _CreateTeacherRequestBodyModel({required this.full_name, required this.phone_number, required this.email, required final  List<int> subjects}): _subjects = subjects;
   factory _CreateTeacherRequestBodyModel.fromJson(Map<String, dynamic> json) => _$CreateTeacherRequestBodyModelFromJson(json);
 
-@override final  String name;
+@override final  String full_name;
+@override final  String phone_number;
 @override final  String email;
  final  List<int> _subjects;
 @override List<int> get subjects {
@@ -237,16 +239,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherRequestBodyModel&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other._subjects, _subjects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherRequestBodyModel&&(identical(other.full_name, full_name) || other.full_name == full_name)&&(identical(other.phone_number, phone_number) || other.phone_number == phone_number)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other._subjects, _subjects));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,email,const DeepCollectionEquality().hash(_subjects));
+int get hashCode => Object.hash(runtimeType,full_name,phone_number,email,const DeepCollectionEquality().hash(_subjects));
 
 @override
 String toString() {
-  return 'CreateTeacherRequestBodyModel(name: $name, email: $email, subjects: $subjects)';
+  return 'CreateTeacherRequestBodyModel(full_name: $full_name, phone_number: $phone_number, email: $email, subjects: $subjects)';
 }
 
 
@@ -257,7 +259,7 @@ abstract mixin class _$CreateTeacherRequestBodyModelCopyWith<$Res> implements $C
   factory _$CreateTeacherRequestBodyModelCopyWith(_CreateTeacherRequestBodyModel value, $Res Function(_CreateTeacherRequestBodyModel) _then) = __$CreateTeacherRequestBodyModelCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String email, List<int> subjects
+ String full_name, String phone_number, String email, List<int> subjects
 });
 
 
@@ -274,9 +276,10 @@ class __$CreateTeacherRequestBodyModelCopyWithImpl<$Res>
 
 /// Create a copy of CreateTeacherRequestBodyModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? email = null,Object? subjects = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? full_name = null,Object? phone_number = null,Object? email = null,Object? subjects = null,}) {
   return _then(_CreateTeacherRequestBodyModel(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+full_name: null == full_name ? _self.full_name : full_name // ignore: cast_nullable_to_non_nullable
+as String,phone_number: null == phone_number ? _self.phone_number : phone_number // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,subjects: null == subjects ? _self._subjects : subjects // ignore: cast_nullable_to_non_nullable
 as List<int>,

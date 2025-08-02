@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateTeacherState {
 
- List<SubjectModel> get selectedBooks; SubmissionStatus get status; teacherModel? get createdTeacher; String? get errorMessage;
+ SubmissionStatus get status; CreatedTeacherResponse? get data; String? get errorMessage; List<SubjectModel> get selectedBooks;
 /// Create a copy of CreateTeacherState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CreateTeacherStateCopyWith<CreateTeacherState> get copyWith => _$CreateTeacherS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTeacherState&&const DeepCollectionEquality().equals(other.selectedBooks, selectedBooks)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdTeacher, createdTeacher) || other.createdTeacher == createdTeacher)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&const DeepCollectionEquality().equals(other.selectedBooks, selectedBooks));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(selectedBooks),status,createdTeacher,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,data,errorMessage,const DeepCollectionEquality().hash(selectedBooks));
 
 @override
 String toString() {
-  return 'CreateTeacherState(selectedBooks: $selectedBooks, status: $status, createdTeacher: $createdTeacher, errorMessage: $errorMessage)';
+  return 'CreateTeacherState(status: $status, data: $data, errorMessage: $errorMessage, selectedBooks: $selectedBooks)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $CreateTeacherStateCopyWith<$Res>  {
   factory $CreateTeacherStateCopyWith(CreateTeacherState value, $Res Function(CreateTeacherState) _then) = _$CreateTeacherStateCopyWithImpl;
 @useResult
 $Res call({
- List<SubjectModel> selectedBooks, SubmissionStatus status, teacherModel? createdTeacher, String? errorMessage
+ SubmissionStatus status, CreatedTeacherResponse? data, String? errorMessage, List<SubjectModel> selectedBooks
 });
 
 
-$teacherModelCopyWith<$Res>? get createdTeacher;
+$CreatedTeacherResponseCopyWith<$Res>? get data;
 
 }
 /// @nodoc
@@ -62,26 +62,26 @@ class _$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateTeacherState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedBooks = null,Object? status = null,Object? createdTeacher = freezed,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,Object? selectedBooks = null,}) {
   return _then(_self.copyWith(
-selectedBooks: null == selectedBooks ? _self.selectedBooks : selectedBooks // ignore: cast_nullable_to_non_nullable
-as List<SubjectModel>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as SubmissionStatus,createdTeacher: freezed == createdTeacher ? _self.createdTeacher : createdTeacher // ignore: cast_nullable_to_non_nullable
-as teacherModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as CreatedTeacherResponse?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,selectedBooks: null == selectedBooks ? _self.selectedBooks : selectedBooks // ignore: cast_nullable_to_non_nullable
+as List<SubjectModel>,
   ));
 }
 /// Create a copy of CreateTeacherState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$teacherModelCopyWith<$Res>? get createdTeacher {
-    if (_self.createdTeacher == null) {
+$CreatedTeacherResponseCopyWith<$Res>? get data {
+    if (_self.data == null) {
     return null;
   }
 
-  return $teacherModelCopyWith<$Res>(_self.createdTeacher!, (value) {
-    return _then(_self.copyWith(createdTeacher: value));
+  return $CreatedTeacherResponseCopyWith<$Res>(_self.data!, (value) {
+    return _then(_self.copyWith(data: value));
   });
 }
 }
@@ -165,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<SubjectModel> selectedBooks,  SubmissionStatus status,  teacherModel? createdTeacher,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  CreatedTeacherResponse? data,  String? errorMessage,  List<SubjectModel> selectedBooks)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.selectedBooks,_that.status,_that.createdTeacher,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.errorMessage,_that.selectedBooks);case _:
   return orElse();
 
 }
@@ -186,10 +186,10 @@ return $default(_that.selectedBooks,_that.status,_that.createdTeacher,_that.erro
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<SubjectModel> selectedBooks,  SubmissionStatus status,  teacherModel? createdTeacher,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  CreatedTeacherResponse? data,  String? errorMessage,  List<SubjectModel> selectedBooks)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.selectedBooks,_that.status,_that.createdTeacher,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.errorMessage,_that.selectedBooks);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +206,10 @@ return $default(_that.selectedBooks,_that.status,_that.createdTeacher,_that.erro
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<SubjectModel> selectedBooks,  SubmissionStatus status,  teacherModel? createdTeacher,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  CreatedTeacherResponse? data,  String? errorMessage,  List<SubjectModel> selectedBooks)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.selectedBooks,_that.status,_that.createdTeacher,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.errorMessage,_that.selectedBooks);case _:
   return null;
 
 }
@@ -221,9 +221,12 @@ return $default(_that.selectedBooks,_that.status,_that.createdTeacher,_that.erro
 
 
 class _CreateTeacherState implements CreateTeacherState {
-  const _CreateTeacherState({final  List<SubjectModel> selectedBooks = const [], this.status = SubmissionStatus.initial, this.createdTeacher, this.errorMessage}): _selectedBooks = selectedBooks;
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.errorMessage, final  List<SubjectModel> selectedBooks = const []}): _selectedBooks = selectedBooks;
   
 
+@override@JsonKey() final  SubmissionStatus status;
+@override final  CreatedTeacherResponse? data;
+@override final  String? errorMessage;
  final  List<SubjectModel> _selectedBooks;
 @override@JsonKey() List<SubjectModel> get selectedBooks {
   if (_selectedBooks is EqualUnmodifiableListView) return _selectedBooks;
@@ -231,9 +234,6 @@ class _CreateTeacherState implements CreateTeacherState {
   return EqualUnmodifiableListView(_selectedBooks);
 }
 
-@override@JsonKey() final  SubmissionStatus status;
-@override final  teacherModel? createdTeacher;
-@override final  String? errorMessage;
 
 /// Create a copy of CreateTeacherState
 /// with the given fields replaced by the non-null parameter values.
@@ -245,16 +245,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&const DeepCollectionEquality().equals(other._selectedBooks, _selectedBooks)&&(identical(other.status, status) || other.status == status)&&(identical(other.createdTeacher, createdTeacher) || other.createdTeacher == createdTeacher)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&const DeepCollectionEquality().equals(other._selectedBooks, _selectedBooks));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_selectedBooks),status,createdTeacher,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,data,errorMessage,const DeepCollectionEquality().hash(_selectedBooks));
 
 @override
 String toString() {
-  return 'CreateTeacherState(selectedBooks: $selectedBooks, status: $status, createdTeacher: $createdTeacher, errorMessage: $errorMessage)';
+  return 'CreateTeacherState(status: $status, data: $data, errorMessage: $errorMessage, selectedBooks: $selectedBooks)';
 }
 
 
@@ -265,11 +265,11 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $CreateTeache
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<SubjectModel> selectedBooks, SubmissionStatus status, teacherModel? createdTeacher, String? errorMessage
+ SubmissionStatus status, CreatedTeacherResponse? data, String? errorMessage, List<SubjectModel> selectedBooks
 });
 
 
-@override $teacherModelCopyWith<$Res>? get createdTeacher;
+@override $CreatedTeacherResponseCopyWith<$Res>? get data;
 
 }
 /// @nodoc
@@ -282,13 +282,13 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateTeacherState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selectedBooks = null,Object? status = null,Object? createdTeacher = freezed,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,Object? selectedBooks = null,}) {
   return _then(_CreateTeacherState(
-selectedBooks: null == selectedBooks ? _self._selectedBooks : selectedBooks // ignore: cast_nullable_to_non_nullable
-as List<SubjectModel>,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
-as SubmissionStatus,createdTeacher: freezed == createdTeacher ? _self.createdTeacher : createdTeacher // ignore: cast_nullable_to_non_nullable
-as teacherModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as CreatedTeacherResponse?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,selectedBooks: null == selectedBooks ? _self._selectedBooks : selectedBooks // ignore: cast_nullable_to_non_nullable
+as List<SubjectModel>,
   ));
 }
 
@@ -296,13 +296,13 @@ as String?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$teacherModelCopyWith<$Res>? get createdTeacher {
-    if (_self.createdTeacher == null) {
+$CreatedTeacherResponseCopyWith<$Res>? get data {
+    if (_self.data == null) {
     return null;
   }
 
-  return $teacherModelCopyWith<$Res>(_self.createdTeacher!, (value) {
-    return _then(_self.copyWith(createdTeacher: value));
+  return $CreatedTeacherResponseCopyWith<$Res>(_self.data!, (value) {
+    return _then(_self.copyWith(data: value));
   });
 }
 }

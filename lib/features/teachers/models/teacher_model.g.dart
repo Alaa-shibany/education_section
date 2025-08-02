@@ -6,24 +6,18 @@ part of 'teacher_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_teacherModel _$teacherModelFromJson(Map<String, dynamic> json) =>
-    _teacherModel(
+_TeacherModel _$TeacherModelFromJson(Map<String, dynamic> json) =>
+    _TeacherModel(
       id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
+      name: json['full_name'] as String,
+      phone: json['phone_number'] as String,
       email: json['email'] as String,
-      subjects: (json['subjects'] as List<dynamic>)
-          .map((e) => SubjectModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      created_at: json['created_at'] as String,
-      updated_at: json['updated_at'] as String,
     );
 
-Map<String, dynamic> _$teacherModelToJson(_teacherModel instance) =>
+Map<String, dynamic> _$TeacherModelToJson(_TeacherModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'full_name': instance.name,
+      'phone_number': instance.phone,
       'email': instance.email,
-      'subjects': instance.subjects,
-      'created_at': instance.created_at,
-      'updated_at': instance.updated_at,
     };

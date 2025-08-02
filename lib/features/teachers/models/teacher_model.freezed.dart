@@ -13,42 +13,42 @@ part of 'teacher_model.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$teacherModel {
+mixin _$TeacherModel {
 
- int get id; String get name; String get email; List<SubjectModel> get subjects; String get created_at; String get updated_at;
-/// Create a copy of teacherModel
+ int get id;@JsonKey(name: 'full_name') String get name;@JsonKey(name: 'phone_number') String get phone; String get email;
+/// Create a copy of TeacherModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$teacherModelCopyWith<teacherModel> get copyWith => _$teacherModelCopyWithImpl<teacherModel>(this as teacherModel, _$identity);
+$TeacherModelCopyWith<TeacherModel> get copyWith => _$TeacherModelCopyWithImpl<TeacherModel>(this as TeacherModel, _$identity);
 
-  /// Serializes this teacherModel to a JSON map.
+  /// Serializes this TeacherModel to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is teacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other.subjects, subjects)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TeacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,email,const DeepCollectionEquality().hash(subjects),created_at,updated_at);
+int get hashCode => Object.hash(runtimeType,id,name,phone,email);
 
 @override
 String toString() {
-  return 'teacherModel(id: $id, name: $name, email: $email, subjects: $subjects, created_at: $created_at, updated_at: $updated_at)';
+  return 'TeacherModel(id: $id, name: $name, phone: $phone, email: $email)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $teacherModelCopyWith<$Res>  {
-  factory $teacherModelCopyWith(teacherModel value, $Res Function(teacherModel) _then) = _$teacherModelCopyWithImpl;
+abstract mixin class $TeacherModelCopyWith<$Res>  {
+  factory $TeacherModelCopyWith(TeacherModel value, $Res Function(TeacherModel) _then) = _$TeacherModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String email, List<SubjectModel> subjects, String created_at, String updated_at
+ int id,@JsonKey(name: 'full_name') String name,@JsonKey(name: 'phone_number') String phone, String email
 });
 
 
@@ -56,23 +56,21 @@ $Res call({
 
 }
 /// @nodoc
-class _$teacherModelCopyWithImpl<$Res>
-    implements $teacherModelCopyWith<$Res> {
-  _$teacherModelCopyWithImpl(this._self, this._then);
+class _$TeacherModelCopyWithImpl<$Res>
+    implements $TeacherModelCopyWith<$Res> {
+  _$TeacherModelCopyWithImpl(this._self, this._then);
 
-  final teacherModel _self;
-  final $Res Function(teacherModel) _then;
+  final TeacherModel _self;
+  final $Res Function(TeacherModel) _then;
 
-/// Create a copy of teacherModel
+/// Create a copy of TeacherModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? email = null,Object? subjects = null,Object? created_at = null,Object? updated_at = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? phone = null,Object? email = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,subjects: null == subjects ? _self.subjects : subjects // ignore: cast_nullable_to_non_nullable
-as List<SubjectModel>,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
-as String,updated_at: null == updated_at ? _self.updated_at : updated_at // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -80,8 +78,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [teacherModel].
-extension teacherModelPatterns on teacherModel {
+/// Adds pattern-matching-related methods to [TeacherModel].
+extension TeacherModelPatterns on TeacherModel {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -94,10 +92,10 @@ extension teacherModelPatterns on teacherModel {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _teacherModel value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TeacherModel value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _teacherModel() when $default != null:
+case _TeacherModel() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -116,10 +114,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _teacherModel value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TeacherModel value)  $default,){
 final _that = this;
 switch (_that) {
-case _teacherModel():
+case _TeacherModel():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -137,10 +135,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _teacherModel value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TeacherModel value)?  $default,){
 final _that = this;
 switch (_that) {
-case _teacherModel() when $default != null:
+case _TeacherModel() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -158,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String email,  List<SubjectModel> subjects,  String created_at,  String updated_at)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id, @JsonKey(name: 'full_name')  String name, @JsonKey(name: 'phone_number')  String phone,  String email)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _teacherModel() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,_that.updated_at);case _:
+case _TeacherModel() when $default != null:
+return $default(_that.id,_that.name,_that.phone,_that.email);case _:
   return orElse();
 
 }
@@ -179,10 +177,10 @@ return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String email,  List<SubjectModel> subjects,  String created_at,  String updated_at)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id, @JsonKey(name: 'full_name')  String name, @JsonKey(name: 'phone_number')  String phone,  String email)  $default,) {final _that = this;
 switch (_that) {
-case _teacherModel():
-return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,_that.updated_at);case _:
+case _TeacherModel():
+return $default(_that.id,_that.name,_that.phone,_that.email);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -199,10 +197,10 @@ return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String email,  List<SubjectModel> subjects,  String created_at,  String updated_at)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id, @JsonKey(name: 'full_name')  String name, @JsonKey(name: 'phone_number')  String phone,  String email)?  $default,) {final _that = this;
 switch (_that) {
-case _teacherModel() when $default != null:
-return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,_that.updated_at);case _:
+case _TeacherModel() when $default != null:
+return $default(_that.id,_that.name,_that.phone,_that.email);case _:
   return null;
 
 }
@@ -213,57 +211,49 @@ return $default(_that.id,_that.name,_that.email,_that.subjects,_that.created_at,
 /// @nodoc
 @JsonSerializable()
 
-class _teacherModel implements teacherModel {
-  const _teacherModel({required this.id, required this.name, required this.email, required final  List<SubjectModel> subjects, required this.created_at, required this.updated_at}): _subjects = subjects;
-  factory _teacherModel.fromJson(Map<String, dynamic> json) => _$teacherModelFromJson(json);
+class _TeacherModel implements TeacherModel {
+  const _TeacherModel({required this.id, @JsonKey(name: 'full_name') required this.name, @JsonKey(name: 'phone_number') required this.phone, required this.email});
+  factory _TeacherModel.fromJson(Map<String, dynamic> json) => _$TeacherModelFromJson(json);
 
 @override final  int id;
-@override final  String name;
+@override@JsonKey(name: 'full_name') final  String name;
+@override@JsonKey(name: 'phone_number') final  String phone;
 @override final  String email;
- final  List<SubjectModel> _subjects;
-@override List<SubjectModel> get subjects {
-  if (_subjects is EqualUnmodifiableListView) return _subjects;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_subjects);
-}
 
-@override final  String created_at;
-@override final  String updated_at;
-
-/// Create a copy of teacherModel
+/// Create a copy of TeacherModel
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$teacherModelCopyWith<_teacherModel> get copyWith => __$teacherModelCopyWithImpl<_teacherModel>(this, _$identity);
+_$TeacherModelCopyWith<_TeacherModel> get copyWith => __$TeacherModelCopyWithImpl<_TeacherModel>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$teacherModelToJson(this, );
+  return _$TeacherModelToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _teacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other._subjects, _subjects)&&(identical(other.created_at, created_at) || other.created_at == created_at)&&(identical(other.updated_at, updated_at) || other.updated_at == updated_at));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TeacherModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.email, email) || other.email == email));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,email,const DeepCollectionEquality().hash(_subjects),created_at,updated_at);
+int get hashCode => Object.hash(runtimeType,id,name,phone,email);
 
 @override
 String toString() {
-  return 'teacherModel(id: $id, name: $name, email: $email, subjects: $subjects, created_at: $created_at, updated_at: $updated_at)';
+  return 'TeacherModel(id: $id, name: $name, phone: $phone, email: $email)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$teacherModelCopyWith<$Res> implements $teacherModelCopyWith<$Res> {
-  factory _$teacherModelCopyWith(_teacherModel value, $Res Function(_teacherModel) _then) = __$teacherModelCopyWithImpl;
+abstract mixin class _$TeacherModelCopyWith<$Res> implements $TeacherModelCopyWith<$Res> {
+  factory _$TeacherModelCopyWith(_TeacherModel value, $Res Function(_TeacherModel) _then) = __$TeacherModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String email, List<SubjectModel> subjects, String created_at, String updated_at
+ int id,@JsonKey(name: 'full_name') String name,@JsonKey(name: 'phone_number') String phone, String email
 });
 
 
@@ -271,23 +261,21 @@ $Res call({
 
 }
 /// @nodoc
-class __$teacherModelCopyWithImpl<$Res>
-    implements _$teacherModelCopyWith<$Res> {
-  __$teacherModelCopyWithImpl(this._self, this._then);
+class __$TeacherModelCopyWithImpl<$Res>
+    implements _$TeacherModelCopyWith<$Res> {
+  __$TeacherModelCopyWithImpl(this._self, this._then);
 
-  final _teacherModel _self;
-  final $Res Function(_teacherModel) _then;
+  final _TeacherModel _self;
+  final $Res Function(_TeacherModel) _then;
 
-/// Create a copy of teacherModel
+/// Create a copy of TeacherModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? email = null,Object? subjects = null,Object? created_at = null,Object? updated_at = null,}) {
-  return _then(_teacherModel(
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? phone = null,Object? email = null,}) {
+  return _then(_TeacherModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
-as String,subjects: null == subjects ? _self._subjects : subjects // ignore: cast_nullable_to_non_nullable
-as List<SubjectModel>,created_at: null == created_at ? _self.created_at : created_at // ignore: cast_nullable_to_non_nullable
-as String,updated_at: null == updated_at ? _self.updated_at : updated_at // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

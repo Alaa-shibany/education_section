@@ -1,4 +1,3 @@
-import 'package:courses/features/subjects/models/subject_model.dart';
 import 'package:courses/features/teacher_profile/presentation/components/financial_section.dart';
 import 'package:courses/features/teacher_profile/presentation/components/subjects_section.dart';
 import 'package:courses/features/teacher_profile/presentation/components/teacher_info_card.dart';
@@ -10,16 +9,11 @@ class TeacherProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    teacherModel teacher = teacherModel(
+    TeacherModel teacher = TeacherModel(
       id: 1,
       name: 'Alaa shibany',
       email: 'alaa@gmail.com',
-      subjects: [
-        SubjectModel(id: 1, name: 'subject1'),
-        SubjectModel(id: 2, name: 'subject2'),
-      ],
-      created_at: '1-8-2025',
-      updated_at: '1-8-2025',
+      phone: '',
     );
     return SingleChildScrollView(
       padding: const EdgeInsets.only(top: 50.0),
@@ -37,7 +31,7 @@ class TeacherProfileScreen extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
               const SizedBox(height: 4),
-              SubjectsSection(subjects: teacher.subjects),
+              SubjectsSection(subjects: []),
               const SizedBox(height: 30),
               const Text(
                 'الخزانة المالية',

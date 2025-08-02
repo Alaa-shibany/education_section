@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 class TeacherInfoCard extends StatelessWidget {
   const TeacherInfoCard({super.key, required this.teacher});
-  final teacherModel teacher;
+  final TeacherModel teacher;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class TeacherInfoCard extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              '${translator.last_update}: ${teacher.updated_at}',
+              '${translator.last_update}: 2-8-2025',
               style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
             ),
           ],

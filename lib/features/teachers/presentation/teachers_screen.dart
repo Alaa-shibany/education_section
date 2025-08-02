@@ -1,4 +1,4 @@
-import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
+import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
 import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:courses/features/teachers/presentation/components/manage_teacher_dialog.dart';
 import 'package:courses/features/teachers/presentation/components/teacher_list_item.dart';
@@ -22,7 +22,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final teachersCubit = context.read<TeachersCubit>();
+    final teachersCubit = context.read<GetTeachersCubit>();
     final translator = AppLocalizations.of(context)!;
     return Scaffold(
       key: _scaffoldKey,
@@ -36,27 +36,33 @@ class _TeachersScreenState extends State<TeachersScreen> {
             Row(
               children: [
                 Expanded(
-                  child: TextField(
-                    controller: teachersCubit.searchController,
-                    onSubmitted: (value) {
-                      teachersCubit.pagingController.refresh();
+                  child: BlocBuilder<GetTeachersCubit, GetTeachersState>(
+                    builder: (context, state) {
+                      return TextField(
+                        controller: state.searchNameController,
+                        onSubmitted: (value) {
+                          teachersCubit.pagingController.refresh();
+                        },
+                        decoration: InputDecoration(
+                          hintText:
+                              '${translator.search} ${translator.subjects}...',
+                          prefixIcon: Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(12.0),
+                            ),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                        ),
+                      );
                     },
-                    decoration: InputDecoration(
-                      hintText:
-                          '${translator.search} ${translator.subjects}...',
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                    ),
                   ),
                 ),
                 const SizedBox(width: 12),
                 FilledButton.icon(
                   onPressed: () {
-                    showManageTeacherDialog(context);
+                    showManageTeacherDialog(context, teachersCubit);
                   },
                   icon: const Icon(Icons.add),
                   label: Text(translator.add_new),
@@ -73,12 +79,12 @@ class _TeachersScreenState extends State<TeachersScreen> {
 
                 const SizedBox(width: 8),
 
-                BlocBuilder<TeachersCubit, TeachersState>(
+                BlocBuilder<GetTeachersCubit, GetTeachersState>(
                   builder: (context, state) {
                     print('rebuild');
                     return Badge(
-                      isLabelVisible: teachersCubit.badgeCount > 0,
-                      label: Text(teachersCubit.badgeCount.toString()),
+                      isLabelVisible: state.badgeCount > 0,
+                      label: Text(state.badgeCount.toString()),
                       child: IconButton.filled(
                         onPressed: () =>
                             _scaffoldKey.currentState?.openEndDrawer(),
@@ -96,7 +102,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
               child: PagingListener(
                 controller: teachersCubit.pagingController,
                 builder: (context, state, fetchNextPage) =>
-                    PagedListView<int, teacherModel>(
+                    PagedListView<int, TeacherModel>(
                       padding: EdgeInsets.zero,
                       state: state,
                       fetchNextPage: fetchNextPage,
@@ -104,7 +110,11 @@ class _TeachersScreenState extends State<TeachersScreen> {
                         itemBuilder: (context, item, index) => TeacherListItem(
                           subjectItem: item,
                           onEdit: () {
-                            showManageTeacherDialog(context, teacher: item);
+                            showManageTeacherDialog(
+                              context,
+                              teachersCubit,
+                              teacher: item,
+                            );
                           },
                           onDelete: () {
                             showDeleteConfirmationDialog(

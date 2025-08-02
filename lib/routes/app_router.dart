@@ -10,7 +10,7 @@ import 'package:courses/features/register_requests/presentation/register_request
 import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
 import 'package:courses/features/teacher_profile/presentation/teacher_profile_screen.dart';
-import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
+import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
 import 'package:courses/features/teachers/presentation/teachers_screen.dart';
 import 'package:courses/layouts/main_layout.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +93,7 @@ class AppRouter {
             builder: (context, state) => MultiBlocProvider(
               providers: [
                 BlocProvider(
-                  create: (context) => sl<TeachersCubit>()..initState(),
+                  create: (context) => sl<GetTeachersCubit>()..initState(),
                 ),
               ],
               child: TeachersScreen(),

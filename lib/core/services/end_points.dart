@@ -6,7 +6,6 @@ class EndPoints {
   static const String createSubject = 'create';
   static const String editSubject = 'edit';
   static const String deleteSubject = 'delete';
-  static const String teachers = 'teachers';
   static const String create = 'create';
   static const String update = 'update';
   static const String requests = 'requests';
@@ -17,4 +16,7 @@ class EndPoints {
   static const String dashboard_subjects_all = 'dashboard/subjects/all';
   static const String dashboard_subjects_create = 'dashboard/subjects/create';
   static const String dashboard_subjects_update = 'dashboard/subjects/update';
+  static const String dashboard_teachers_index = 'dashboard/teachers/index';
+  static const String dashboard_teachers_create = 'dashboard/teachers/create';
+  static const String dashboard_teachers_update = 'dashboard/teachers/update';
 }

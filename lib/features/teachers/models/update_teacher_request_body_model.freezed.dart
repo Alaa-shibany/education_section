@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UpdateTeacherRequestBodyModel {
 
- String get name; String get email; List<int> get subjects;
+ int get id; String get full_name; String get phone_number; String get email; List<int> get subjects;
 /// Create a copy of UpdateTeacherRequestBodyModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $UpdateTeacherRequestBodyModelCopyWith<UpdateTeacherRequestBodyModel> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateTeacherRequestBodyModel&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other.subjects, subjects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateTeacherRequestBodyModel&&(identical(other.id, id) || other.id == id)&&(identical(other.full_name, full_name) || other.full_name == full_name)&&(identical(other.phone_number, phone_number) || other.phone_number == phone_number)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other.subjects, subjects));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,email,const DeepCollectionEquality().hash(subjects));
+int get hashCode => Object.hash(runtimeType,id,full_name,phone_number,email,const DeepCollectionEquality().hash(subjects));
 
 @override
 String toString() {
-  return 'UpdateTeacherRequestBodyModel(name: $name, email: $email, subjects: $subjects)';
+  return 'UpdateTeacherRequestBodyModel(id: $id, full_name: $full_name, phone_number: $phone_number, email: $email, subjects: $subjects)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $UpdateTeacherRequestBodyModelCopyWith<$Res>  {
   factory $UpdateTeacherRequestBodyModelCopyWith(UpdateTeacherRequestBodyModel value, $Res Function(UpdateTeacherRequestBodyModel) _then) = _$UpdateTeacherRequestBodyModelCopyWithImpl;
 @useResult
 $Res call({
- String name, String email, List<int> subjects
+ int id, String full_name, String phone_number, String email, List<int> subjects
 });
 
 
@@ -65,9 +65,11 @@ class _$UpdateTeacherRequestBodyModelCopyWithImpl<$Res>
 
 /// Create a copy of UpdateTeacherRequestBodyModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? email = null,Object? subjects = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? full_name = null,Object? phone_number = null,Object? email = null,Object? subjects = null,}) {
   return _then(_self.copyWith(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,full_name: null == full_name ? _self.full_name : full_name // ignore: cast_nullable_to_non_nullable
+as String,phone_number: null == phone_number ? _self.phone_number : phone_number // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,subjects: null == subjects ? _self.subjects : subjects // ignore: cast_nullable_to_non_nullable
 as List<int>,
@@ -155,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String email,  List<int> subjects)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String full_name,  String phone_number,  String email,  List<int> subjects)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UpdateTeacherRequestBodyModel() when $default != null:
-return $default(_that.name,_that.email,_that.subjects);case _:
+return $default(_that.id,_that.full_name,_that.phone_number,_that.email,_that.subjects);case _:
   return orElse();
 
 }
@@ -176,10 +178,10 @@ return $default(_that.name,_that.email,_that.subjects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String email,  List<int> subjects)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String full_name,  String phone_number,  String email,  List<int> subjects)  $default,) {final _that = this;
 switch (_that) {
 case _UpdateTeacherRequestBodyModel():
-return $default(_that.name,_that.email,_that.subjects);case _:
+return $default(_that.id,_that.full_name,_that.phone_number,_that.email,_that.subjects);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +198,10 @@ return $default(_that.name,_that.email,_that.subjects);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String email,  List<int> subjects)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String full_name,  String phone_number,  String email,  List<int> subjects)?  $default,) {final _that = this;
 switch (_that) {
 case _UpdateTeacherRequestBodyModel() when $default != null:
-return $default(_that.name,_that.email,_that.subjects);case _:
+return $default(_that.id,_that.full_name,_that.phone_number,_that.email,_that.subjects);case _:
   return null;
 
 }
@@ -211,10 +213,12 @@ return $default(_that.name,_that.email,_that.subjects);case _:
 @JsonSerializable()
 
 class _UpdateTeacherRequestBodyModel implements UpdateTeacherRequestBodyModel {
-  const _UpdateTeacherRequestBodyModel({required this.name, required this.email, required final  List<int> subjects}): _subjects = subjects;
+  const _UpdateTeacherRequestBodyModel({required this.id, required this.full_name, required this.phone_number, required this.email, required final  List<int> subjects}): _subjects = subjects;
   factory _UpdateTeacherRequestBodyModel.fromJson(Map<String, dynamic> json) => _$UpdateTeacherRequestBodyModelFromJson(json);
 
-@override final  String name;
+@override final  int id;
+@override final  String full_name;
+@override final  String phone_number;
 @override final  String email;
  final  List<int> _subjects;
 @override List<int> get subjects {
@@ -237,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateTeacherRequestBodyModel&&(identical(other.name, name) || other.name == name)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other._subjects, _subjects));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateTeacherRequestBodyModel&&(identical(other.id, id) || other.id == id)&&(identical(other.full_name, full_name) || other.full_name == full_name)&&(identical(other.phone_number, phone_number) || other.phone_number == phone_number)&&(identical(other.email, email) || other.email == email)&&const DeepCollectionEquality().equals(other._subjects, _subjects));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,email,const DeepCollectionEquality().hash(_subjects));
+int get hashCode => Object.hash(runtimeType,id,full_name,phone_number,email,const DeepCollectionEquality().hash(_subjects));
 
 @override
 String toString() {
-  return 'UpdateTeacherRequestBodyModel(name: $name, email: $email, subjects: $subjects)';
+  return 'UpdateTeacherRequestBodyModel(id: $id, full_name: $full_name, phone_number: $phone_number, email: $email, subjects: $subjects)';
 }
 
 
@@ -257,7 +261,7 @@ abstract mixin class _$UpdateTeacherRequestBodyModelCopyWith<$Res> implements $U
   factory _$UpdateTeacherRequestBodyModelCopyWith(_UpdateTeacherRequestBodyModel value, $Res Function(_UpdateTeacherRequestBodyModel) _then) = __$UpdateTeacherRequestBodyModelCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String email, List<int> subjects
+ int id, String full_name, String phone_number, String email, List<int> subjects
 });
 
 
@@ -274,9 +278,11 @@ class __$UpdateTeacherRequestBodyModelCopyWithImpl<$Res>
 
 /// Create a copy of UpdateTeacherRequestBodyModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? email = null,Object? subjects = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? full_name = null,Object? phone_number = null,Object? email = null,Object? subjects = null,}) {
   return _then(_UpdateTeacherRequestBodyModel(
-name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,full_name: null == full_name ? _self.full_name : full_name // ignore: cast_nullable_to_non_nullable
+as String,phone_number: null == phone_number ? _self.phone_number : phone_number // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,subjects: null == subjects ? _self._subjects : subjects // ignore: cast_nullable_to_non_nullable
 as List<int>,

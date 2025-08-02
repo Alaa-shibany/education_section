@@ -1,3 +1,8 @@
+import 'package:courses/features/teachers/repo/teachers_repository.dart';
+import 'package:courses/features/teachers/cubits/update_teacher_cubit/update_teacher_cubit.dart';
+import 'package:courses/features/teachers/cubits/create_teacher_cubit/create_teacher_cubit.dart';
+import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
+
 import 'package:courses/features/subjects/repo/subjects_repository.dart';
 import 'package:courses/features/subjects/cubits/update_subject_cubit/update_subject_cubit.dart';
 import 'package:courses/features/subjects/cubits/create_subject_cubit/create_subject_cubit.dart';
@@ -10,12 +15,6 @@ import 'package:courses/features/admins/cubits/admins_cubit/admins_cubit.dart';
 import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
 import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
 import 'package:courses/features/register_requests/repo/register_requests_repository.dart';
-import 'package:courses/features/teachers/cubit/update_teacher_cubit/update_teacher_cubit.dart';
-
-import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teacher_cubit.dart';
-
-import 'package:courses/features/teachers/repo/teachers_repository.dart';
-import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
 
 import 'package:courses/features/login/repo/login_repository.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
@@ -73,10 +72,6 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton(() => LoginRepository(sl()));
   sl.registerFactory(() => LoginCubit(sl()));
 
-  sl.registerLazySingleton(() => TeachersRepository(sl()));
-  sl.registerFactory(() => TeachersCubit(sl()));
-  sl.registerFactory(() => CreateTeacherCubit(sl()));
-  sl.registerFactory(() => UpdateTeacherCubit(sl()));
   sl.registerFactory(() => GetRequestsCubit(sl()));
   sl.registerFactory(() => AcceptRequestCubit(sl()));
   sl.registerLazySingleton(() => RegisterRequestsRepository(sl()));
@@ -89,4 +84,8 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => CreateSubjectCubit(sl()));
   sl.registerFactory(() => UpdateSubjectCubit(sl()));
   sl.registerLazySingleton(() => SubjectsRepository(sl()));
+  sl.registerFactory(() => GetTeachersCubit(sl()));
+  sl.registerFactory(() => CreateTeacherCubit(sl()));
+  sl.registerFactory(() => UpdateTeacherCubit(sl()));
+  sl.registerLazySingleton(() => TeachersRepository(sl()));
 }

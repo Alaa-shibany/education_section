@@ -8,7 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TeacherListItem extends StatefulWidget {
-  final teacherModel subjectItem;
+  final TeacherModel subjectItem;
 
   final VoidCallback onEdit;
   final VoidCallback onDelete;
@@ -85,7 +85,7 @@ class _TeacherListItemState extends State<TeacherListItem> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '${translator.last_update}: ${widget.subjectItem.updated_at}',
+                          '${translator.last_update}: 2-8-2025',
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey.shade600,
