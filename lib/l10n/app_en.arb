@@ -27,5 +27,10 @@
   "confirm_deletion":"Confirm Deletion",
   "are_you_sure_delete":"Are you sure you want to delete",
   "cannot_be_undo":"This action cannot be undone",
-  "teachers":"Teachers"
+  "teachers":"Teachers",
+  "accept":"Accept",
+  "student":"Student",
+  "course":"Course",
+  "register_requests":"Register requests",
+  "down_payment":"Down payment"
 }

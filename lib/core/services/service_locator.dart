@@ -1,3 +1,6 @@
+import 'package:courses/features/register_requests/repo/register_requests_repository.dart';
+import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
+import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
 import 'package:courses/features/teachers/cubit/update_teacher_cubit/update_teacher_cubit.dart';
 
 import 'package:courses/features/teachers/cubit/create_teacher_cubit/create_teacher_cubit.dart';
@@ -69,4 +72,7 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => TeachersCubit(sl()));
   sl.registerFactory(() => CreateTeacherCubit(sl()));
   sl.registerFactory(() => UpdateTeacherCubit(sl()));
+  sl.registerFactory(() => GetRequestsCubit(sl()));
+  sl.registerFactory(() => AcceptRequestCubit(sl()));
+  sl.registerLazySingleton(() => RegisterRequestsRepository(sl()));
 }

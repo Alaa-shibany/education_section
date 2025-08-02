@@ -18,5 +18,10 @@
   "create": "إنشاء",
   "confirm": "تأكيد",
   "cancel": "إلغاء",
-  "logout":"تسجيل الخروج"
+  "logout":"تسجيل الخروج",
+  "accept":"قبول",
+  "student":"الطالب",
+  "course":"الدورة",
+  "register_requests":"طلبات التسجيل",
+  "down_payment":"الدفعة الأولى"
 }

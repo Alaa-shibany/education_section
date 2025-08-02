@@ -9,4 +9,6 @@ class EndPoints {
   static const String teachers = 'teachers';
   static const String create = 'create';
   static const String update = 'update';
+  static const String requests = 'requests';
+  static const String request_accept = 'request/accept';
 }

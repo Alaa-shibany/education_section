@@ -1,0 +1,69 @@
+import 'package:courses/features/subjects/models/subject_model.dart';
+import 'package:courses/features/teacher_profile/presentation/components/financial_section.dart';
+import 'package:courses/features/teacher_profile/presentation/components/subjects_section.dart';
+import 'package:courses/features/teacher_profile/presentation/components/teacher_info_card.dart';
+import 'package:courses/features/teachers/models/teacher_model.dart';
+import 'package:flutter/material.dart';
+
+class TeacherProfileScreen extends StatelessWidget {
+  const TeacherProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    teacherModel teacher = teacherModel(
+      id: 1,
+      name: 'Alaa shibany',
+      email: 'alaa@gmail.com',
+      subjects: [
+        SubjectModel(
+          id: 1,
+          name: 'subject1',
+          created_at: '1-8-2025',
+          updated_at: '1-8-2025',
+        ),
+        SubjectModel(
+          id: 2,
+          name: 'subject2',
+          created_at: '1-8-2025',
+          updated_at: '1-8-2025',
+        ),
+      ],
+      created_at: '1-8-2025',
+      updated_at: '1-8-2025',
+    );
+    return SingleChildScrollView(
+      padding: const EdgeInsets.only(top: 50.0),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 1200),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TeacherInfoCard(teacher: teacher),
+              const SizedBox(height: 30),
+              const Text(
+                'المواد الدراسية',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.right,
+              ),
+              const SizedBox(height: 4),
+              SubjectsSection(subjects: teacher.subjects),
+              const SizedBox(height: 30),
+              const Text(
+                'الخزانة المالية',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.right,
+              ),
+              const SizedBox(height: 4),
+              FinancialSection(
+                paidDues: 5200.00,
+                pendingDues: 750.00,
+                onTransfer: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

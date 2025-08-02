@@ -262,6 +262,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Teachers'**
   String get teachers;
+
+  /// No description provided for @accept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept'**
+  String get accept;
+
+  /// No description provided for @student.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get student;
+
+  /// No description provided for @course.
+  ///
+  /// In en, this message translates to:
+  /// **'Course'**
+  String get course;
+
+  /// No description provided for @register_requests.
+  ///
+  /// In en, this message translates to:
+  /// **'Register requests'**
+  String get register_requests;
+
+  /// No description provided for @down_payment.
+  ///
+  /// In en, this message translates to:
+  /// **'Down payment'**
+  String get down_payment;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

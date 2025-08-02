@@ -3,8 +3,12 @@ import 'package:courses/features/home/presentation/home_screen.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
 import 'package:courses/features/navigator/presentation/navigate_screen.dart';
+import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
+import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
+import 'package:courses/features/register_requests/presentation/register_requests_screen.dart';
 import 'package:courses/features/subjects/cubit/subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
+import 'package:courses/features/teacher_profile/presentation/teacher_profile_screen.dart';
 import 'package:courses/features/teachers/cubit/teachers_cubit/teachers_cubit.dart';
 import 'package:courses/features/teachers/presentation/teachers_screen.dart';
 import 'package:courses/layouts/main_layout.dart';
@@ -44,6 +48,14 @@ class AppRouter {
           child: MainLayout(body: LoginScreen()),
         ),
       ),
+      GoRoute(
+        name: 'Teacher profile',
+        path: AppRoutes.teacherProfile,
+        builder: (context, state) => BlocProvider(
+          create: (context) => sl<LoginCubit>(),
+          child: MainLayout(body: TeacherProfileScreen()),
+        ),
+      ),
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
         builder: (context, state, child) {
@@ -78,6 +90,17 @@ class AppRouter {
                 ),
               ],
               child: TeachersScreen(),
+            ),
+          ),
+          GoRoute(
+            name: 'requests_screen',
+            path: AppRoutes.registerRequests,
+            builder: (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => sl<GetRequestsCubit>()),
+                BlocProvider(create: (context) => sl<AcceptRequestCubit>()),
+              ],
+              child: RegisterRequestsScreen(),
             ),
           ),
         ],

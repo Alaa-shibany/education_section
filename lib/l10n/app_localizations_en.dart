@@ -91,4 +91,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get teachers => 'Teachers';
+
+  @override
+  String get accept => 'Accept';
+
+  @override
+  String get student => 'Student';
+
+  @override
+  String get course => 'Course';
+
+  @override
+  String get register_requests => 'Register requests';
+
+  @override
+  String get down_payment => 'Down payment';
 }

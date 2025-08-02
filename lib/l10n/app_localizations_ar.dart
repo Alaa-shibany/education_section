@@ -91,4 +91,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get teachers => 'Teachers';
+
+  @override
+  String get accept => 'قبول';
+
+  @override
+  String get student => 'الطالب';
+
+  @override
+  String get course => 'الدورة';
+
+  @override
+  String get register_requests => 'طلبات التسجيل';
+
+  @override
+  String get down_payment => 'الدفعة الأولى';
 }

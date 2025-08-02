@@ -16,10 +16,10 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
   final _emailController = TextEditingController(
     text: isEditing ? teacher.email : '',
   );
-
   final _subjectController = SearchController();
   final _formKey = GlobalKey<FormState>();
   final translator = AppLocalizations.of(context)!;
+
   List<SubjectModel> subjects = [
     SubjectModel(
       id: 1,
@@ -55,7 +55,6 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
     transitionBuilder: (context, anim1, anim2, child) {
       return ScaleTransition(
         scale: Tween<double>(begin: 0.9, end: 1.0).animate(anim1),
-
         child: FadeTransition(
           opacity: anim1,
           child: AlertDialog(
@@ -121,46 +120,36 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                   ).textTheme.headlineSmall,
                                 ),
                                 const SizedBox(height: 16),
-                                     SearchAnchor.bar(
-                                      barHintText: 'Select subject',
-                                       searchController: _subjectController,
-                                       suggestionsBuilder:
-                                           (context, controller) {
-                                             final String input =
-                                                 controller.value.text;
-                                             return subjects
-                                                 .where(
-                                                   (element) => element.name
-                                                       .toLowerCase()
-                                                       .contains(
-                                                         input.toLowerCase(),
-                                                       ),
-                                                 )
-                                                 .map(
-                                                   (e) => ListTile(
-                                                     title: Text(e.name),
-                                                     onTap: () {
-                                                       createTeacherCubit
-                                                           .addBook(e);
-                                                       _subjectController
-                                                           .closeView('');
-                                                     },
-                                                   ),
-                                                 );
-                                           },
-                                     ),
-                               
-                                const SizedBox(height: 16),
+                                SearchAnchor.bar(
+                                  barHintText: 'Select subject',
+                                  searchController: _subjectController,
+                                  suggestionsBuilder: (context, controller) {
+                                    final String input = controller.value.text;
+                                    return subjects
+                                        .where(
+                                          (element) => element.name
+                                              .toLowerCase()
+                                              .contains(input.toLowerCase()),
+                                        )
+                                        .map(
+                                          (e) => ListTile(
+                                            title: Text(e.name),
+                                            onTap: () {
+                                              createTeacherCubit.addBook(e);
+                                              _subjectController.closeView('');
+                                            },
+                                          ),
+                                        );
+                                  },
+                                ),
 
-                                // BlocBuilder rebuilds the widget inside it whenever the state changes.
+                                const SizedBox(height: 16),
                                 BlocBuilder<
                                   CreateTeacherCubit,
                                   CreateTeacherState
                                 >(
                                   builder: (context, state) {
-                                    if (state
-                                        .selectedBooks
-                                        .isEmpty) {
+                                    if (state.selectedBooks.isEmpty) {
                                       return const Text(
                                         'No subjects added yet.',
                                       );
@@ -168,20 +157,20 @@ void showManageTeacherDialog(BuildContext context, {teacherModel? teacher}) {
                                     return Wrap(
                                       spacing: 8.0,
                                       runSpacing: 8.0,
-                                      children: state.selectedBooks
-                                          .map((subject) {
-                                            return Chip(
-                                              label: Text(subject.name),
-                                              onDeleted: () => context
-                                                  .read<CreateTeacherCubit>()
-                                                  .removeBook(subject),
-                                              deleteIcon: const Icon(
-                                                Icons.close,
-                                                size: 18,
-                                              ),
-                                            );
-                                          })
-                                          .toList(),
+                                      children: state.selectedBooks.map((
+                                        subject,
+                                      ) {
+                                        return Chip(
+                                          label: Text(subject.name),
+                                          onDeleted: () => context
+                                              .read<CreateTeacherCubit>()
+                                              .removeBook(subject),
+                                          deleteIcon: const Icon(
+                                            Icons.close,
+                                            size: 18,
+                                          ),
+                                        );
+                                      }).toList(),
                                     );
                                   },
                                 ),

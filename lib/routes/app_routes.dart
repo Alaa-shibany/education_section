@@ -9,4 +9,7 @@ class AppRoutes {
   static const String createTeacher = '/create-teacher';
 
   static const String teachers = '/teachers';
+  static const String teacherProfile = '/teacher_profile';
+
+  static const String registerRequests = '/register_requests';
 }
