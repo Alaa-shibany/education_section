@@ -23,4 +23,7 @@ class EndPoints {
       'dashboard/teacher-payouts/all';
   static const String dashboard_payouts_update =
       'dashboard/teacher-payouts/update';
+  static const String dashboard_courses_index = 'dashboard/courses/index';
+  static const String dashboard_courses_create = 'dashboard/courses/create';
+  static const String dashboard_courses_update = 'dashboard/courses/update';
 }

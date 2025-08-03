@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'teacher_model.freezed.dart';
@@ -12,5 +14,6 @@ abstract class TeacherModel with _$TeacherModel {
     required String email,
   }) = _TeacherModel;
 
-  factory TeacherModel.fromJson(Map<String, dynamic> json) => _$TeacherModelFromJson(json);
+  factory TeacherModel.fromJson(Map<String, dynamic> json) =>
+      _$TeacherModelFromJson(json);
 }

@@ -10,4 +10,5 @@ class ApplicationImages {
   static const String requestSVG = 'assets/svg/request.svg';
   static const String adminSVG = 'assets/svg/admin.svg';
   static const String sessionSVG = 'assets/svg/session.svg';
+  static const String courseSVG = 'assets/svg/course.svg';
 }

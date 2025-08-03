@@ -102,6 +102,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get course => 'الدورة';
 
   @override
+  String get courses => 'الدورات التدريبية';
+
+  @override
   String get register_requests => 'طلبات التسجيل';
 
   @override
@@ -156,6 +159,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get dues => 'المستحقات';
 
   @override
+  String get teacher => 'المدرس';
+
+  @override
   String get pay => 'دفع';
 
   @override
@@ -175,4 +181,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get study_materials => 'المواد الدراسية';
+
+  @override
+  String get created => 'تم الإنشاء';
+
+  @override
+  String get announced => 'تم الإعلان';
+
+  @override
+  String get started => 'بدأت';
+
+  @override
+  String get finished => 'انتهت';
 }

@@ -31,6 +31,7 @@
   "accept":"Accept",
   "student":"Student",
   "course":"Course",
+  "courses":"Courses",
   "register_requests":"Register requests",
   "down_payment":"Down payment",
   "admins":"Admins",
@@ -49,12 +50,17 @@
     "pending_dues":"Pending Dues",
     "session_date":"Session date",
     "dues":"Dues",
+    "teacher":"Teacher",
     "pay":"Pay",
     "dues_pending_transfer":"Dues pending transfer",
     "transfer_of_dues":"Transfer of Dues",
     "no_dues_for_now":"No dues for now",
     "show_history":"Show history",
     "financial_treasury":"Financial treasury",
-    "study_materials":"Study materials"
+    "study_materials":"Study materials",
+    "created":"Created",
+    "announced":"Announced",
+    "started":"Started",
+    "finished":"Finished"
 
 }

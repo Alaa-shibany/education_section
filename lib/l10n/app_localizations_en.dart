@@ -102,6 +102,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get course => 'Course';
 
   @override
+  String get courses => 'Courses';
+
+  @override
   String get register_requests => 'Register requests';
 
   @override
@@ -156,6 +159,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dues => 'Dues';
 
   @override
+  String get teacher => 'Teacher';
+
+  @override
   String get pay => 'Pay';
 
   @override
@@ -175,4 +181,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get study_materials => 'Study materials';
+
+  @override
+  String get created => 'Created';
+
+  @override
+  String get announced => 'Announced';
+
+  @override
+  String get started => 'Started';
+
+  @override
+  String get finished => 'Finished';
 }

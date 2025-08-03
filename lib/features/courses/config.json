@@ -1,0 +1,68 @@
+{
+  "feature_name": "Courses",
+  "apis": [
+    {
+      "name": "getCourses",
+      "endpoint": "dashboard/courses/index",
+      "request_type": "GET",
+      "pagination": true,
+      "query_parameters": [
+        { "type": "int", "name": "page" }
+      ],
+      "list_response_model": [
+        {
+  "name": "CourseModel",
+  "fields": [
+    { "name": "id", "type": "int" },
+    { "name": "name", "type": "String" },
+    { "name": "status", "type": "String" },
+    { "name": "startDate", "type": "String", "json_key": "start_date" },
+    { "name": "finishDate", "type": "String", "json_key": "finish_date" },
+    { "name": "firstPaymentAmount", "type": "int", "json_key": "first_payment_amount" },
+    { "name": "price", "type": "int" },
+    { "name": "teacherSalary", "type": "int", "json_key": "teacher_salary" },
+    { "name": "paymentDeadlineDays", "type": "int", "json_key": "payment_deadline_days" },
+    { "name": "successPercentage", "type": "int", "json_key": "success_percentage" }
+  ]
+}
+      ]
+    },
+    {
+      "name": "createCourse",
+      "endpoint": "dashboard/courses/create",
+      "request_type": "POST",
+      "body": {
+    "subject_id": "int",
+    "teacher_id": "int",
+    "name": "String",
+    "start_date": "String",
+    "finish_date": "String",
+    "price": "int",
+    "first_payment_amount": "int",
+    "teacher_salary": "int",
+    "payment_deadline_days": "int",
+    "success_percentage": "int",
+    "sessions": "List"
+  },
+      "response_model": {
+        "name": "AcceptRequestModel",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    },
+    {
+      "name": "updateCourseStatus",
+      "endpoint": "dashboard/courses/update",
+      "request_type": "PUT",
+      "query_parameters":[
+        { "type": "int", "name": "id" }
+      ],
+      "body": {
+    "status":"String"
+  },
+      "response_model": {
+        "name": "AcceptRequestModel",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    }
+  ]
+}

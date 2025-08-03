@@ -4,6 +4,7 @@ class AppRoutes {
   AppRoutes._();
   static const String splash = '/';
     static const String admins = '/admins';
+    static const String courses = '/courses';
   //<-- DONT_REMOVE_THIS_LINE_ROUTES -->
 
   static const String login = '/login';

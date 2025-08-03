@@ -22,6 +22,8 @@
   "accept":"قبول",
   "student":"الطالب",
   "course":"الدورة",
+    "courses":"الدورات التدريبية",
+"teacher":"المدرس",
   "register_requests":"طلبات التسجيل",
   "down_payment":"الدفعة الأولى",
   "admins":"المشرفين",
@@ -46,6 +48,10 @@
     "no_dues_for_now":"لا يوجد مستحقات حاليا",
     "show_history":"عرض السجل",
      "financial_treasury":"الخزانة المالية",
-    "study_materials":"المواد الدراسية"
+    "study_materials":"المواد الدراسية",
+     "created":"تم الإنشاء",
+    "announced":"تم الإعلان",
+    "started":"بدأت",
+    "finished":"انتهت"
 
 }

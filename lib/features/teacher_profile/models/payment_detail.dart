@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:courses/features/teacher_profile/models/course_session.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
