@@ -1,8 +1,16 @@
 import 'package:courses/config/constants/application_images.dart';
+import 'package:courses/core/services/status.dart';
+import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
+import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
+import 'package:courses/features/register_requests/models/accept_request_request_body_model.dart';
 import 'package:courses/features/register_requests/models/register_request_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
+import 'package:courses/shared/dialogs/error_dialog.dart';
+import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RequestListItem extends StatelessWidget {
@@ -20,7 +28,7 @@ class RequestListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final translator = AppLocalizations.of(context)!;
-
+    final acceptRequestCubit = context.read<AcceptRequestCubit>();
     return Card(
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 5),
@@ -82,22 +90,43 @@ class RequestListItem extends StatelessWidget {
                   '${translator.down_payment}: ${requestModel.payment}\$',
                   style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
                 ),
-                FilledButton.icon(
-                  onPressed: () {
-                    // showManageTeacherDialog(context);
+                BlocConsumer<AcceptRequestCubit, AcceptRequestState>(
+                  listener: (context, state) {
+                    if (state.status == SubmissionStatus.loading) {
+                      showLoadingDialog(context);
+                    } else if (state.status == SubmissionStatus.error) {
+                      showErrorDialog(context, state.errorMessage!);
+                    } else if (state.status == SubmissionStatus.success) {
+                      context.pop();
+                      context
+                          .read<GetRequestsCubit>()
+                          .pagingController
+                          .refresh();
+                    }
                   },
-                  icon: const Icon(Icons.check),
-                  label: Text(translator.accept),
-                  style: FilledButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 16,
-                    ),
-                    backgroundColor: Colors.lightGreen,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
+                  builder: (context, state) {
+                    return FilledButton.icon(
+                      onPressed: () {
+                        acceptRequestCubit.acceptRequest(
+                          body: AcceptRequestRequestBodyModel(
+                            id: requestModel.id,
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.check),
+                      label: Text(translator.accept),
+                      style: FilledButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        backgroundColor: Colors.lightGreen,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

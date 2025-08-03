@@ -169,4 +169,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get show_history => 'Show history';
+
+  @override
+  String get financial_treasury => 'Financial treasury';
+
+  @override
+  String get study_materials => 'Study materials';
 }

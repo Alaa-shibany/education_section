@@ -53,6 +53,8 @@
     "dues_pending_transfer":"Dues pending transfer",
     "transfer_of_dues":"Transfer of Dues",
     "no_dues_for_now":"No dues for now",
-    "show_history":"Show history"
+    "show_history":"Show history",
+    "financial_treasury":"Financial treasury",
+    "study_materials":"Study materials"
 
 }

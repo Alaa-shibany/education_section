@@ -10,10 +10,10 @@ _RegisterRequestModel _$RegisterRequestModelFromJson(
   Map<String, dynamic> json,
 ) => _RegisterRequestModel(
   id: (json['id'] as num).toInt(),
-  student: json['student'] as String,
-  course: json['course'] as String,
-  payment: (json['payment'] as num).toDouble(),
-  createdAt: json['created_at'] as String,
+  student: _readStudentName(json, 'student') as String,
+  course: _readCourseName(json, 'course') as String,
+  payment: (_readPayment(json, 'payment') as num).toDouble(),
+  createdAt: json['enrollment_date'] as String,
 );
 
 Map<String, dynamic> _$RegisterRequestModelToJson(
@@ -23,5 +23,5 @@ Map<String, dynamic> _$RegisterRequestModelToJson(
   'student': instance.student,
   'course': instance.course,
   'payment': instance.payment,
-  'created_at': instance.createdAt,
+  'enrollment_date': instance.createdAt,
 };

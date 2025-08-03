@@ -13,36 +13,33 @@ class RegisterRequestsRepository {
 
   RegisterRequestsRepository(this._apiService);
 
-  Future<Either<Failure, PaginationModel<RegisterRequestModel>>> getRequests({ required int page,  }) async {
+  Future<Either<Failure, PaginationModel<RegisterRequestModel>>> getRequests({
+    required int page,
+    required String name,
+    required String courseName,
+  }) async {
     try {
       final response = await _apiService.get(
         EndPoints.requests,
-        queryParams: {'page': page}
+        queryParams: {
+          'page': page,
+          'status': "pending_payment",
+          'course[name]': courseName,
+          'child[name]': name,
+        },
       );
 
       final items = (response.data['data']['data'] as List)
-          .map((i) => RegisterRequestModel.fromJson(i)).toList();
+          .map((i) => RegisterRequestModel.fromJson(i))
+          .toList();
       final pageSize = response.data['data']['per_page'] as int;
       final isReachMax = response.data['data']['next_page_url'] == null;
-      final data = PaginationModel(items: items, pageSize: pageSize, isReachMax: isReachMax);
-
-      return Right(data);
-    } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
-  }
-
-  Future<Either<Failure, AcceptRequestModel>> acceptRequest({ required AcceptRequestRequestBodyModel body,  }) async {
-    try {
-      final response = await _apiService.post(
-        EndPoints.request_accept,
-        data: body.toJson()
+      final data = PaginationModel(
+        items: items,
+        pageSize: pageSize,
+        isReachMax: isReachMax,
       );
 
-      final data = AcceptRequestModel.fromJson(response.data['data']);
-
       return Right(data);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioException(e));
@@ -51,4 +48,22 @@ class RegisterRequestsRepository {
     }
   }
 
+  Future<Either<Failure, AcceptRequestModel>> acceptRequest({
+    required AcceptRequestRequestBodyModel body,
+  }) async {
+    try {
+      final response = await _apiService.put(
+        "${EndPoints.request_accept}/${body.id}",
+        data: {'status': "confirmed"},
+      );
+
+      final data = AcceptRequestModel.fromJson(response.data);
+
+      return Right(data);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioException(e));
+    } catch (e) {
+      return Left(ServerFailure(e.toString()));
+    }
+  }
 }

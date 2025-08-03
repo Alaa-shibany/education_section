@@ -15,8 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RegisterRequestModel {
 
- int get id; String get student; String get course; double get payment;// ignore: invalid_annotation_target
-@JsonKey(name: 'created_at') String get createdAt;
+ int get id;@JsonKey(readValue: _readStudentName) String get student;@JsonKey(readValue: _readCourseName) String get course;@JsonKey(readValue: _readPayment) double get payment;@JsonKey(name: 'enrollment_date') String get createdAt;
 /// Create a copy of RegisterRequestModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +48,7 @@ abstract mixin class $RegisterRequestModelCopyWith<$Res>  {
   factory $RegisterRequestModelCopyWith(RegisterRequestModel value, $Res Function(RegisterRequestModel) _then) = _$RegisterRequestModelCopyWithImpl;
 @useResult
 $Res call({
- int id, String student, String course, double payment,@JsonKey(name: 'created_at') String createdAt
+ int id,@JsonKey(readValue: _readStudentName) String student,@JsonKey(readValue: _readCourseName) String course,@JsonKey(readValue: _readPayment) double payment,@JsonKey(name: 'enrollment_date') String createdAt
 });
 
 
@@ -158,7 +157,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String student,  String course,  double payment, @JsonKey(name: 'created_at')  String createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id, @JsonKey(readValue: _readStudentName)  String student, @JsonKey(readValue: _readCourseName)  String course, @JsonKey(readValue: _readPayment)  double payment, @JsonKey(name: 'enrollment_date')  String createdAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _RegisterRequestModel() when $default != null:
 return $default(_that.id,_that.student,_that.course,_that.payment,_that.createdAt);case _:
@@ -179,7 +178,7 @@ return $default(_that.id,_that.student,_that.course,_that.payment,_that.createdA
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String student,  String course,  double payment, @JsonKey(name: 'created_at')  String createdAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id, @JsonKey(readValue: _readStudentName)  String student, @JsonKey(readValue: _readCourseName)  String course, @JsonKey(readValue: _readPayment)  double payment, @JsonKey(name: 'enrollment_date')  String createdAt)  $default,) {final _that = this;
 switch (_that) {
 case _RegisterRequestModel():
 return $default(_that.id,_that.student,_that.course,_that.payment,_that.createdAt);case _:
@@ -199,7 +198,7 @@ return $default(_that.id,_that.student,_that.course,_that.payment,_that.createdA
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String student,  String course,  double payment, @JsonKey(name: 'created_at')  String createdAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id, @JsonKey(readValue: _readStudentName)  String student, @JsonKey(readValue: _readCourseName)  String course, @JsonKey(readValue: _readPayment)  double payment, @JsonKey(name: 'enrollment_date')  String createdAt)?  $default,) {final _that = this;
 switch (_that) {
 case _RegisterRequestModel() when $default != null:
 return $default(_that.id,_that.student,_that.course,_that.payment,_that.createdAt);case _:
@@ -214,15 +213,14 @@ return $default(_that.id,_that.student,_that.course,_that.payment,_that.createdA
 @JsonSerializable()
 
 class _RegisterRequestModel implements RegisterRequestModel {
-  const _RegisterRequestModel({required this.id, required this.student, required this.course, required this.payment, @JsonKey(name: 'created_at') required this.createdAt});
+  const _RegisterRequestModel({required this.id, @JsonKey(readValue: _readStudentName) required this.student, @JsonKey(readValue: _readCourseName) required this.course, @JsonKey(readValue: _readPayment) required this.payment, @JsonKey(name: 'enrollment_date') required this.createdAt});
   factory _RegisterRequestModel.fromJson(Map<String, dynamic> json) => _$RegisterRequestModelFromJson(json);
 
 @override final  int id;
-@override final  String student;
-@override final  String course;
-@override final  double payment;
-// ignore: invalid_annotation_target
-@override@JsonKey(name: 'created_at') final  String createdAt;
+@override@JsonKey(readValue: _readStudentName) final  String student;
+@override@JsonKey(readValue: _readCourseName) final  String course;
+@override@JsonKey(readValue: _readPayment) final  double payment;
+@override@JsonKey(name: 'enrollment_date') final  String createdAt;
 
 /// Create a copy of RegisterRequestModel
 /// with the given fields replaced by the non-null parameter values.
@@ -257,7 +255,7 @@ abstract mixin class _$RegisterRequestModelCopyWith<$Res> implements $RegisterRe
   factory _$RegisterRequestModelCopyWith(_RegisterRequestModel value, $Res Function(_RegisterRequestModel) _then) = __$RegisterRequestModelCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String student, String course, double payment,@JsonKey(name: 'created_at') String createdAt
+ int id,@JsonKey(readValue: _readStudentName) String student,@JsonKey(readValue: _readCourseName) String course,@JsonKey(readValue: _readPayment) double payment,@JsonKey(name: 'enrollment_date') String createdAt
 });
 
 

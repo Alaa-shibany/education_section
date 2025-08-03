@@ -418,6 +418,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show history'**
   String get show_history;
+
+  /// No description provided for @financial_treasury.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial treasury'**
+  String get financial_treasury;
+
+  /// No description provided for @study_materials.
+  ///
+  /// In en, this message translates to:
+  /// **'Study materials'**
+  String get study_materials;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

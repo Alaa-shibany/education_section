@@ -169,4 +169,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get show_history => 'عرض السجل';
+
+  @override
+  String get financial_treasury => 'الخزانة المالية';
+
+  @override
+  String get study_materials => 'المواد الدراسية';
 }

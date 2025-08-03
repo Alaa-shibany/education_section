@@ -26,7 +26,11 @@ class GetRequestsCubit extends Cubit<GetRequestsState> {
   );
 
   Future<List<RegisterRequestModel>> _fetchPage(int pageKey) async {
-    final result = await _repository.getRequests(page: pageKey);
+    final result = await _repository.getRequests(
+      page: pageKey,
+      courseName: courseController.text,
+      name: studentController.text,
+    );
     return result.fold((failure) {
       emit(
         state.copyWith(

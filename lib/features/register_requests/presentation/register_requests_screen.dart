@@ -17,7 +17,6 @@ class RegisterRequestsScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
-
         child: Column(
           children: [
             Row(
@@ -42,7 +41,7 @@ class RegisterRequestsScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextField(
-                    controller: registerRequestsCubit.studentController,
+                    controller: registerRequestsCubit.courseController,
                     onSubmitted: (value) {
                       registerRequestsCubit.pagingController.refresh();
                     },

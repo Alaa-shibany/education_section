@@ -4,6 +4,7 @@ import 'package:courses/features/teacher_profile/presentation/components/financi
 import 'package:courses/features/teacher_profile/presentation/components/manage_teacher_payment_dialog.dart';
 import 'package:courses/features/teacher_profile/presentation/components/subjects_section.dart';
 import 'package:courses/features/teacher_profile/presentation/components/teacher_info_card.dart';
+import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -14,6 +15,7 @@ class TeacherProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final paymentsCubit = context.read<GetPaymentsCubit>();
+    final translator = AppLocalizations.of(context)!;
     return BlocConsumer<GetPaymentsCubit, GetPaymentsState>(
       listener: (context, state) {
         // TODO: implement listener
@@ -29,16 +31,16 @@ class TeacherProfileScreen extends StatelessWidget {
                 children: [
                   TeacherInfoCard(teacher: state.teacher!),
                   const SizedBox(height: 30),
-                  const Text(
-                    'المواد الدراسية',
+                  Text(
+                    translator.study_materials,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.right,
                   ),
                   const SizedBox(height: 4),
                   SubjectsSection(subjects: []),
                   const SizedBox(height: 30),
-                  const Text(
-                    'الخزانة المالية',
+                  Text(
+                    translator.financial_treasury,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.right,
                   ),

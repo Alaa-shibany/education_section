@@ -8,8 +8,8 @@ class EndPoints {
   static const String deleteSubject = 'delete';
   static const String create = 'create';
   static const String update = 'update';
-  static const String requests = 'requests';
-  static const String request_accept = 'request/accept';
+  static const String requests = 'dashboard/course-enrollments/index';
+  static const String request_accept = 'dashboard/course-enrollments/update';
   static const String admins = 'admins';
   static const String createAdmin = 'createAdmin';
   static const String dashboard_admins_helper = 'dashboard/admins/helper';

@@ -44,6 +44,8 @@
     "dues_pending_transfer":"مستحقات قيد التحويل",
     "transfer_of_dues":"تحويل المستحقات",
     "no_dues_for_now":"لا يوجد مستحقات حاليا",
-    "show_history":"عرض السجل"
+    "show_history":"عرض السجل",
+     "financial_treasury":"الخزانة المالية",
+    "study_materials":"المواد الدراسية"
 
 }
