@@ -35,6 +35,15 @@
   "username":"اسم المستخدم",
   "please_enter_name":"رجاء ادخل اسم المستخدم",
    "error":"حدث خطأ",
-    "ok":"حسنا"
+    "ok":"حسنا",
+    "paid_dues":"المستحقات المدفوعة",
+    "pending_dues":"المستحقات المعلقة",
+    "session_date":"تاريخ الجلسة",
+    "dues":"المستحقات",
+    "pay":"دفع",
+    "dues_pending_transfer":"مستحقات قيد التحويل",
+    "transfer_of_dues":"تحويل المستحقات",
+    "no_dues_for_now":"لا يوجد مستحقات حاليا",
+    "show_history":"عرض السجل"
 
 }

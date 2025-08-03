@@ -9,4 +9,5 @@ class ApplicationImages {
   static const String teacherSVG = 'assets/svg/teacher.svg';
   static const String requestSVG = 'assets/svg/request.svg';
   static const String adminSVG = 'assets/svg/admin.svg';
+  static const String sessionSVG = 'assets/svg/session.svg';
 }

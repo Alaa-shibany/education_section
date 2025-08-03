@@ -4,7 +4,6 @@ import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
 import '../../repo/teacher_profile_repository.dart';
-import '../../models/teacher_payments.dart';
 
 part 'get_payments_state.dart';
 part 'get_payments_cubit.freezed.dart';
@@ -17,6 +16,15 @@ class GetPaymentsCubit extends Cubit<GetPaymentsState> {
   void initState({required TeacherModel teacher}) async {
     emit(state.copyWith(teacher: teacher));
     await getPayments(teacherId: teacher.id.toString());
+  }
+
+  void changeToPaid(PaymentDetail payment) {
+    final currentList = state.data as List<PaymentDetail>;
+    final index = state.data!.indexWhere((element) => element.id == payment.id);
+    final newList = List<PaymentDetail>.from(currentList);
+    final newPayment = payment.copyWith(isPaid: true);
+    newList[index] = newPayment;
+    emit(state.copyWith(data: newList));
   }
 
   double getPaidDues() {

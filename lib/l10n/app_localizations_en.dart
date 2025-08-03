@@ -142,4 +142,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ok => 'Ok';
+
+  @override
+  String get paid_dues => 'Paid Dues';
+
+  @override
+  String get pending_dues => 'Pending Dues';
+
+  @override
+  String get session_date => 'Session date';
+
+  @override
+  String get dues => 'Dues';
+
+  @override
+  String get pay => 'Pay';
+
+  @override
+  String get dues_pending_transfer => 'Dues pending transfer';
+
+  @override
+  String get transfer_of_dues => 'Transfer of Dues';
+
+  @override
+  String get no_dues_for_now => 'No dues for now';
+
+  @override
+  String get show_history => 'Show history';
 }

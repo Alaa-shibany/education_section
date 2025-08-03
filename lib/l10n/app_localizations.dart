@@ -364,6 +364,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ok'**
   String get ok;
+
+  /// No description provided for @paid_dues.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid Dues'**
+  String get paid_dues;
+
+  /// No description provided for @pending_dues.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Dues'**
+  String get pending_dues;
+
+  /// No description provided for @session_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Session date'**
+  String get session_date;
+
+  /// No description provided for @dues.
+  ///
+  /// In en, this message translates to:
+  /// **'Dues'**
+  String get dues;
+
+  /// No description provided for @pay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get pay;
+
+  /// No description provided for @dues_pending_transfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Dues pending transfer'**
+  String get dues_pending_transfer;
+
+  /// No description provided for @transfer_of_dues.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer of Dues'**
+  String get transfer_of_dues;
+
+  /// No description provided for @no_dues_for_now.
+  ///
+  /// In en, this message translates to:
+  /// **'No dues for now'**
+  String get no_dues_for_now;
+
+  /// No description provided for @show_history.
+  ///
+  /// In en, this message translates to:
+  /// **'Show history'**
+  String get show_history;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

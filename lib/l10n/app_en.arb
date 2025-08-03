@@ -44,6 +44,15 @@
   "username":"Username",
     "please_enter_name":"Please enter username",
     "error":"Error",
-    "ok":"Ok"
+    "ok":"Ok",
+    "paid_dues":"Paid Dues",
+    "pending_dues":"Pending Dues",
+    "session_date":"Session date",
+    "dues":"Dues",
+    "pay":"Pay",
+    "dues_pending_transfer":"Dues pending transfer",
+    "transfer_of_dues":"Transfer of Dues",
+    "no_dues_for_now":"No dues for now",
+    "show_history":"Show history"
 
 }

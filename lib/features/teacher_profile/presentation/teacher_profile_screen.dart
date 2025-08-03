@@ -1,6 +1,7 @@
 import 'package:courses/core/services/status.dart';
 import 'package:courses/features/teacher_profile/cubits/get_payments_cubit/get_payments_cubit.dart';
 import 'package:courses/features/teacher_profile/presentation/components/financial_section.dart';
+import 'package:courses/features/teacher_profile/presentation/components/manage_teacher_payment_dialog.dart';
 import 'package:courses/features/teacher_profile/presentation/components/subjects_section.dart';
 import 'package:courses/features/teacher_profile/presentation/components/teacher_info_card.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,21 @@ class TeacherProfileScreen extends StatelessWidget {
                       pendingDues: state.status == SubmissionStatus.loading
                           ? 5200.00
                           : paymentsCubit.getPendingDues(),
-                      onTransfer: () {},
+
+                      onTransfer: () {
+                        showManageTeacherPaymentDialog(
+                          context: context,
+                          paymentCubit: paymentsCubit,
+                          isPending: true,
+                        );
+                      },
+                      onHistory: () {
+                        showManageTeacherPaymentDialog(
+                          context: context,
+                          paymentCubit: paymentsCubit,
+                          isPending: false,
+                        );
+                      },
                     ),
                   ),
                 ],

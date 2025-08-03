@@ -142,4 +142,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ok => 'حسنا';
+
+  @override
+  String get paid_dues => 'المستحقات المدفوعة';
+
+  @override
+  String get pending_dues => 'المستحقات المعلقة';
+
+  @override
+  String get session_date => 'تاريخ الجلسة';
+
+  @override
+  String get dues => 'المستحقات';
+
+  @override
+  String get pay => 'دفع';
+
+  @override
+  String get dues_pending_transfer => 'مستحقات قيد التحويل';
+
+  @override
+  String get transfer_of_dues => 'تحويل المستحقات';
+
+  @override
+  String get no_dues_for_now => 'لا يوجد مستحقات حاليا';
+
+  @override
+  String get show_history => 'عرض السجل';
 }
