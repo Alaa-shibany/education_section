@@ -1,31 +1,29 @@
 import 'package:courses/config/constants/application_images.dart';
-import 'package:courses/features/course_profile/models/session_model.dart';
+import 'package:courses/features/session_profile/models/quiz_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 
-class SessionListItem extends StatefulWidget {
-  final SessionModel sessionItem;
-  final int index;
-  final VoidCallback onSync;
+class QuizListItem extends StatefulWidget {
+  final QuizModel quizItem;
 
-  const SessionListItem({
+  final VoidCallback onEdit;
+  final VoidCallback onDelete;
+
+  const QuizListItem({
     super.key,
-    required this.index,
-    required this.sessionItem,
+    required this.quizItem,
 
-    required this.onSync,
+    required this.onEdit,
+    required this.onDelete,
   });
 
   @override
-  State<SessionListItem> createState() => _TeacherListItemState();
+  State<QuizListItem> createState() => _TeacherListItemState();
 }
 
-class _TeacherListItemState extends State<SessionListItem> {
+class _TeacherListItemState extends State<QuizListItem> {
   bool _isHovered = false;
   @override
   Widget build(BuildContext context) {
@@ -40,8 +38,8 @@ class _TeacherListItemState extends State<SessionListItem> {
             ? (Matrix4.identity()..translate(0, -4, 0))
             : Matrix4.identity(),
         child: InkWell(
-          onTap: () =>
-              context.push(AppRoutes.sessionProfile, extra: widget.sessionItem),
+          // onTap: () =>
+          //     context.push(AppRoutes.teacherProfile, extra: widget.subjectItem),
           child: Card(
             elevation: 2,
             margin: const EdgeInsets.symmetric(vertical: 5),
@@ -61,7 +59,7 @@ class _TeacherListItemState extends State<SessionListItem> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: SvgPicture.asset(
-                      ApplicationImages.sessionSVG,
+                      ApplicationImages.teacherSVG,
                       height: 30,
                       width: 30,
                       colorFilter: ColorFilter.mode(
@@ -76,7 +74,7 @@ class _TeacherListItemState extends State<SessionListItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${translator.session} ${widget.index}",
+                          "Goal: ${widget.quizItem.goal}",
                           style: GoogleFonts.poppins(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -86,16 +84,7 @@ class _TeacherListItemState extends State<SessionListItem> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '${translator.session_date}: ${DateFormat('d-m-y').format(DateTime.parse(widget.sessionItem.sessionDate))}',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-
-                        Text(
-                          '${translator.started}: ${widget.sessionItem.startTime}  ${translator.finished}: ${widget.sessionItem.endTime}',
+                          "Description: ${widget.quizItem.description}",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey.shade600,
@@ -105,23 +94,55 @@ class _TeacherListItemState extends State<SessionListItem> {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  PopupMenuButton<String>(
-                    onSelected: (value) {
-                      if (value == 'sync') {
-                        widget.onSync();
-                      }
-                    },
-                    itemBuilder: (BuildContext context) =>
-                        <PopupMenuEntry<String>>[
-                          PopupMenuItem<String>(
-                            value: 'sync',
-                            child: ListTile(
-                              leading: Icon(Icons.edit_outlined),
-                              title: Text(translator.sync_attendance),
-                            ),
-                          ),
-                        ],
-                    icon: Icon(Icons.more_vert, color: Colors.grey.shade700),
+                  Row(
+                    spacing: 10,
+                    children: [
+                      Text(
+                        "Success: ${widget.quizItem.successMark}",
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      PopupMenuButton<String>(
+                        onSelected: (value) {
+                          if (value == 'edit') {
+                            widget.onEdit();
+                          } else if (value == 'delete') {
+                            widget.onDelete();
+                          }
+                        },
+                        itemBuilder: (BuildContext context) =>
+                            <PopupMenuEntry<String>>[
+                              PopupMenuItem<String>(
+                                value: 'edit',
+                                child: ListTile(
+                                  leading: Icon(Icons.edit_outlined),
+                                  title: Text(translator.edit),
+                                ),
+                              ),
+                              PopupMenuItem<String>(
+                                value: 'delete',
+                                child: ListTile(
+                                  leading: Icon(
+                                    Icons.delete_outline,
+                                    color: Colors.red,
+                                  ),
+                                  title: Text(
+                                    translator.delete,
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                              ),
+                            ],
+                        icon: Icon(
+                          Icons.more_vert,
+                          color: Colors.grey.shade700,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -6,6 +6,7 @@ class AppRoutes {
     static const String admins = '/admins';
     static const String courses = '/courses';
     static const String courseProfile = '/course_profile';
+    static const String sessionProfile = '/session_profile';
   //<-- DONT_REMOVE_THIS_LINE_ROUTES -->
 
   static const String login = '/login';

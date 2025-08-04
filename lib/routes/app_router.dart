@@ -1,6 +1,7 @@
 import 'package:courses/core/services/service_locator.dart';
 import 'package:courses/features/admins/cubits/admins_cubit/admins_cubit.dart';
 import 'package:courses/features/course_profile/cubits/get_sessions_cubit/get_sessions_cubit.dart';
+import 'package:courses/features/course_profile/models/session_model.dart';
 import 'package:courses/features/courses/cubits/get_courses_cubit/get_courses_cubit.dart';
 import 'package:courses/features/courses/cubits/update_course_status_cubit/update_course_status_cubit.dart';
 import 'package:courses/features/courses/models/course_model.dart';
@@ -11,6 +12,7 @@ import 'package:courses/features/navigator/presentation/navigate_screen.dart';
 import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';
 import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
 import 'package:courses/features/register_requests/presentation/register_requests_screen.dart';
+import 'package:courses/features/session_profile/cubits/get_session_profile_cubit/get_session_profile_cubit.dart';
 import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
 import 'package:courses/features/teacher_profile/cubits/get_payments_cubit/get_payments_cubit.dart';
@@ -24,6 +26,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'unknown_page.dart';
 import 'navigator_observer.dart';
+import 'package:courses/features/session_profile/presentation/session_profile_screen.dart';
 import 'package:courses/features/course_profile/presentation/course_profile_screen.dart';
 import 'package:courses/features/courses/presentation/courses_screen.dart';
 import 'package:courses/features/admins/presentation/admins_screen.dart';
@@ -60,6 +63,22 @@ class AppRouter {
           return BlocProvider(
             create: (context) => sl<GetSessionsCubit>()..initState(course),
             child: MainLayout(body: CourseProfileScreen()),
+          );
+        },
+      ),
+
+      GoRoute(
+        name: 'sessionProfile',
+        path: AppRoutes.sessionProfile,
+        builder: (context, state) {
+          final session = state.extra as SessionModel;
+          return BlocProvider(
+            create: (context) =>
+                sl<GetSessionProfileCubit>()..initState(session),
+            child: MainLayout(
+              extendBody: false,
+              body: const SessionProfileScreen(),
+            ),
           );
         },
       ),

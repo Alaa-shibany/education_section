@@ -1,0 +1,68 @@
+{
+  "feature_name": "SessionsProfile",
+  "apis": [
+    {
+      "name": "getSessionProfile",
+      "endpoint": "dashboard/course-sessions/show",
+      "request_type": "GET",
+      "pagination": false,
+      "query_parameters": [
+        { "type": "int", "name": "session" }
+      ],
+      "list_response_model": [
+        { "name": "SessionProfileModel", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "sessionDate", "type": "String", "json_key":"session_date" },
+          { "name": "startTime", "type": "String" , "json_key":"start_time" },
+          { "name": "endTime", "type": "String" , "json_key":"end_time" },
+                    { "name": "quizzes", "type": "List<QuizModel>"  },
+                                        { "name": "homeworksDue", "type": "homeworksDueModel"  }
+
+
+          ] },
+          { "name": "QuizModel", "fields": [
+         { "name": "id", "type": "int" },
+          { "name": "description", "type": "String"},
+          { "name": "goal", "type": "String" },
+          { "name": "successMark", "type": "int" ,"json_key":"success_mark"}
+          ] },
+          { "name": "homeworksDue", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "description", "type": "String"},
+          { "name": "goal", "type": "String" }
+          ] }
+      ]
+    },
+    {
+      "name": "createHomework",
+      "endpoint": "dashboard/homeworks/create",
+      "request_type": "POST",
+      
+      "body": {
+        "description": "String",
+        "goal": "String",
+        "course_id": "int",
+        "due_session_id": "int"
+      },
+      "response_model": {
+        "name": "CreateHomeworkResponseModel",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    },
+    {
+      "name": "createQuiz",
+      "endpoint": "dashboard/quizzes/create",
+      "request_type": "POST",
+      "body": {
+        "description": "String",
+        "goal": "String",
+        "success_mark": "int",
+        "course_session_id": "int"
+      },
+      "response_model": {
+        "name": "CreateQuizResponseModel",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    }
+  ]
+}

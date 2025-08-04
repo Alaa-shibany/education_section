@@ -31,4 +31,8 @@ class EndPoints {
   static const String dashboard_course_sessions_all =
       'dashboard/course-sessions/all';
   static const String attendance_sync = 'attendance/sync';
+  static const String dashboard_course_sessions_show =
+      'dashboard/course-sessions/show';
+  static const String dashboard_homeworks_create = 'dashboard/homeworks/create';
+  static const String dashboard_quizzes_create = 'dashboard/quizzes/create';
 }

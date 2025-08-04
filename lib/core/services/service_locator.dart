@@ -1,3 +1,8 @@
+import 'package:courses/features/session_profile/repo/sessions_profile_repository.dart';
+import 'package:courses/features/session_profile/cubits/create_quiz_cubit/create_quiz_cubit.dart';
+import 'package:courses/features/session_profile/cubits/create_homework_cubit/create_homework_cubit.dart';
+import 'package:courses/features/session_profile/cubits/get_session_profile_cubit/get_session_profile_cubit.dart';
+
 import 'package:courses/features/course_profile/repo/sessions_repository.dart';
 import 'package:courses/features/course_profile/cubits/sync_attendance_cubit/sync_attendance_cubit.dart';
 import 'package:courses/features/course_profile/cubits/get_sessions_cubit/get_sessions_cubit.dart';
@@ -111,4 +116,8 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => GetSessionsCubit(sl()));
   sl.registerFactory(() => SyncAttendanceCubit(sl()));
   sl.registerLazySingleton(() => SessionsRepository(sl()));
+  sl.registerFactory(() => GetSessionProfileCubit(sl()));
+  sl.registerFactory(() => CreateHomeworkCubit(sl()));
+  sl.registerFactory(() => CreateQuizCubit(sl()));
+  sl.registerLazySingleton(() => SessionsProfileRepository(sl()));
 }
