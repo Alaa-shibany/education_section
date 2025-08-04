@@ -3,6 +3,8 @@ import 'package:courses/features/courses/cubits/get_courses_cubit/get_courses_cu
 import 'package:courses/features/courses/cubits/update_course_status_cubit/update_course_status_cubit.dart';
 import 'package:courses/features/courses/models/course_model.dart';
 import 'package:courses/features/courses/presentation/components/course_list_item.dart';
+import 'package:courses/features/courses/presentation/components/courses_filter_panel.dart';
+import 'package:courses/features/courses/presentation/components/manage_teacher_dialog.dart';
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:courses/shared/dialogs/error_dialog.dart';
 import 'package:courses/shared/dialogs/loading_dialog.dart';
@@ -12,14 +14,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-class CoursesScreen extends StatelessWidget {
+class CoursesScreen extends StatefulWidget {
   const CoursesScreen({super.key});
+
+  @override
+  State<CoursesScreen> createState() => _CoursesScreenState();
+}
+
+class _CoursesScreenState extends State<CoursesScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     final coursesCubit = context.read<GetCoursesCubit>();
     final translator = AppLocalizations.of(context)!;
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: CoursesFilterPanel(),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
 
@@ -31,7 +42,7 @@ class CoursesScreen extends StatelessWidget {
                   child: BlocBuilder<GetCoursesCubit, GetCoursesState>(
                     builder: (context, state) {
                       return TextField(
-                        // controller: state.searchNameController,
+                        controller: coursesCubit.searchNameController,
                         onSubmitted: (value) {
                           coursesCubit.pagingController.refresh();
                         },
@@ -55,6 +66,7 @@ class CoursesScreen extends StatelessWidget {
                 FilledButton.icon(
                   onPressed: () {
                     // showManageTeacherDialog(context, teachersCubit);
+                    showManageCourseDialog(context, coursesCubit);
                   },
                   icon: const Icon(Icons.add),
                   label: Text(translator.add_new),
@@ -70,6 +82,21 @@ class CoursesScreen extends StatelessWidget {
                 ),
 
                 const SizedBox(width: 8),
+
+                BlocBuilder<GetCoursesCubit, GetCoursesState>(
+                  builder: (context, state) {
+                    return Badge(
+                      isLabelVisible: state.badgeCount > 0,
+                      label: Text(state.badgeCount.toString()),
+                      child: IconButton.filled(
+                        onPressed: () =>
+                            _scaffoldKey.currentState?.openEndDrawer(),
+                        icon: const Icon(Icons.filter_list),
+                        tooltip: 'Advanced Filters',
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
 

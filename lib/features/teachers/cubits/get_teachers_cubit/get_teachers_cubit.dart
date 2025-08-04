@@ -17,7 +17,7 @@ class GetTeachersCubit extends Cubit<GetTeachersState> {
   GetTeachersCubit(this._repository) : super(const GetTeachersState());
   late final List<TextEditingController> controllers;
 
-  void initState() {
+  Future<void> initState() async {
     emit(
       state.copyWith(
         emailNameController: TextEditingController(),
@@ -56,25 +56,43 @@ class GetTeachersCubit extends Cubit<GetTeachersState> {
   late final pagingController = PagingController<int, TeacherModel>(
     getNextPageKey: (state) =>
         state.lastPageIsEmpty ? null : state.nextIntPageKey,
-    fetchPage: (pageKey) => _fetchPage(pageKey),
+    fetchPage: (pageKey) => fetchPage(pageKey),
   );
 
-  Future<List<TeacherModel>> _fetchPage(int pageKey) async {
+  Future<List<TeacherModel>> fetchPage(int pageKey) async {
+    emit(state.copyWith(status: SubmissionStatus.loading));
     final result = await _repository.getTeachers(
       page: pageKey,
-      name: state.searchNameController!.text,
-      phone: state.phoneNameController!.text,
-      email: state.emailNameController!.text,
+      name: state.searchNameController == null
+          ? ''
+          : state.searchNameController!.text,
+      phone: state.phoneNameController == null
+          ? ''
+          : state.phoneNameController!.text,
+      email: state.emailNameController == null
+          ? ''
+          : state.emailNameController!.text,
     );
-    return result.fold((failure) {
-      emit(
-        state.copyWith(
-          status: SubmissionStatus.error,
-          errorMessage: failure.message,
-        ),
-      );
-      return [];
-    }, (paginationData) => paginationData.items);
+    return result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            status: SubmissionStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
+        return [];
+      },
+      (paginationData) {
+        emit(
+          state.copyWith(
+            data: paginationData,
+            status: SubmissionStatus.success,
+          ),
+        );
+        return paginationData.items;
+      },
+    );
   }
 
   @override

@@ -16,11 +16,19 @@ class CoursesRepository {
 
   Future<Either<Failure, PaginationModel<CourseModel>>> getCourses({
     required int page,
+    required String teacherName,
+    required String subjectName,
+    required String name,
   }) async {
     try {
       final response = await _apiService.get(
         EndPoints.dashboard_courses_index,
-        queryParams: {'page': page},
+        queryParams: {
+          'page': page,
+          'teacher[full_name]': teacherName,
+          'subject[name]': subjectName,
+          'name': name,
+        },
       );
 
       final items = (response.data['data']['data'] as List)

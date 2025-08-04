@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateCourseState {
 
- SubmissionStatus get status; AcceptRequestModel? get data; String? get errorMessage;
+ SubmissionStatus get status; AcceptRequestModel? get data; bool get isDaily; String? get errorMessage;
 /// Create a copy of CreateCourseState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CreateCourseStateCopyWith<CreateCourseState> get copyWith => _$CreateCourseStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCourseState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateCourseState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.isDaily, isDaily) || other.isDaily == isDaily)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,data,isDaily,errorMessage);
 
 @override
 String toString() {
-  return 'CreateCourseState(status: $status, data: $data, errorMessage: $errorMessage)';
+  return 'CreateCourseState(status: $status, data: $data, isDaily: $isDaily, errorMessage: $errorMessage)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $CreateCourseStateCopyWith<$Res>  {
   factory $CreateCourseStateCopyWith(CreateCourseState value, $Res Function(CreateCourseState) _then) = _$CreateCourseStateCopyWithImpl;
 @useResult
 $Res call({
- SubmissionStatus status, AcceptRequestModel? data, String? errorMessage
+ SubmissionStatus status, AcceptRequestModel? data, bool isDaily, String? errorMessage
 });
 
 
@@ -62,11 +62,12 @@ class _$CreateCourseStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCourseState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? isDaily = null,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as AcceptRequestModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as AcceptRequestModel?,isDaily: null == isDaily ? _self.isDaily : isDaily // ignore: cast_nullable_to_non_nullable
+as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -164,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  AcceptRequestModel? data,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  AcceptRequestModel? data,  bool isDaily,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.isDaily,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -185,10 +186,10 @@ return $default(_that.status,_that.data,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  AcceptRequestModel? data,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  AcceptRequestModel? data,  bool isDaily,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.status,_that.data,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.isDaily,_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +206,10 @@ return $default(_that.status,_that.data,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  AcceptRequestModel? data,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  AcceptRequestModel? data,  bool isDaily,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.isDaily,_that.errorMessage);case _:
   return null;
 
 }
@@ -220,11 +221,12 @@ return $default(_that.status,_that.data,_that.errorMessage);case _:
 
 
 class _CreateTeacherState implements CreateCourseState {
-  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.errorMessage});
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.isDaily = true, this.errorMessage});
   
 
 @override@JsonKey() final  SubmissionStatus status;
 @override final  AcceptRequestModel? data;
+@override@JsonKey() final  bool isDaily;
 @override final  String? errorMessage;
 
 /// Create a copy of CreateCourseState
@@ -237,16 +239,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.isDaily, isDaily) || other.isDaily == isDaily)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,data,isDaily,errorMessage);
 
 @override
 String toString() {
-  return 'CreateCourseState(status: $status, data: $data, errorMessage: $errorMessage)';
+  return 'CreateCourseState(status: $status, data: $data, isDaily: $isDaily, errorMessage: $errorMessage)';
 }
 
 
@@ -257,7 +259,7 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $CreateCourse
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- SubmissionStatus status, AcceptRequestModel? data, String? errorMessage
+ SubmissionStatus status, AcceptRequestModel? data, bool isDaily, String? errorMessage
 });
 
 
@@ -274,11 +276,12 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateCourseState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? isDaily = null,Object? errorMessage = freezed,}) {
   return _then(_CreateTeacherState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as AcceptRequestModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as AcceptRequestModel?,isDaily: null == isDaily ? _self.isDaily : isDaily // ignore: cast_nullable_to_non_nullable
+as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

@@ -122,7 +122,9 @@ class AppRouter {
             path: AppRoutes.courses,
             builder: (context, state) => MultiBlocProvider(
               providers: [
-                BlocProvider(create: (context) => sl<GetCoursesCubit>()),
+                BlocProvider(
+                  create: (context) => sl<GetCoursesCubit>()..initState(),
+                ),
                 BlocProvider(
                   create: (context) => sl<UpdateCourseStatusCubit>(),
                 ),

@@ -1,5 +1,6 @@
 import 'package:courses/features/courses/models/status_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,11 +18,46 @@ class GetCoursesCubit extends Cubit<GetCoursesState> {
 
   GetCoursesCubit(this._repository) : super(const GetCoursesState());
 
+  final searchNameController = TextEditingController();
+  final searchSubjectController = TextEditingController();
+  final searchTeacherController = TextEditingController();
+
   late final pagingController = PagingController<int, CourseModel>(
     getNextPageKey: (state) =>
         state.lastPageIsEmpty ? null : state.nextIntPageKey,
     fetchPage: (pageKey) => _fetchPage(pageKey),
   );
+
+  void refreshFilters() {
+    searchNameController.clear();
+    searchSubjectController.clear();
+    searchTeacherController.clear();
+    pagingController.refresh();
+  }
+
+  late final List<TextEditingController> controllers;
+
+  Future<void> initState() async {
+    controllers = [
+      searchNameController,
+      searchSubjectController,
+      searchTeacherController,
+    ];
+    for (final controller in controllers) {
+      controller.addListener(_updateBadgeCount);
+    }
+  }
+
+  void _updateBadgeCount() {
+    int count = 0;
+    for (final controller in controllers) {
+      if (controller.text.isNotEmpty) {
+        count++;
+      }
+    }
+    print('We are here');
+    emit(state.copyWith(badgeCount: count));
+  }
 
   StatusModel getNextStatus(String status, AppLocalizations translator) {
     final statuses = ['created', 'announced', 'started', 'finished'];
@@ -39,7 +75,12 @@ class GetCoursesCubit extends Cubit<GetCoursesState> {
   }
 
   Future<List<CourseModel>> _fetchPage(int pageKey) async {
-    final result = await _repository.getCourses(page: pageKey);
+    final result = await _repository.getCourses(
+      page: pageKey,
+      name: searchNameController.text,
+      subjectName: searchSubjectController.text,
+      teacherName: searchTeacherController.text,
+    );
     return result.fold((failure) {
       emit(
         state.copyWith(
