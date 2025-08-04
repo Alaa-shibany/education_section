@@ -61,6 +61,18 @@
     "created":"Created",
     "announced":"Announced",
     "started":"Started",
-    "finished":"Finished"
+    "finished":"Finished",
+    "general_info":"Genreral info",
+    "not_specified":"Not specified",
+    "success_rate":"Success rate",
+    "register_price":"Register price",
+    "phone":"Phone",
+    "name":"Name",
+    "day":"Day",
+    "teacher_salary":"Teacher salary",
+    "payment_deadline":"Payment deadline",
+    "session":"Session",
+    "sync_attendance":"Sync attendance",
+    "sessions":"Sessions"
 
 }

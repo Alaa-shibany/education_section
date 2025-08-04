@@ -1,6 +1,6 @@
 import 'package:courses/core/services/status.dart';
 import 'package:courses/features/courses/cubits/create_course_cubit/create_course_cubit.dart';
-import 'package:courses/features/courses/presentation/helper/text_feilds.dart';
+import 'package:courses/helper/text_feilds.dart';
 import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/subjects/models/subject_model.dart';
 import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';

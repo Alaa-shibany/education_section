@@ -6,9 +6,11 @@ import 'package:courses/features/courses/models/update_course_status_request_bod
 import 'package:courses/features/courses/presentation/components/status_line.dart';
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:courses/layouts/responsive_layout.dart';
+import 'package:courses/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CourseListItem extends StatefulWidget {
@@ -46,7 +48,9 @@ class _TeacherListItemState extends State<CourseListItem> {
             ? (Matrix4.identity()..translate(0, -4, 0))
             : Matrix4.identity(),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            context.push(AppRoutes.courseProfile, extra: widget.courseItem);
+          },
           child: Card(
             elevation: 2,
             margin: const EdgeInsets.symmetric(vertical: 5),

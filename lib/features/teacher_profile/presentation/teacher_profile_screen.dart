@@ -4,6 +4,7 @@ import 'package:courses/features/teacher_profile/presentation/components/financi
 import 'package:courses/features/teacher_profile/presentation/components/manage_teacher_payment_dialog.dart';
 import 'package:courses/features/teacher_profile/presentation/components/subjects_section.dart';
 import 'package:courses/features/teacher_profile/presentation/components/teacher_info_card.dart';
+import 'package:courses/helper/text_feilds.dart';
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,20 +32,14 @@ class TeacherProfileScreen extends StatelessWidget {
                 children: [
                   TeacherInfoCard(teacher: state.teacher!),
                   const SizedBox(height: 30),
-                  Text(
-                    translator.study_materials,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.right,
-                  ),
+                  buildSectionHeader(context, translator.study_materials),
+
                   const SizedBox(height: 4),
                   SubjectsSection(subjects: []),
                   const SizedBox(height: 30),
-                  Text(
-                    translator.financial_treasury,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.right,
-                  ),
-                  const SizedBox(height: 4),
+                  buildSectionHeader(context, translator.financial_treasury),
+
+                  // const SizedBox(height: 4),
                   Skeletonizer(
                     enabled: state.status == SubmissionStatus.loading,
                     child: FinancialSection(

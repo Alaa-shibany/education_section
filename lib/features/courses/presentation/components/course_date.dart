@@ -1,5 +1,5 @@
 import 'package:courses/features/courses/cubits/create_course_cubit/create_course_cubit.dart';
-import 'package:courses/features/courses/presentation/helper/text_feilds.dart';
+import 'package:courses/helper/text_feilds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';

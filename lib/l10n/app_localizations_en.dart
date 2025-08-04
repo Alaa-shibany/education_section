@@ -193,4 +193,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get finished => 'Finished';
+
+  @override
+  String get general_info => 'Genreral info';
+
+  @override
+  String get not_specified => 'Not specified';
+
+  @override
+  String get success_rate => 'Success rate';
+
+  @override
+  String get register_price => 'Register price';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get day => 'Day';
+
+  @override
+  String get teacher_salary => 'Teacher salary';
+
+  @override
+  String get payment_deadline => 'Payment deadline';
+
+  @override
+  String get session => 'Session';
+
+  @override
+  String get sync_attendance => 'Sync attendance';
+
+  @override
+  String get sessions => 'Sessions';
 }

@@ -32,3 +32,34 @@ InputDecoration buildInputDecoration({
     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
   );
 }
+
+Widget buildInfoRow(
+  BuildContext context, {
+  required IconData icon,
+  required String title,
+  required String value,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Row(
+      children: [
+        Icon(icon, color: Theme.of(context).colorScheme.primary, size: 20),
+        const SizedBox(width: 16),
+        Text(
+          '$title: ',
+          style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w600),
+        ),
+        Expanded(
+          child: Text(
+            value,
+            style: GoogleFonts.poppins(
+              fontSize: 15,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+    ),
+  );
+}

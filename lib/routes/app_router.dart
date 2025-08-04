@@ -1,7 +1,9 @@
 import 'package:courses/core/services/service_locator.dart';
 import 'package:courses/features/admins/cubits/admins_cubit/admins_cubit.dart';
+import 'package:courses/features/course_profile/cubits/get_sessions_cubit/get_sessions_cubit.dart';
 import 'package:courses/features/courses/cubits/get_courses_cubit/get_courses_cubit.dart';
 import 'package:courses/features/courses/cubits/update_course_status_cubit/update_course_status_cubit.dart';
+import 'package:courses/features/courses/models/course_model.dart';
 import 'package:courses/features/home/presentation/home_screen.dart';
 import 'package:courses/features/login/cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
@@ -22,6 +24,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'unknown_page.dart';
 import 'navigator_observer.dart';
+import 'package:courses/features/course_profile/presentation/course_profile_screen.dart';
 import 'package:courses/features/courses/presentation/courses_screen.dart';
 import 'package:courses/features/admins/presentation/admins_screen.dart';
 
@@ -47,6 +50,18 @@ class AppRouter {
         path: AppRoutes.splash,
         builder: (context, state) =>
             const Scaffold(body: Center(child: Text("Splash Screen"))),
+      ),
+
+      GoRoute(
+        name: 'course_profile',
+        path: AppRoutes.courseProfile,
+        builder: (context, state) {
+          final course = state.extra as CourseModel;
+          return BlocProvider(
+            create: (context) => sl<GetSessionsCubit>()..initState(course),
+            child: MainLayout(body: CourseProfileScreen()),
+          );
+        },
       ),
 
       //<-- DONT_REMOVE_THIS_LINE_GOROUTES -->

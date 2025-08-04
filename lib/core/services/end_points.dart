@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class EndPoints {
   static const String baseUrl = 'http://127.0.0.1:8000/api/';
   static const String home = 'home';
@@ -26,4 +28,7 @@ class EndPoints {
   static const String dashboard_courses_index = 'dashboard/courses/index';
   static const String dashboard_courses_create = 'dashboard/courses/create';
   static const String dashboard_courses_update = 'dashboard/courses/update';
+  static const String dashboard_course_sessions_all =
+      'dashboard/course-sessions/all';
+  static const String attendance_sync = 'attendance/sync';
 }

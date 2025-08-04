@@ -193,4 +193,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get finished => 'انتهت';
+
+  @override
+  String get general_info => 'معلومات عامة';
+
+  @override
+  String get not_specified => 'غير محدد';
+
+  @override
+  String get success_rate => 'نسبة النجاح';
+
+  @override
+  String get register_price => 'سعر التسجيل';
+
+  @override
+  String get phone => 'رقم الهاتف';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get day => 'يوم';
+
+  @override
+  String get teacher_salary => 'راتب المدرس';
+
+  @override
+  String get payment_deadline => 'مهلة الدفع';
+
+  @override
+  String get session => 'جلسة';
+
+  @override
+  String get sync_attendance => 'تفقد الحضور';
+
+  @override
+  String get sessions => 'الجلسات';
 }

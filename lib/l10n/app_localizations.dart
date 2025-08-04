@@ -466,6 +466,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Finished'**
   String get finished;
+
+  /// No description provided for @general_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Genreral info'**
+  String get general_info;
+
+  /// No description provided for @not_specified.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get not_specified;
+
+  /// No description provided for @success_rate.
+  ///
+  /// In en, this message translates to:
+  /// **'Success rate'**
+  String get success_rate;
+
+  /// No description provided for @register_price.
+  ///
+  /// In en, this message translates to:
+  /// **'Register price'**
+  String get register_price;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @day.
+  ///
+  /// In en, this message translates to:
+  /// **'Day'**
+  String get day;
+
+  /// No description provided for @teacher_salary.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher salary'**
+  String get teacher_salary;
+
+  /// No description provided for @payment_deadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment deadline'**
+  String get payment_deadline;
+
+  /// No description provided for @session.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get session;
+
+  /// No description provided for @sync_attendance.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync attendance'**
+  String get sync_attendance;
+
+  /// No description provided for @sessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions'**
+  String get sessions;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

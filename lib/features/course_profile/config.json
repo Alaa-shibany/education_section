@@ -1,0 +1,38 @@
+{
+  "feature_name": "Sessions",
+  "apis": [
+    {
+      "name": "getSessions",
+      "endpoint": "dashboard/course-sessions/all",
+      "request_type": "GET",
+      "pagination": false,
+      "query_parameters": [
+        { "type": "int", "name": "course_id" }
+      ],
+      "list_response_model": [
+        { "name": "SessionModel", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "sessionDate", "type": "String", "json_key":"session_date" },
+          { "name": "startTime", "type": "String" , "json_key":"start_time" },
+          { "name": "endTime", "type": "String" , "json_key":"end_time" }
+          
+          ] }
+      ]
+    },
+    {
+      "name": "syncAttendance",
+      "endpoint": "attendance/sync",
+      "request_type": "POST",
+      "query_parameters": [
+        { "type": "int", "name": "session_id" }
+      ],
+      "body": {
+        "id": "List<int>"
+      },
+      "response_model": {
+        "name": "syncAttendanceResponseModel",
+        "fields": [{ "name": "message", "type": "String" }]
+      }
+    }
+  ]
+}

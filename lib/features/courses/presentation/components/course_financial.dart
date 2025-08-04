@@ -1,4 +1,4 @@
-import 'package:courses/features/courses/presentation/helper/text_feilds.dart';
+import 'package:courses/helper/text_feilds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

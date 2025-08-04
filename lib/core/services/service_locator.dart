@@ -1,3 +1,7 @@
+import 'package:courses/features/course_profile/repo/sessions_repository.dart';
+import 'package:courses/features/course_profile/cubits/sync_attendance_cubit/sync_attendance_cubit.dart';
+import 'package:courses/features/course_profile/cubits/get_sessions_cubit/get_sessions_cubit.dart';
+
 import 'package:courses/features/courses/repo/courses_repository.dart';
 import 'package:courses/features/courses/cubits/update_course_status_cubit/update_course_status_cubit.dart';
 import 'package:courses/features/courses/cubits/create_course_cubit/create_course_cubit.dart';
@@ -104,4 +108,7 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => CreateCourseCubit(sl()));
   sl.registerFactory(() => UpdateCourseStatusCubit(sl()));
   sl.registerLazySingleton(() => CoursesRepository(sl()));
+  sl.registerFactory(() => GetSessionsCubit(sl()));
+  sl.registerFactory(() => SyncAttendanceCubit(sl()));
+  sl.registerLazySingleton(() => SessionsRepository(sl()));
 }

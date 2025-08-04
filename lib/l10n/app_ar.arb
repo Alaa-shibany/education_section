@@ -52,6 +52,19 @@
      "created":"تم الإنشاء",
     "announced":"تم الإعلان",
     "started":"بدأت",
-    "finished":"انتهت"
+    "finished":"انتهت",
+    "general_info":"معلومات عامة",
+    "not_specified":"غير محدد",
+    "success_rate":"نسبة النجاح",
+    "register_price":"سعر التسجيل",
+    "phone":"رقم الهاتف",
+    "name":"الاسم",
+    "day":"يوم",
+    "teacher_salary":"راتب المدرس",
+        "payment_deadline":"مهلة الدفع",
+    "session":"جلسة",
+    "sync_attendance":"تفقد الحضور",
+    "sessions":"الجلسات"
+
 
 }
