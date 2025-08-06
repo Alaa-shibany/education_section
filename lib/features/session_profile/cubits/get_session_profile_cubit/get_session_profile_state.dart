@@ -5,7 +5,7 @@ abstract class GetSessionProfileState with _$GetSessionProfileState {
   const factory GetSessionProfileState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     SessionProfileModel? data,
-    String? errorMessage,
+    Failure? failure,
     SessionModel? session,
   }) = _CreateTeacherState;
 }

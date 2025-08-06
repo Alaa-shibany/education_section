@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
 import '../../repo/sessions_profile_repository.dart';
@@ -13,12 +14,17 @@ class CreateHomeworkCubit extends Cubit<CreateHomeworkState> {
 
   CreateHomeworkCubit(this._repository) : super(const CreateHomeworkState());
 
-  Future<void> createHomework({ required CreateHomeworkRequestBodyModel body,  }) async {
+  Future<void> createHomework({
+    required CreateHomeworkRequestBodyModel body,
+  }) async {
     emit(state.copyWith(status: SubmissionStatus.loading));
-    final result = await _repository.createHomework(body: body, );
+    final result = await _repository.createHomework(body: body);
     result.fold(
-      (failure) => emit(state.copyWith(status: SubmissionStatus.error , errorMessage: failure.message)),
-      (data) => emit(state.copyWith(status: SubmissionStatus.success , data: data)),
+      (failure) => emit(
+        state.copyWith(status: SubmissionStatus.error, failure: failure),
+      ),
+      (data) =>
+          emit(state.copyWith(status: SubmissionStatus.success, data: data)),
     );
   }
 }

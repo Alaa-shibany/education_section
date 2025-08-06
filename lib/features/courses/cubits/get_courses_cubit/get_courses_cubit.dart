@@ -1,3 +1,4 @@
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:courses/features/courses/models/status_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -82,12 +83,7 @@ class GetCoursesCubit extends Cubit<GetCoursesState> {
       teacherName: searchTeacherController.text,
     );
     return result.fold((failure) {
-      emit(
-        state.copyWith(
-          status: SubmissionStatus.error,
-          errorMessage: failure.message,
-        ),
-      );
+      emit(state.copyWith(status: SubmissionStatus.error, failure: failure));
       return [];
     }, (paginationData) => paginationData.items);
   }

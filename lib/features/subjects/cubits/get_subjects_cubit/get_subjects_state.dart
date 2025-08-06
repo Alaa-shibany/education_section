@@ -5,6 +5,6 @@ abstract class GetSubjectsState with _$GetSubjectsState {
   const factory GetSubjectsState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     List<SubjectModel>? data,
-    String? errorMessage,
+    Failure? failure,
   }) = _CreateTeacherState;
 }

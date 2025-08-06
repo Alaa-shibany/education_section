@@ -1,7 +1,6 @@
 import 'package:courses/features/session_profile/cubits/get_session_profile_cubit/get_session_profile_cubit.dart';
 import 'package:courses/features/session_profile/presentation/components/homework_list_item.dart';
 import 'package:courses/features/session_profile/presentation/components/manage_homework_dialog.dart';
-import 'package:courses/features/session_profile/presentation/components/manage_quiz_dialog.dart';
 import 'package:courses/helper/text_feilds.dart';
 import 'package:courses/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';

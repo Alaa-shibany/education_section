@@ -5,6 +5,6 @@ abstract class HelperState with _$HelperState {
   const factory HelperState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     List<Permission>? data,
-    String? errorMessage,
+    Failure? failure,
   }) = _CreateTeacherState;
 }

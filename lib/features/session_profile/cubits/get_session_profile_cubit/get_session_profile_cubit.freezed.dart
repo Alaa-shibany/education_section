@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GetSessionProfileState {
 
- SubmissionStatus get status; SessionProfileModel? get data; String? get errorMessage; SessionModel? get session;
+ SubmissionStatus get status; SessionProfileModel? get data; Failure? get failure; SessionModel? get session;
 /// Create a copy of GetSessionProfileState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $GetSessionProfileStateCopyWith<GetSessionProfileState> get copyWith => _$GetSes
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetSessionProfileState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.session, session) || other.session == session));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetSessionProfileState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.session, session) || other.session == session));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,errorMessage,session);
+int get hashCode => Object.hash(runtimeType,status,data,failure,session);
 
 @override
 String toString() {
-  return 'GetSessionProfileState(status: $status, data: $data, errorMessage: $errorMessage, session: $session)';
+  return 'GetSessionProfileState(status: $status, data: $data, failure: $failure, session: $session)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $GetSessionProfileStateCopyWith<$Res>  {
   factory $GetSessionProfileStateCopyWith(GetSessionProfileState value, $Res Function(GetSessionProfileState) _then) = _$GetSessionProfileStateCopyWithImpl;
 @useResult
 $Res call({
- SubmissionStatus status, SessionProfileModel? data, String? errorMessage, SessionModel? session
+ SubmissionStatus status, SessionProfileModel? data, Failure? failure, SessionModel? session
 });
 
 
@@ -62,12 +62,12 @@ class _$GetSessionProfileStateCopyWithImpl<$Res>
 
 /// Create a copy of GetSessionProfileState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,Object? session = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? failure = freezed,Object? session = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as SessionProfileModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
+as SessionProfileModel?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
 as SessionModel?,
   ));
 }
@@ -177,10 +177,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  SessionProfileModel? data,  String? errorMessage,  SessionModel? session)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  SessionProfileModel? data,  Failure? failure,  SessionModel? session)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage,_that.session);case _:
+return $default(_that.status,_that.data,_that.failure,_that.session);case _:
   return orElse();
 
 }
@@ -198,10 +198,10 @@ return $default(_that.status,_that.data,_that.errorMessage,_that.session);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  SessionProfileModel? data,  String? errorMessage,  SessionModel? session)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  SessionProfileModel? data,  Failure? failure,  SessionModel? session)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.status,_that.data,_that.errorMessage,_that.session);case _:
+return $default(_that.status,_that.data,_that.failure,_that.session);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -218,10 +218,10 @@ return $default(_that.status,_that.data,_that.errorMessage,_that.session);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  SessionProfileModel? data,  String? errorMessage,  SessionModel? session)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  SessionProfileModel? data,  Failure? failure,  SessionModel? session)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage,_that.session);case _:
+return $default(_that.status,_that.data,_that.failure,_that.session);case _:
   return null;
 
 }
@@ -233,12 +233,12 @@ return $default(_that.status,_that.data,_that.errorMessage,_that.session);case _
 
 
 class _CreateTeacherState implements GetSessionProfileState {
-  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.errorMessage, this.session});
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.failure, this.session});
   
 
 @override@JsonKey() final  SubmissionStatus status;
 @override final  SessionProfileModel? data;
-@override final  String? errorMessage;
+@override final  Failure? failure;
 @override final  SessionModel? session;
 
 /// Create a copy of GetSessionProfileState
@@ -251,16 +251,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.session, session) || other.session == session));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.session, session) || other.session == session));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,errorMessage,session);
+int get hashCode => Object.hash(runtimeType,status,data,failure,session);
 
 @override
 String toString() {
-  return 'GetSessionProfileState(status: $status, data: $data, errorMessage: $errorMessage, session: $session)';
+  return 'GetSessionProfileState(status: $status, data: $data, failure: $failure, session: $session)';
 }
 
 
@@ -271,7 +271,7 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $GetSessionPr
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- SubmissionStatus status, SessionProfileModel? data, String? errorMessage, SessionModel? session
+ SubmissionStatus status, SessionProfileModel? data, Failure? failure, SessionModel? session
 });
 
 
@@ -288,12 +288,12 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of GetSessionProfileState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,Object? session = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? failure = freezed,Object? session = freezed,}) {
   return _then(_CreateTeacherState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as SessionProfileModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
+as SessionProfileModel?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
 as SessionModel?,
   ));
 }

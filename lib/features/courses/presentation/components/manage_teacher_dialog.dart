@@ -14,7 +14,6 @@ import 'package:courses/features/subjects/models/subject_model.dart';
 import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
 import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/shared/dialogs/error_dialog.dart';
 import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -183,7 +182,7 @@ void showManageCourseDialog(
                       showLoadingDialog(context);
                     } else if (state.status == SubmissionStatus.error) {
                       Navigator.pop(context);
-                      showErrorDialog(context, state.errorMessage!);
+                      state.failure!.handle(context, onRetry: () {});
                     } else if (state.status == SubmissionStatus.success) {
                       Navigator.pop(context);
                       Navigator.pop(context);

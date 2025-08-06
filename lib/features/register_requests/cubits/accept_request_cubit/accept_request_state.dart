@@ -5,6 +5,6 @@ abstract class AcceptRequestState with _$AcceptRequestState {
   const factory AcceptRequestState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     AcceptRequestModel? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

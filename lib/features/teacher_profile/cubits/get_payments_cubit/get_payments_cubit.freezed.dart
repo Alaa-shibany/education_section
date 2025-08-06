@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GetPaymentsState {
 
- SubmissionStatus get status; List<PaymentDetail>? get data; TeacherModel? get teacher; String? get errorMessage;
+ SubmissionStatus get status; List<PaymentDetail>? get data; TeacherModel? get teacher; Failure? get failure;
 /// Create a copy of GetPaymentsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $GetPaymentsStateCopyWith<GetPaymentsState> get copyWith => _$GetPaymentsStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetPaymentsState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.teacher, teacher) || other.teacher == teacher)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetPaymentsState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.teacher, teacher) || other.teacher == teacher)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data),teacher,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data),teacher,failure);
 
 @override
 String toString() {
-  return 'GetPaymentsState(status: $status, data: $data, teacher: $teacher, errorMessage: $errorMessage)';
+  return 'GetPaymentsState(status: $status, data: $data, teacher: $teacher, failure: $failure)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $GetPaymentsStateCopyWith<$Res>  {
   factory $GetPaymentsStateCopyWith(GetPaymentsState value, $Res Function(GetPaymentsState) _then) = _$GetPaymentsStateCopyWithImpl;
 @useResult
 $Res call({
- SubmissionStatus status, List<PaymentDetail>? data, TeacherModel? teacher, String? errorMessage
+ SubmissionStatus status, List<PaymentDetail>? data, TeacherModel? teacher, Failure? failure
 });
 
 
@@ -62,13 +62,13 @@ class _$GetPaymentsStateCopyWithImpl<$Res>
 
 /// Create a copy of GetPaymentsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? teacher = freezed,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? teacher = freezed,Object? failure = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as List<PaymentDetail>?,teacher: freezed == teacher ? _self.teacher : teacher // ignore: cast_nullable_to_non_nullable
-as TeacherModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as TeacherModel?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,
   ));
 }
 /// Create a copy of GetPaymentsState
@@ -165,10 +165,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<PaymentDetail>? data,  TeacherModel? teacher,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<PaymentDetail>? data,  TeacherModel? teacher,  Failure? failure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.teacher,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.teacher,_that.failure);case _:
   return orElse();
 
 }
@@ -186,10 +186,10 @@ return $default(_that.status,_that.data,_that.teacher,_that.errorMessage);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<PaymentDetail>? data,  TeacherModel? teacher,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<PaymentDetail>? data,  TeacherModel? teacher,  Failure? failure)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.status,_that.data,_that.teacher,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.teacher,_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -206,10 +206,10 @@ return $default(_that.status,_that.data,_that.teacher,_that.errorMessage);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  List<PaymentDetail>? data,  TeacherModel? teacher,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  List<PaymentDetail>? data,  TeacherModel? teacher,  Failure? failure)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.teacher,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.teacher,_that.failure);case _:
   return null;
 
 }
@@ -221,7 +221,7 @@ return $default(_that.status,_that.data,_that.teacher,_that.errorMessage);case _
 
 
 class _CreateTeacherState implements GetPaymentsState {
-  const _CreateTeacherState({this.status = SubmissionStatus.initial, final  List<PaymentDetail>? data, this.teacher, this.errorMessage}): _data = data;
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, final  List<PaymentDetail>? data, this.teacher, this.failure}): _data = data;
   
 
 @override@JsonKey() final  SubmissionStatus status;
@@ -235,7 +235,7 @@ class _CreateTeacherState implements GetPaymentsState {
 }
 
 @override final  TeacherModel? teacher;
-@override final  String? errorMessage;
+@override final  Failure? failure;
 
 /// Create a copy of GetPaymentsState
 /// with the given fields replaced by the non-null parameter values.
@@ -247,16 +247,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.teacher, teacher) || other.teacher == teacher)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.teacher, teacher) || other.teacher == teacher)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_data),teacher,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_data),teacher,failure);
 
 @override
 String toString() {
-  return 'GetPaymentsState(status: $status, data: $data, teacher: $teacher, errorMessage: $errorMessage)';
+  return 'GetPaymentsState(status: $status, data: $data, teacher: $teacher, failure: $failure)';
 }
 
 
@@ -267,7 +267,7 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $GetPaymentsS
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- SubmissionStatus status, List<PaymentDetail>? data, TeacherModel? teacher, String? errorMessage
+ SubmissionStatus status, List<PaymentDetail>? data, TeacherModel? teacher, Failure? failure
 });
 
 
@@ -284,13 +284,13 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of GetPaymentsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? teacher = freezed,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? teacher = freezed,Object? failure = freezed,}) {
   return _then(_CreateTeacherState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
 as List<PaymentDetail>?,teacher: freezed == teacher ? _self.teacher : teacher // ignore: cast_nullable_to_non_nullable
-as TeacherModel?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as TeacherModel?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,
   ));
 }
 

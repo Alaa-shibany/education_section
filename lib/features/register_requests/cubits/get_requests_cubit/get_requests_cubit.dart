@@ -1,3 +1,4 @@
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,12 +33,7 @@ class GetRequestsCubit extends Cubit<GetRequestsState> {
       name: studentController.text,
     );
     return result.fold((failure) {
-      emit(
-        state.copyWith(
-          status: SubmissionStatus.error,
-          errorMessage: failure.message,
-        ),
-      );
+      emit(state.copyWith(status: SubmissionStatus.error, failure: failure));
       return [
         RegisterRequestModel(
           id: 1,

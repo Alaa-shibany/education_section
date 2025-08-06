@@ -6,7 +6,7 @@ import 'package:courses/features/courses/cubits/get_courses_cubit/get_courses_cu
 import 'package:courses/features/courses/cubits/update_course_status_cubit/update_course_status_cubit.dart';
 import 'package:courses/features/courses/models/course_model.dart';
 import 'package:courses/features/home/presentation/home_screen.dart';
-import 'package:courses/features/login/cubit/login_cubit.dart';
+import 'package:courses/features/login/cubits/login_cubit/login_cubit.dart';
 import 'package:courses/features/login/presentation/login_screen.dart';
 import 'package:courses/features/navigator/presentation/navigate_screen.dart';
 import 'package:courses/features/register_requests/cubits/accept_request_cubit/accept_request_cubit.dart';

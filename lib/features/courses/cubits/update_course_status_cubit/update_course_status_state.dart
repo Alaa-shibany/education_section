@@ -5,6 +5,6 @@ abstract class UpdateCourseStatusState with _$UpdateCourseStatusState {
   const factory UpdateCourseStatusState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     AcceptRequestModel? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

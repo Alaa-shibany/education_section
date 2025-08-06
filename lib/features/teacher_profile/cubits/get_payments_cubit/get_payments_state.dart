@@ -6,6 +6,6 @@ abstract class GetPaymentsState with _$GetPaymentsState {
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     List<PaymentDetail>? data,
     TeacherModel? teacher,
-    String? errorMessage,
+    Failure? failure,
   }) = _CreateTeacherState;
 }

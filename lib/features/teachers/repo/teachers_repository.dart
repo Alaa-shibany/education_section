@@ -1,3 +1,4 @@
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:courses/core/services/api_services.dart';
@@ -45,9 +46,9 @@ class TeachersRepository {
 
       return Right(data);
     } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
+      return Left(FailureFactory.fromDioException(e));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FailureFactory(e.toString()));
     }
   }
 
@@ -64,9 +65,9 @@ class TeachersRepository {
 
       return Right(data);
     } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
+      return Left(FailureFactory.fromDioException(e));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FailureFactory(e.toString()));
     }
   }
 
@@ -83,9 +84,9 @@ class TeachersRepository {
 
       return Right(data);
     } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
+      return Left(FailureFactory.fromDioException(e));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FailureFactory(e.toString()));
     }
   }
 }

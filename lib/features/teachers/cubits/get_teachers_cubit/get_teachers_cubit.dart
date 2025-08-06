@@ -1,3 +1,5 @@
+import 'package:courses/core/services/failure_service/failure.dart';
+import 'package:courses/core/services/failure_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -75,12 +77,7 @@ class GetTeachersCubit extends Cubit<GetTeachersState> {
     );
     return result.fold(
       (failure) {
-        emit(
-          state.copyWith(
-            status: SubmissionStatus.error,
-            errorMessage: failure.message,
-          ),
-        );
+        emit(state.copyWith(status: SubmissionStatus.error, failure: failure));
         return [];
       },
       (paginationData) {

@@ -5,6 +5,6 @@ abstract class CreateQuizState with _$CreateQuizState {
   const factory CreateQuizState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     CreateQuizResponseModel? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

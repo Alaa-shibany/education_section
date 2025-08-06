@@ -5,6 +5,6 @@ abstract class UpdatePaymentState with _$UpdatePaymentState {
   const factory UpdatePaymentState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     UpdateTeacherPaymentResponse? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

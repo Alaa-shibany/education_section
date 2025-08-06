@@ -216,7 +216,7 @@ void showManageTeacherDialog(
                           } else if (state.status == SubmissionStatus.error) {
                             Navigator.pop(context);
 
-                            showErrorDialog(context, state.errorMessage!);
+                            state.failure!.handle(context, onRetry: () {});
                           } else if (state.status == SubmissionStatus.success) {
                             Navigator.pop(context);
                             Navigator.pop(context);
@@ -253,7 +253,7 @@ void showManageTeacherDialog(
                           } else if (state.status == SubmissionStatus.error) {
                             Navigator.pop(context);
 
-                            showErrorDialog(context, state.errorMessage!);
+                            state.failure!.handle(context, onRetry: () {});
                           } else if (state.status == SubmissionStatus.success) {
                             Navigator.pop(context);
                             Navigator.pop(context);

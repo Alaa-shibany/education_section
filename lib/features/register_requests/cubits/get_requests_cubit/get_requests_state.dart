@@ -5,6 +5,6 @@ abstract class GetRequestsState with _$GetRequestsState {
   const factory GetRequestsState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     PaginationModel<RegisterRequestModel>? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

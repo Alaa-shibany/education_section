@@ -4,7 +4,6 @@ import 'package:courses/features/teacher_profile/cubits/get_payments_cubit/get_p
 import 'package:courses/features/teacher_profile/cubits/update_payment_cubit/update_payment_cubit.dart';
 import 'package:courses/features/teacher_profile/models/payment_detail.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/shared/dialogs/error_dialog.dart';
 import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -93,7 +92,7 @@ class PaymentListItem extends StatelessWidget {
                       } else if (state.status == SubmissionStatus.error) {
                         Navigator.pop(context);
 
-                        showErrorDialog(context, state.errorMessage!);
+                        state.failure!.handle(context, onRetry: () {});
                       } else if (state.status == SubmissionStatus.success) {
                         Navigator.pop(context);
                         paymentsCubit.changeToPaid(paymentItem);

@@ -6,6 +6,6 @@ abstract class GetCoursesState with _$GetCoursesState {
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     PaginationModel<CourseModel>? data,
     @Default(0) int badgeCount,
-    String? errorMessage,
+    Failure? failure,
   }) = _CreateTeacherState;
 }

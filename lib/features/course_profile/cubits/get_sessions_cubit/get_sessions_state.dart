@@ -5,7 +5,7 @@ abstract class GetSessionsState with _$GetSessionsState {
   const factory GetSessionsState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     List<SessionModel>? data,
-    String? errorMessage,
+    Failure? failure,
     CourseModel? course,
   }) = _CreateTeacherState;
 }

@@ -6,6 +6,6 @@ abstract class CreateAdminState with _$CreateAdminState {
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     CreateAdminResponse? data,
     Permission? selectedPermission,
-    String? errorMessage,
+    Failure? failure,
   }) = _CreateTeacherState;
 }

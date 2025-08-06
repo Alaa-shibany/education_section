@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:courses/features/subjects/models/subject_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
@@ -21,10 +22,7 @@ class UpdateTeacherCubit extends Cubit<UpdateTeacherState> {
     final result = await _repository.updateTeacher(body: body);
     result.fold(
       (failure) => emit(
-        state.copyWith(
-          status: SubmissionStatus.error,
-          errorMessage: failure.message,
-        ),
+        state.copyWith(status: SubmissionStatus.error, failure: failure),
       ),
       (data) =>
           emit(state.copyWith(status: SubmissionStatus.success, data: data)),

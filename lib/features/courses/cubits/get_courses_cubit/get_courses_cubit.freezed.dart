@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GetCoursesState {
 
- SubmissionStatus get status; PaginationModel<CourseModel>? get data; int get badgeCount; String? get errorMessage;
+ SubmissionStatus get status; PaginationModel<CourseModel>? get data; int get badgeCount; Failure? get failure;
 /// Create a copy of GetCoursesState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $GetCoursesStateCopyWith<GetCoursesState> get copyWith => _$GetCoursesStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetCoursesState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetCoursesState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,badgeCount,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,data,badgeCount,failure);
 
 @override
 String toString() {
-  return 'GetCoursesState(status: $status, data: $data, badgeCount: $badgeCount, errorMessage: $errorMessage)';
+  return 'GetCoursesState(status: $status, data: $data, badgeCount: $badgeCount, failure: $failure)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $GetCoursesStateCopyWith<$Res>  {
   factory $GetCoursesStateCopyWith(GetCoursesState value, $Res Function(GetCoursesState) _then) = _$GetCoursesStateCopyWithImpl;
 @useResult
 $Res call({
- SubmissionStatus status, PaginationModel<CourseModel>? data, int badgeCount, String? errorMessage
+ SubmissionStatus status, PaginationModel<CourseModel>? data, int badgeCount, Failure? failure
 });
 
 
@@ -62,13 +62,13 @@ class _$GetCoursesStateCopyWithImpl<$Res>
 
 /// Create a copy of GetCoursesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? badgeCount = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? badgeCount = null,Object? failure = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as PaginationModel<CourseModel>?,badgeCount: null == badgeCount ? _self.badgeCount : badgeCount // ignore: cast_nullable_to_non_nullable
-as int,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as int,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,
   ));
 }
 
@@ -153,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<CourseModel>? data,  int badgeCount,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<CourseModel>? data,  int badgeCount,  Failure? failure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.badgeCount,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.badgeCount,_that.failure);case _:
   return orElse();
 
 }
@@ -174,10 +174,10 @@ return $default(_that.status,_that.data,_that.badgeCount,_that.errorMessage);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<CourseModel>? data,  int badgeCount,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<CourseModel>? data,  int badgeCount,  Failure? failure)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.status,_that.data,_that.badgeCount,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.badgeCount,_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +194,10 @@ return $default(_that.status,_that.data,_that.badgeCount,_that.errorMessage);cas
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  PaginationModel<CourseModel>? data,  int badgeCount,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  PaginationModel<CourseModel>? data,  int badgeCount,  Failure? failure)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.badgeCount,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.badgeCount,_that.failure);case _:
   return null;
 
 }
@@ -209,13 +209,13 @@ return $default(_that.status,_that.data,_that.badgeCount,_that.errorMessage);cas
 
 
 class _CreateTeacherState implements GetCoursesState {
-  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.badgeCount = 0, this.errorMessage});
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.badgeCount = 0, this.failure});
   
 
 @override@JsonKey() final  SubmissionStatus status;
 @override final  PaginationModel<CourseModel>? data;
 @override@JsonKey() final  int badgeCount;
-@override final  String? errorMessage;
+@override final  Failure? failure;
 
 /// Create a copy of GetCoursesState
 /// with the given fields replaced by the non-null parameter values.
@@ -227,16 +227,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,badgeCount,errorMessage);
+int get hashCode => Object.hash(runtimeType,status,data,badgeCount,failure);
 
 @override
 String toString() {
-  return 'GetCoursesState(status: $status, data: $data, badgeCount: $badgeCount, errorMessage: $errorMessage)';
+  return 'GetCoursesState(status: $status, data: $data, badgeCount: $badgeCount, failure: $failure)';
 }
 
 
@@ -247,7 +247,7 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $GetCoursesSt
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- SubmissionStatus status, PaginationModel<CourseModel>? data, int badgeCount, String? errorMessage
+ SubmissionStatus status, PaginationModel<CourseModel>? data, int badgeCount, Failure? failure
 });
 
 
@@ -264,13 +264,13 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of GetCoursesState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? badgeCount = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? badgeCount = null,Object? failure = freezed,}) {
   return _then(_CreateTeacherState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as PaginationModel<CourseModel>?,badgeCount: null == badgeCount ? _self.badgeCount : badgeCount // ignore: cast_nullable_to_non_nullable
-as int,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as int,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,
   ));
 }
 

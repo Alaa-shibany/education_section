@@ -10,6 +10,5 @@ abstract class LoginRequestBodyModel with _$LoginRequestBodyModel {
     required String password,
   }) = _LoginRequestBodyModel;
 
-  factory LoginRequestBodyModel.fromJson(Map<String, dynamic> json) =>
-      _$LoginRequestBodyModelFromJson(json);
+  factory LoginRequestBodyModel.fromJson(Map<String, dynamic> json) => _$LoginRequestBodyModelFromJson(json);
 }

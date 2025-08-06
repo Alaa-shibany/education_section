@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
 import '../../repo/sessions_repository.dart';
@@ -13,12 +14,21 @@ class SyncAttendanceCubit extends Cubit<SyncAttendanceState> {
 
   SyncAttendanceCubit(this._repository) : super(const SyncAttendanceState());
 
-  Future<void> syncAttendance({ required SyncAttendanceRequestBodyModel body, required int sessionId,  }) async {
+  Future<void> syncAttendance({
+    required SyncAttendanceRequestBodyModel body,
+    required int sessionId,
+  }) async {
     emit(state.copyWith(status: SubmissionStatus.loading));
-    final result = await _repository.syncAttendance(body: body, sessionId: sessionId, );
+    final result = await _repository.syncAttendance(
+      body: body,
+      sessionId: sessionId,
+    );
     result.fold(
-      (failure) => emit(state.copyWith(status: SubmissionStatus.error , errorMessage: failure.message)),
-      (data) => emit(state.copyWith(status: SubmissionStatus.success , data: data)),
+      (failure) => emit(
+        state.copyWith(status: SubmissionStatus.error, failure: failure),
+      ),
+      (data) =>
+          emit(state.copyWith(status: SubmissionStatus.success, data: data)),
     );
   }
 }

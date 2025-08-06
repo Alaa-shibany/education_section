@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:courses/features/teacher_profile/models/payment_detail.dart';
 import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -58,10 +59,7 @@ class GetPaymentsCubit extends Cubit<GetPaymentsState> {
     final result = await _repository.getPayments(teacherId: teacherId);
     result.fold(
       (failure) => emit(
-        state.copyWith(
-          status: SubmissionStatus.error,
-          errorMessage: failure.message,
-        ),
+        state.copyWith(status: SubmissionStatus.error, failure: failure),
       ),
       (data) =>
           emit(state.copyWith(status: SubmissionStatus.success, data: data)),

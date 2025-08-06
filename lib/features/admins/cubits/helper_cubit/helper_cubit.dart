@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
 import '../../repo/admins_repository.dart';
@@ -19,7 +20,7 @@ class HelperCubit extends Cubit<HelperState> {
       (failure) => emit(
         state.copyWith(
           status: SubmissionStatus.error,
-          errorMessage: failure.message,
+          failure: failure,
           data: [
             Permission(id: 1, name: 'Permission 1'),
             Permission(id: 2, name: 'Permission 2'),

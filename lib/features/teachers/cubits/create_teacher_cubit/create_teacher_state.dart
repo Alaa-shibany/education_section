@@ -5,7 +5,7 @@ abstract class CreateTeacherState with _$CreateTeacherState {
   const factory CreateTeacherState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     CreatedTeacherResponse? data,
-    String? errorMessage,
+    Failure? failure,
     @Default([]) List<SubjectModel> selectedBooks,
   }) = _CreateTeacherState;
 }

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
 import '../../repo/register_requests_repository.dart';
@@ -13,12 +14,17 @@ class AcceptRequestCubit extends Cubit<AcceptRequestState> {
 
   AcceptRequestCubit(this._repository) : super(const AcceptRequestState());
 
-  Future<void> acceptRequest({ required AcceptRequestRequestBodyModel body,  }) async {
+  Future<void> acceptRequest({
+    required AcceptRequestRequestBodyModel body,
+  }) async {
     emit(state.copyWith(status: SubmissionStatus.loading));
-    final result = await _repository.acceptRequest(body: body, );
+    final result = await _repository.acceptRequest(body: body);
     result.fold(
-      (failure) => emit(state.copyWith(status: SubmissionStatus.error , errorMessage: failure.message)),
-      (data) => emit(state.copyWith(status: SubmissionStatus.success , data: data)),
+      (failure) => emit(
+        state.copyWith(status: SubmissionStatus.error, failure: failure),
+      ),
+      (data) =>
+          emit(state.copyWith(status: SubmissionStatus.success, data: data)),
     );
   }
 }

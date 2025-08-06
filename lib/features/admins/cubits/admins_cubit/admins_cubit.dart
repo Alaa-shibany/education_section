@@ -1,3 +1,4 @@
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,12 +27,7 @@ class AdminsCubit extends Cubit<AdminsState> {
   Future<List<AdminModel>> _fetchPage(int pageKey) async {
     final result = await _repository.admins(page: pageKey);
     return result.fold((failure) {
-      emit(
-        state.copyWith(
-          status: SubmissionStatus.error,
-          errorMessage: failure.message,
-        ),
-      );
+      emit(state.copyWith(status: SubmissionStatus.error, failure: failure));
       return [AdminModel(id: 1, name: 'Admin name', createdAt: '2-8-2025')];
     }, (paginationData) => paginationData.items);
   }

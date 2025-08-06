@@ -6,7 +6,6 @@ import 'package:courses/features/courses/presentation/components/course_list_ite
 import 'package:courses/features/courses/presentation/components/courses_filter_panel.dart';
 import 'package:courses/features/courses/presentation/components/manage_teacher_dialog.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/shared/dialogs/error_dialog.dart';
 import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -112,7 +111,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                             showLoadingDialog(context);
                           } else if (state.status == SubmissionStatus.error) {
                             context.pop();
-                            showErrorDialog(context, state.errorMessage!);
+                            state.failure!.handle(context, onRetry: () {});
                           } else if (state.status == SubmissionStatus.success) {
                             context.pop();
                             coursesCubit.pagingController.refresh();

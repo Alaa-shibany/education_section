@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:courses/core/services/status.dart';
 import '../../repo/subjects_repository.dart';
@@ -13,12 +14,17 @@ class CreateSubjectCubit extends Cubit<CreateSubjectState> {
 
   CreateSubjectCubit(this._repository) : super(const CreateSubjectState());
 
-  Future<void> createSubject({ required CreateSubjectRequestBodyModel body,  }) async {
+  Future<void> createSubject({
+    required CreateSubjectRequestBodyModel body,
+  }) async {
     emit(state.copyWith(status: SubmissionStatus.loading));
-    final result = await _repository.createSubject(body: body, );
+    final result = await _repository.createSubject(body: body);
     result.fold(
-      (failure) => emit(state.copyWith(status: SubmissionStatus.error , errorMessage: failure.message)),
-      (data) => emit(state.copyWith(status: SubmissionStatus.success , data: data)),
+      (failure) => emit(
+        state.copyWith(status: SubmissionStatus.error, failure: failure),
+      ),
+      (data) =>
+          emit(state.copyWith(status: SubmissionStatus.success, data: data)),
     );
   }
 }

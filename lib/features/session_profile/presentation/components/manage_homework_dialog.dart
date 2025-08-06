@@ -5,7 +5,6 @@ import 'package:courses/features/session_profile/cubits/get_session_profile_cubi
 import 'package:courses/features/session_profile/models/create_homework_request_body_model.dart';
 
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/shared/dialogs/error_dialog.dart';
 import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -112,7 +111,7 @@ void showManageHomeworkDialog(
                       showLoadingDialog(context);
                     } else if (state.status == SubmissionStatus.error) {
                       Navigator.pop(context); // Close loading dialog
-                      showErrorDialog(context, state.errorMessage!);
+                      state.failure!.handle(context, onRetry: () {});
                     } else if (state.status == SubmissionStatus.success) {
                       Navigator.pop(context); // Close loading dialog
                       Navigator.pop(context); // Close create homework dialog

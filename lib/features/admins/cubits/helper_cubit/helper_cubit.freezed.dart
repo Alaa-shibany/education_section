@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HelperState {
 
- SubmissionStatus get status; List<Permission>? get data; String? get errorMessage;
+ SubmissionStatus get status; List<Permission>? get data; Failure? get failure;
 /// Create a copy of HelperState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $HelperStateCopyWith<HelperState> get copyWith => _$HelperStateCopyWithImpl<Help
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HelperState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HelperState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data),errorMessage);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(data),failure);
 
 @override
 String toString() {
-  return 'HelperState(status: $status, data: $data, errorMessage: $errorMessage)';
+  return 'HelperState(status: $status, data: $data, failure: $failure)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $HelperStateCopyWith<$Res>  {
   factory $HelperStateCopyWith(HelperState value, $Res Function(HelperState) _then) = _$HelperStateCopyWithImpl;
 @useResult
 $Res call({
- SubmissionStatus status, List<Permission>? data, String? errorMessage
+ SubmissionStatus status, List<Permission>? data, Failure? failure
 });
 
 
@@ -62,12 +62,12 @@ class _$HelperStateCopyWithImpl<$Res>
 
 /// Create a copy of HelperState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? failure = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as List<Permission>?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as List<Permission>?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,
   ));
 }
 
@@ -152,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<Permission>? data,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<Permission>? data,  Failure? failure)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.failure);case _:
   return orElse();
 
 }
@@ -173,10 +173,10 @@ return $default(_that.status,_that.data,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<Permission>? data,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  List<Permission>? data,  Failure? failure)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.status,_that.data,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.failure);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -193,10 +193,10 @@ return $default(_that.status,_that.data,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  List<Permission>? data,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  List<Permission>? data,  Failure? failure)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage);case _:
+return $default(_that.status,_that.data,_that.failure);case _:
   return null;
 
 }
@@ -208,7 +208,7 @@ return $default(_that.status,_that.data,_that.errorMessage);case _:
 
 
 class _CreateTeacherState implements HelperState {
-  const _CreateTeacherState({this.status = SubmissionStatus.initial, final  List<Permission>? data, this.errorMessage}): _data = data;
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, final  List<Permission>? data, this.failure}): _data = data;
   
 
 @override@JsonKey() final  SubmissionStatus status;
@@ -221,7 +221,7 @@ class _CreateTeacherState implements HelperState {
   return EqualUnmodifiableListView(value);
 }
 
-@override final  String? errorMessage;
+@override final  Failure? failure;
 
 /// Create a copy of HelperState
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +233,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._data, _data)&&(identical(other.failure, failure) || other.failure == failure));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_data),errorMessage);
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_data),failure);
 
 @override
 String toString() {
-  return 'HelperState(status: $status, data: $data, errorMessage: $errorMessage)';
+  return 'HelperState(status: $status, data: $data, failure: $failure)';
 }
 
 
@@ -253,7 +253,7 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $HelperStateC
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- SubmissionStatus status, List<Permission>? data, String? errorMessage
+ SubmissionStatus status, List<Permission>? data, Failure? failure
 });
 
 
@@ -270,12 +270,12 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of HelperState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? failure = freezed,}) {
   return _then(_CreateTeacherState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
-as List<Permission>?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,
+as List<Permission>?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,
   ));
 }
 

@@ -5,7 +5,7 @@ abstract class GetTeachersState with _$GetTeachersState {
   const factory GetTeachersState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     PaginationModel<TeacherModel>? data,
-    String? errorMessage,
+    Failure? failure,
     TextEditingController? searchNameController,
     TextEditingController? phoneNameController,
     TextEditingController? emailNameController,

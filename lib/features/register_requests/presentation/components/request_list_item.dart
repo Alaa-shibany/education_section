@@ -5,7 +5,6 @@ import 'package:courses/features/register_requests/cubits/get_requests_cubit/get
 import 'package:courses/features/register_requests/models/accept_request_request_body_model.dart';
 import 'package:courses/features/register_requests/models/register_request_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
-import 'package:courses/shared/dialogs/error_dialog.dart';
 import 'package:courses/shared/dialogs/loading_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -95,7 +94,7 @@ class RequestListItem extends StatelessWidget {
                     if (state.status == SubmissionStatus.loading) {
                       showLoadingDialog(context);
                     } else if (state.status == SubmissionStatus.error) {
-                      showErrorDialog(context, state.errorMessage!);
+                      state.failure!.handle(context, onRetry: () {});
                     } else if (state.status == SubmissionStatus.success) {
                       context.pop();
                       context

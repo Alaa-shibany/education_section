@@ -5,6 +5,6 @@ abstract class SyncAttendanceState with _$SyncAttendanceState {
   const factory SyncAttendanceState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     SyncAttendanceResponseModel? data,
-    String? errorMessage,
+    Failure? failure,
   }) = _CreateTeacherState;
 }

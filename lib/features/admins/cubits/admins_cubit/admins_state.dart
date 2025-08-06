@@ -5,6 +5,6 @@ abstract class AdminsState with _$AdminsState {
   const factory AdminsState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     PaginationModel<AdminModel>? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

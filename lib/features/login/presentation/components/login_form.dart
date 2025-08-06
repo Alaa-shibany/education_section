@@ -1,7 +1,7 @@
 import 'package:courses/config/responsive/ui_halper.dart';
-import 'package:courses/core/services/generic_cubit/generic_state.dart';
-import 'package:courses/features/login/cubit/login_cubit.dart';
-import 'package:courses/features/login/models/login_model.dart';
+import 'package:courses/core/services/status.dart';
+import 'package:courses/features/login/cubits/login_cubit/login_cubit.dart';
+
 import 'package:courses/features/login/models/login_request_body_model.dart';
 // import 'package:courses/features/login/models/login_request_body_model.dart';
 import 'package:courses/l10n/app_localizations.dart';
@@ -25,14 +25,14 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, GenericState<LoginModel>>(
+    return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state is GenericSuccess) {
+        if (state.status == SubmissionStatus.success) {
           context.go('/home');
-        } else if (state is GenericError<LoginModel>) {
+        } else if (state.status == SubmissionStatus.error) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(state.failure.message),
+              content: Text(state.failure!.message),
               backgroundColor: Colors.red,
             ),
           );
@@ -113,18 +113,18 @@ class _LoginFormState extends State<LoginForm> {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  BlocBuilder<LoginCubit, GenericState<LoginModel>>(
+                  BlocBuilder<LoginCubit, LoginState>(
                     builder: (context, state) {
                       return ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.all(16),
                         ),
-                        onPressed: state is GenericLoading
+                        onPressed: state.status == SubmissionStatus.loading
                             ? null
                             : () {
                                 // context.go(AppRoutes.home);
                                 if (_formKey.currentState!.validate()) {
-                                  context.read<LoginCubit>().fetchData(
+                                  context.read<LoginCubit>().login(
                                     body: LoginRequestBodyModel(
                                       username: _emailController.text,
                                       password: _passwordController.text,
@@ -132,7 +132,7 @@ class _LoginFormState extends State<LoginForm> {
                                   );
                                 }
                               },
-                        child: state is GenericLoading
+                        child: state.status == SubmissionStatus.loading
                             ? const CircularProgressIndicator()
                             : Text(AppLocalizations.of(context)!.login),
                       );

@@ -1,3 +1,4 @@
+import 'package:courses/features/login/cubits/login_cubit/login_cubit.dart';
 import 'package:courses/features/session_profile/repo/sessions_profile_repository.dart';
 import 'package:courses/features/session_profile/cubits/create_quiz_cubit/create_quiz_cubit.dart';
 import 'package:courses/features/session_profile/cubits/create_homework_cubit/create_homework_cubit.dart';
@@ -35,7 +36,6 @@ import 'package:courses/features/register_requests/cubits/get_requests_cubit/get
 import 'package:courses/features/register_requests/repo/register_requests_repository.dart';
 
 import 'package:courses/features/login/repo/login_repository.dart';
-import 'package:courses/features/login/cubit/login_cubit.dart';
 
 import 'package:courses/core/services/cache_service.dart';
 import 'package:courses/core/services/end_points.dart';
@@ -87,8 +87,6 @@ Future<void> setupServiceLocator() async {
   });
 
   sl.registerLazySingleton<ApiService>(() => ApiService(dio: sl()));
-  sl.registerLazySingleton(() => LoginRepository(sl()));
-  sl.registerFactory(() => LoginCubit(sl()));
 
   sl.registerFactory(() => GetRequestsCubit(sl()));
   sl.registerFactory(() => AcceptRequestCubit(sl()));
@@ -120,4 +118,6 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => CreateHomeworkCubit(sl()));
   sl.registerFactory(() => CreateQuizCubit(sl()));
   sl.registerLazySingleton(() => SessionsProfileRepository(sl()));
+  sl.registerFactory(() => LoginCubit(sl()));
+  sl.registerLazySingleton(() => LoginRepository(sl()));
 }

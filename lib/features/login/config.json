@@ -1,16 +1,23 @@
 {
   "feature_name": "Login",
-  "endpoint": "login",
-  "request_type": "GET",
-  "pagination": false,
-  "body":{
-    "email":"String",
-    "password":"String"
-  },
-  "response_model":  {
-      "name": "LoginModel",
-      "fields": [
-        { "name": "token", "type": "String" }
+  "apis": [
+    {
+      "name": "login",
+      "endpoint": "login",
+      "request_type": "PUT",
+      "pagination": false,
+      "body":{
+        "username":"String",
+        "password":"String"
+      },
+      "list_response_model": [
+        {
+  "name": "LoginResponseModel",
+  "fields": [
+    { "name": "token", "type": "String" }
+  ]
+}
       ]
     }
+  ]
 }

@@ -1,14 +1,12 @@
 import 'package:courses/features/teachers/cubits/get_teachers_cubit/get_teachers_cubit.dart';
-import 'package:courses/features/teachers/models/teacher_model.dart';
 import 'package:courses/features/teachers/presentation/components/manage_teacher_dialog.dart';
 import 'package:courses/features/teachers/presentation/components/teacher_list_item.dart';
 import 'package:courses/features/teachers/presentation/components/teachers_filter_panel.dart';
 import 'package:courses/l10n/app_localizations.dart';
+import 'package:courses/shared/components/generic_pagenation.dart';
 import 'package:courses/shared/dialogs/delete_dailogs.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class TeachersScreen extends StatefulWidget {
   const TeachersScreen({super.key});
@@ -98,35 +96,21 @@ class _TeachersScreenState extends State<TeachersScreen> {
             ),
 
             const SizedBox(height: 24),
-            Expanded(
-              child: PagingListener(
-                controller: teachersCubit.pagingController,
-                builder: (context, state, fetchNextPage) =>
-                    PagedListView<int, TeacherModel>(
-                      padding: EdgeInsets.zero,
-                      state: state,
-                      fetchNextPage: fetchNextPage,
-                      builderDelegate: PagedChildBuilderDelegate(
-                        itemBuilder: (context, item, index) => TeacherListItem(
-                          subjectItem: item,
-                          onEdit: () {
-                            showManageTeacherDialog(
-                              context,
-                              teachersCubit,
-                              teacher: item,
-                            );
-                          },
-                          onDelete: () {
-                            showDeleteConfirmationDialog(
-                              context,
-                              item.name,
-                              () {},
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-              ).animate().fade(duration: const Duration(milliseconds: 500)),
+            GenericPageList(
+              pagingController: teachersCubit.pagingController,
+              itemBuilder: (context, item, index) => TeacherListItem(
+                subjectItem: item,
+                onEdit: () {
+                  showManageTeacherDialog(
+                    context,
+                    teachersCubit,
+                    teacher: item,
+                  );
+                },
+                onDelete: () {
+                  showDeleteConfirmationDialog(context, item.name, () {});
+                },
+              ),
             ),
           ],
         ),

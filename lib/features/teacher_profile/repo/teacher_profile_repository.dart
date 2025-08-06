@@ -1,3 +1,4 @@
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:courses/features/teacher_profile/models/payment_detail.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -24,9 +25,9 @@ class TeacherProfileRepository {
 
       return Right(data);
     } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
+      return Left(FailureFactory.fromDioException(e));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FailureFactory(e.toString()));
     }
   }
 
@@ -43,9 +44,9 @@ class TeacherProfileRepository {
 
       return Right(data);
     } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
+      return Left(FailureFactory.fromDioException(e));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FailureFactory(e.toString()));
     }
   }
 }

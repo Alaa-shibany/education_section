@@ -4,8 +4,9 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:courses/core/services/api_services.dart';
 import 'package:courses/core/services/end_points.dart';
+import 'package:courses/core/services/failure_service/failure.dart';
 import 'package:courses/core/services/failure_services.dart';
-import '../models/login_model.dart';
+import '../models/login_response_model.dart';
 import '../models/login_request_body_model.dart';
 
 class LoginRepository {
@@ -13,26 +14,26 @@ class LoginRepository {
 
   LoginRepository(this._apiService);
 
-  Future<Either<Failure, LoginModel>> getLoginData({
+  Future<Either<Failure, LoginResponseModel>> login({
     required LoginRequestBodyModel body,
+    required bool saveToken,
   }) async {
     try {
       final response = await _apiService.post(
         EndPoints.login,
         data: body.toJson(),
       );
-
-      final data = LoginModel.fromJson(response.data['data']);
       final cashServices = sl<CacheService>();
-      await cashServices.saveData(
-        key: 'token',
-        value: response.data['data']['token'],
-      );
+
+      final data = LoginResponseModel.fromJson(response.data['data']);
+      if (saveToken) {
+        await cashServices.saveData(key: 'token', value: data.token);
+      }
       return Right(data);
     } on DioException catch (e) {
-      return Left(ServerFailure.fromDioException(e));
+      return Left(FailureFactory.fromDioException(e));
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(FailureFactory(e.toString()));
     }
   }
 }

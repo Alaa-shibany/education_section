@@ -5,6 +5,6 @@ abstract class CreateSubjectState with _$CreateSubjectState {
   const factory CreateSubjectState({
     @Default(SubmissionStatus.initial) SubmissionStatus status,
     CreateSubjectResponse? data,
-    String? errorMessage,
-  }) = _CreateTeacherState; 
+    Failure? failure,
+  }) = _CreateTeacherState;
 }

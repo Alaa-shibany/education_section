@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$GetTeachersState {
 
- SubmissionStatus get status; PaginationModel<TeacherModel>? get data; String? get errorMessage; TextEditingController? get searchNameController; TextEditingController? get phoneNameController; TextEditingController? get emailNameController; int get badgeCount;
+ SubmissionStatus get status; PaginationModel<TeacherModel>? get data; Failure? get failure; TextEditingController? get searchNameController; TextEditingController? get phoneNameController; TextEditingController? get emailNameController; int get badgeCount;
 /// Create a copy of GetTeachersState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $GetTeachersStateCopyWith<GetTeachersState> get copyWith => _$GetTeachersStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetTeachersState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.searchNameController, searchNameController) || other.searchNameController == searchNameController)&&(identical(other.phoneNameController, phoneNameController) || other.phoneNameController == phoneNameController)&&(identical(other.emailNameController, emailNameController) || other.emailNameController == emailNameController)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GetTeachersState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.searchNameController, searchNameController) || other.searchNameController == searchNameController)&&(identical(other.phoneNameController, phoneNameController) || other.phoneNameController == phoneNameController)&&(identical(other.emailNameController, emailNameController) || other.emailNameController == emailNameController)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,errorMessage,searchNameController,phoneNameController,emailNameController,badgeCount);
+int get hashCode => Object.hash(runtimeType,status,data,failure,searchNameController,phoneNameController,emailNameController,badgeCount);
 
 @override
 String toString() {
-  return 'GetTeachersState(status: $status, data: $data, errorMessage: $errorMessage, searchNameController: $searchNameController, phoneNameController: $phoneNameController, emailNameController: $emailNameController, badgeCount: $badgeCount)';
+  return 'GetTeachersState(status: $status, data: $data, failure: $failure, searchNameController: $searchNameController, phoneNameController: $phoneNameController, emailNameController: $emailNameController, badgeCount: $badgeCount)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $GetTeachersStateCopyWith<$Res>  {
   factory $GetTeachersStateCopyWith(GetTeachersState value, $Res Function(GetTeachersState) _then) = _$GetTeachersStateCopyWithImpl;
 @useResult
 $Res call({
- SubmissionStatus status, PaginationModel<TeacherModel>? data, String? errorMessage, TextEditingController? searchNameController, TextEditingController? phoneNameController, TextEditingController? emailNameController, int badgeCount
+ SubmissionStatus status, PaginationModel<TeacherModel>? data, Failure? failure, TextEditingController? searchNameController, TextEditingController? phoneNameController, TextEditingController? emailNameController, int badgeCount
 });
 
 
@@ -62,12 +62,12 @@ class _$GetTeachersStateCopyWithImpl<$Res>
 
 /// Create a copy of GetTeachersState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,Object? searchNameController = freezed,Object? phoneNameController = freezed,Object? emailNameController = freezed,Object? badgeCount = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? data = freezed,Object? failure = freezed,Object? searchNameController = freezed,Object? phoneNameController = freezed,Object? emailNameController = freezed,Object? badgeCount = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as PaginationModel<TeacherModel>?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,searchNameController: freezed == searchNameController ? _self.searchNameController : searchNameController // ignore: cast_nullable_to_non_nullable
+as PaginationModel<TeacherModel>?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,searchNameController: freezed == searchNameController ? _self.searchNameController : searchNameController // ignore: cast_nullable_to_non_nullable
 as TextEditingController?,phoneNameController: freezed == phoneNameController ? _self.phoneNameController : phoneNameController // ignore: cast_nullable_to_non_nullable
 as TextEditingController?,emailNameController: freezed == emailNameController ? _self.emailNameController : emailNameController // ignore: cast_nullable_to_non_nullable
 as TextEditingController?,badgeCount: null == badgeCount ? _self.badgeCount : badgeCount // ignore: cast_nullable_to_non_nullable
@@ -156,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<TeacherModel>? data,  String? errorMessage,  TextEditingController? searchNameController,  TextEditingController? phoneNameController,  TextEditingController? emailNameController,  int badgeCount)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<TeacherModel>? data,  Failure? failure,  TextEditingController? searchNameController,  TextEditingController? phoneNameController,  TextEditingController? emailNameController,  int badgeCount)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage,_that.searchNameController,_that.phoneNameController,_that.emailNameController,_that.badgeCount);case _:
+return $default(_that.status,_that.data,_that.failure,_that.searchNameController,_that.phoneNameController,_that.emailNameController,_that.badgeCount);case _:
   return orElse();
 
 }
@@ -177,10 +177,10 @@ return $default(_that.status,_that.data,_that.errorMessage,_that.searchNameContr
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<TeacherModel>? data,  String? errorMessage,  TextEditingController? searchNameController,  TextEditingController? phoneNameController,  TextEditingController? emailNameController,  int badgeCount)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SubmissionStatus status,  PaginationModel<TeacherModel>? data,  Failure? failure,  TextEditingController? searchNameController,  TextEditingController? phoneNameController,  TextEditingController? emailNameController,  int badgeCount)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState():
-return $default(_that.status,_that.data,_that.errorMessage,_that.searchNameController,_that.phoneNameController,_that.emailNameController,_that.badgeCount);case _:
+return $default(_that.status,_that.data,_that.failure,_that.searchNameController,_that.phoneNameController,_that.emailNameController,_that.badgeCount);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +197,10 @@ return $default(_that.status,_that.data,_that.errorMessage,_that.searchNameContr
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  PaginationModel<TeacherModel>? data,  String? errorMessage,  TextEditingController? searchNameController,  TextEditingController? phoneNameController,  TextEditingController? emailNameController,  int badgeCount)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SubmissionStatus status,  PaginationModel<TeacherModel>? data,  Failure? failure,  TextEditingController? searchNameController,  TextEditingController? phoneNameController,  TextEditingController? emailNameController,  int badgeCount)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTeacherState() when $default != null:
-return $default(_that.status,_that.data,_that.errorMessage,_that.searchNameController,_that.phoneNameController,_that.emailNameController,_that.badgeCount);case _:
+return $default(_that.status,_that.data,_that.failure,_that.searchNameController,_that.phoneNameController,_that.emailNameController,_that.badgeCount);case _:
   return null;
 
 }
@@ -212,12 +212,12 @@ return $default(_that.status,_that.data,_that.errorMessage,_that.searchNameContr
 
 
 class _CreateTeacherState implements GetTeachersState {
-  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.errorMessage, this.searchNameController, this.phoneNameController, this.emailNameController, this.badgeCount = 0});
+  const _CreateTeacherState({this.status = SubmissionStatus.initial, this.data, this.failure, this.searchNameController, this.phoneNameController, this.emailNameController, this.badgeCount = 0});
   
 
 @override@JsonKey() final  SubmissionStatus status;
 @override final  PaginationModel<TeacherModel>? data;
-@override final  String? errorMessage;
+@override final  Failure? failure;
 @override final  TextEditingController? searchNameController;
 @override final  TextEditingController? phoneNameController;
 @override final  TextEditingController? emailNameController;
@@ -233,16 +233,16 @@ _$CreateTeacherStateCopyWith<_CreateTeacherState> get copyWith => __$CreateTeach
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&(identical(other.searchNameController, searchNameController) || other.searchNameController == searchNameController)&&(identical(other.phoneNameController, phoneNameController) || other.phoneNameController == phoneNameController)&&(identical(other.emailNameController, emailNameController) || other.emailNameController == emailNameController)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTeacherState&&(identical(other.status, status) || other.status == status)&&(identical(other.data, data) || other.data == data)&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.searchNameController, searchNameController) || other.searchNameController == searchNameController)&&(identical(other.phoneNameController, phoneNameController) || other.phoneNameController == phoneNameController)&&(identical(other.emailNameController, emailNameController) || other.emailNameController == emailNameController)&&(identical(other.badgeCount, badgeCount) || other.badgeCount == badgeCount));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,data,errorMessage,searchNameController,phoneNameController,emailNameController,badgeCount);
+int get hashCode => Object.hash(runtimeType,status,data,failure,searchNameController,phoneNameController,emailNameController,badgeCount);
 
 @override
 String toString() {
-  return 'GetTeachersState(status: $status, data: $data, errorMessage: $errorMessage, searchNameController: $searchNameController, phoneNameController: $phoneNameController, emailNameController: $emailNameController, badgeCount: $badgeCount)';
+  return 'GetTeachersState(status: $status, data: $data, failure: $failure, searchNameController: $searchNameController, phoneNameController: $phoneNameController, emailNameController: $emailNameController, badgeCount: $badgeCount)';
 }
 
 
@@ -253,7 +253,7 @@ abstract mixin class _$CreateTeacherStateCopyWith<$Res> implements $GetTeachersS
   factory _$CreateTeacherStateCopyWith(_CreateTeacherState value, $Res Function(_CreateTeacherState) _then) = __$CreateTeacherStateCopyWithImpl;
 @override @useResult
 $Res call({
- SubmissionStatus status, PaginationModel<TeacherModel>? data, String? errorMessage, TextEditingController? searchNameController, TextEditingController? phoneNameController, TextEditingController? emailNameController, int badgeCount
+ SubmissionStatus status, PaginationModel<TeacherModel>? data, Failure? failure, TextEditingController? searchNameController, TextEditingController? phoneNameController, TextEditingController? emailNameController, int badgeCount
 });
 
 
@@ -270,12 +270,12 @@ class __$CreateTeacherStateCopyWithImpl<$Res>
 
 /// Create a copy of GetTeachersState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? errorMessage = freezed,Object? searchNameController = freezed,Object? phoneNameController = freezed,Object? emailNameController = freezed,Object? badgeCount = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? data = freezed,Object? failure = freezed,Object? searchNameController = freezed,Object? phoneNameController = freezed,Object? emailNameController = freezed,Object? badgeCount = null,}) {
   return _then(_CreateTeacherState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as SubmissionStatus,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as PaginationModel<TeacherModel>?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
-as String?,searchNameController: freezed == searchNameController ? _self.searchNameController : searchNameController // ignore: cast_nullable_to_non_nullable
+as PaginationModel<TeacherModel>?,failure: freezed == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure?,searchNameController: freezed == searchNameController ? _self.searchNameController : searchNameController // ignore: cast_nullable_to_non_nullable
 as TextEditingController?,phoneNameController: freezed == phoneNameController ? _self.phoneNameController : phoneNameController // ignore: cast_nullable_to_non_nullable
 as TextEditingController?,emailNameController: freezed == emailNameController ? _self.emailNameController : emailNameController // ignore: cast_nullable_to_non_nullable
 as TextEditingController?,badgeCount: null == badgeCount ? _self.badgeCount : badgeCount // ignore: cast_nullable_to_non_nullable
