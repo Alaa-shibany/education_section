@@ -79,9 +79,7 @@ class CoursesRepository {
         "${EndPoints.dashboard_courses_update}/$id",
         data: body.toJson(),
       );
-
       final data = AcceptRequestModel.fromJson(response.data);
-
       return Right(data);
     } on DioException catch (e) {
       return Left(FailureFactory.fromDioException(e));

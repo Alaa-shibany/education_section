@@ -1,0 +1,26 @@
+{
+  "feature_name": "Students",
+  "apis": [
+    {
+      "name": "getStudents",
+      "endpoint": "dashboard/students/index",
+      "request_type": "GET",
+      "pagination": true,
+      "query_parameters": [
+        { "type": "int", "name": "page"  },
+        { "type": "String", "name": "name"  }
+      ],
+      "list_response_model": [
+        { "name": "StudentModel", "fields": [
+          { "name": "id", "type": "int" },
+          { "name": "name", "type": "String" },
+          { "name": "age", "type": "int" },
+          { "name": "gender", "type": "String" },
+          { "name": "residencePlace", "type": "String" , "json_key":"residence_place" },
+          { "name": "partnerName", "type": "String" , "json_key":"partner_name" },
+          { "name": "birthDay", "type": "String" , "json_key":"birth_date" }
+          ] }
+      ]
+    }
+  ]
+}

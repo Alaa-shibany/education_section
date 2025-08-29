@@ -538,6 +538,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sessions'**
   String get sessions;
+
+  /// No description provided for @donor_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Donor\'s name'**
+  String get donor_name;
+
+  /// No description provided for @gender.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get gender;
+
+  /// No description provided for @father_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Father name'**
+  String get father_name;
+
+  /// No description provided for @students.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get students;
+
+  /// No description provided for @age.
+  ///
+  /// In en, this message translates to:
+  /// **'Age'**
+  String get age;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

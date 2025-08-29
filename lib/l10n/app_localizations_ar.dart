@@ -229,4 +229,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get sessions => 'الجلسات';
+
+  @override
+  String get donor_name => 'Donor\'s name';
+
+  @override
+  String get gender => 'الجنس';
+
+  @override
+  String get father_name => 'اسم الأب';
+
+  @override
+  String get students => 'الطلاب';
+
+  @override
+  String get age => 'العمر';
 }

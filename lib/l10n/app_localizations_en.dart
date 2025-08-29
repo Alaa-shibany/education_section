@@ -229,4 +229,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sessions => 'Sessions';
+
+  @override
+  String get donor_name => 'Donor\'s name';
+
+  @override
+  String get gender => 'Gender';
+
+  @override
+  String get father_name => 'Father name';
+
+  @override
+  String get students => 'Students';
+
+  @override
+  String get age => 'Age';
 }

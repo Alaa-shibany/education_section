@@ -28,7 +28,7 @@ void showManageTeacherDialog(
     text: isEditing ? teacher.email : '',
   );
   final _phoneController = TextEditingController(
-    text: isEditing ? teacher.phone : '',
+    text: isEditing ? teacher.phone : '', 
   );
   final _subjectController = SearchController();
   final _formKey = GlobalKey<FormState>();

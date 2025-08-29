@@ -64,7 +64,11 @@
         "payment_deadline":"مهلة الدفع",
     "session":"جلسة",
     "sync_attendance":"تفقد الحضور",
-    "sessions":"الجلسات"
+    "sessions":"الجلسات",
+    "gender":"الجنس",
+    "father_name":"اسم الأب",
+    "students":"الطلاب",
+    "age":"العمر"
 
 
 }

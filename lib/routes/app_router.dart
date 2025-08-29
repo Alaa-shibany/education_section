@@ -13,6 +13,7 @@ import 'package:courses/features/register_requests/cubits/accept_request_cubit/a
 import 'package:courses/features/register_requests/cubits/get_requests_cubit/get_requests_cubit.dart';
 import 'package:courses/features/register_requests/presentation/register_requests_screen.dart';
 import 'package:courses/features/session_profile/cubits/get_session_profile_cubit/get_session_profile_cubit.dart';
+import 'package:courses/features/students/cubits/get_students_cubit/get_students_cubit.dart';
 import 'package:courses/features/subjects/cubits/get_subjects_cubit/get_subjects_cubit.dart';
 import 'package:courses/features/subjects/presentation/subjects_screen.dart';
 import 'package:courses/features/teacher_profile/cubits/get_payments_cubit/get_payments_cubit.dart';
@@ -26,6 +27,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'unknown_page.dart';
 import 'navigator_observer.dart';
+import 'package:courses/features/students/presentation/students_screen.dart';
 import 'package:courses/features/session_profile/presentation/session_profile_screen.dart';
 import 'package:courses/features/course_profile/presentation/course_profile_screen.dart';
 import 'package:courses/features/courses/presentation/courses_screen.dart';
@@ -126,6 +128,14 @@ class AppRouter {
                 ),
               ],
               child: SubjectsScreen(),
+            ),
+          ),
+          GoRoute(
+            name: 'students_screen',
+            path: AppRoutes.students,
+            builder: (context, state) => BlocProvider(
+              create: (context) => sl<GetStudentsCubit>(),
+              child: StudentsScreen(),
             ),
           ),
           GoRoute(

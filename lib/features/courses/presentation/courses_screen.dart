@@ -32,7 +32,6 @@ class _CoursesScreenState extends State<CoursesScreen> {
       endDrawer: CoursesFilterPanel(),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
-
         child: Column(
           children: [
             Row(

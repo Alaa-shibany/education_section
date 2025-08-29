@@ -6,7 +6,7 @@ part 'create_subject_response.g.dart';
 @freezed
 abstract class CreateSubjectResponse with _$CreateSubjectResponse {
   const factory CreateSubjectResponse({required String message}) =
-      _CreateSubjectResponse;
+      _CreateSubjectResponse; 
 
   factory CreateSubjectResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateSubjectResponseFromJson(json);

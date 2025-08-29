@@ -73,6 +73,11 @@
     "payment_deadline":"Payment deadline",
     "session":"Session",
     "sync_attendance":"Sync attendance",
-    "sessions":"Sessions"
+    "sessions":"Sessions",
+    "donor_name":"Donor's name",
+    "gender":"Gender",
+    "father_name":"Father name",
+    "students":"Students",
+    "age":"Age"
 
 }

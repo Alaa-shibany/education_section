@@ -197,4 +197,5 @@ class CourseDetails extends StatelessWidget {
       },
     );
   }
+
 }

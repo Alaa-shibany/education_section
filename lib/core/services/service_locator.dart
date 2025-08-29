@@ -12,6 +12,8 @@ import 'package:courses/features/courses/repo/courses_repository.dart';
 import 'package:courses/features/courses/cubits/update_course_status_cubit/update_course_status_cubit.dart';
 import 'package:courses/features/courses/cubits/create_course_cubit/create_course_cubit.dart';
 import 'package:courses/features/courses/cubits/get_courses_cubit/get_courses_cubit.dart';
+import 'package:courses/features/students/cubits/get_students_cubit/get_students_cubit.dart';
+import 'package:courses/features/students/repo/students_repository.dart';
 
 import 'package:courses/features/teacher_profile/repo/teacher_profile_repository.dart';
 import 'package:courses/features/teacher_profile/cubits/update_payment_cubit/update_payment_cubit.dart';
@@ -120,4 +122,6 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton(() => SessionsProfileRepository(sl()));
   sl.registerFactory(() => LoginCubit(sl()));
   sl.registerLazySingleton(() => LoginRepository(sl()));
+  sl.registerFactory(() => GetStudentsCubit(sl()));
+  sl.registerLazySingleton(() => StudentsRepository(sl()));
 }

@@ -14,6 +14,7 @@ class GetSubjectsCubit extends Cubit<GetSubjectsState> {
 
   GetSubjectsCubit(this._repository) : super(const GetSubjectsState());
   final searchController = TextEditingController();
+
   Future<void> getSubjects() async {
     emit(state.copyWith(status: SubmissionStatus.loading));
     final result = await _repository.getSubjects(name: searchController.text);
